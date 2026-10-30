@@ -103,5 +103,5 @@ should be treated as a verified credential until you have checked it.
 ## Notes
 
 - Fonts (Figtree, JetBrains Mono) load from Google Fonts. There are no analytics,
-  trackers, cookies or third-party embeds.
+  trackers, cookies or third-party scripts.
 - Content and design © JPHsystems. All rights reserved.

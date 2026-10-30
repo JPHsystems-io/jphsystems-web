@@ -14,6 +14,7 @@ checked it.
 | LinkedIn | `https://www.linkedin.com/in/jphsystems/` | Footer on every page |
 | GitHub | `https://github.com/JPHsystems-io` | Footer on every page |
 | Location / time zones | “Remote-first, working with teams across European and US time zones” | `about.html` portrait caption |
+| Token Ledger page | `token-ledger.html` — app features, specs, App Store badge, support link |
 | Contact route | One route only: the enquiry form at `contact.html#enquiry` | Nav CTA, mobile menu CTA, every CTA band, footer on every page |
 
 There is no scheduler and no booking widget, by design. Every call to action lands on

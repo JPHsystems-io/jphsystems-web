@@ -24,6 +24,7 @@ URL above.
 | `index.html` | Home: positioning, triage diagram, services, process, proof, shipped apps, CTA |
 | `services.html` | Three service lines, assessment, comparison, FAQ |
 | `about.html` | Story, principles, toolbox, what the practice is not |
+| `token-ledger.html` | Token Ledger app page: what it does, specs, App Store badge, SoftwareApplication JSON-LD |
 | `contact.html` | Enquiry form (posts to the form relay; falls back to a `mailto:` draft if the relay is unreachable) |
 | `notes/index.html` | Notes hub |
 | `notes/flat-network.html` | Network segmentation note |

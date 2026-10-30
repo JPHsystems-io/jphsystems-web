@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Token Ledger — OpenRouter usage tracker for iPhone and iPad | JPHsystems</title>
+<meta name="description" content="Token Ledger tracks what your OpenRouter account is really spending: remaining credit, daily and per-model usage, per-key logs and live per-token prices. Free, no ads, no tracking, keys stay on device.">
+<link rel="canonical" href="https://jphsystems-io.github.io/jphsystems-web/token-ledger.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="JPHsystems">
+<meta name="theme-color" content="#11171f">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JPHsystems">
+<meta property="og:title" content="Token Ledger — OpenRouter usage tracker for iPhone and iPad">
+<meta property="og:description" content="Remaining credit, daily spend, per-key logs and real per-token prices for all 400+ OpenRouter models. Free, no ads, no tracking.">
+<meta property="og:url" content="https://jphsystems-io.github.io/jphsystems-web/token-ledger.html">
+<meta property="og:image" content="https://jphsystems-io.github.io/jphsystems-web/assets/img/og-token-ledger.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Token Ledger, the OpenRouter usage tracker for iPhone and iPad.">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Token Ledger — OpenRouter usage tracker for iPhone and iPad">
+<meta name="twitter:description" content="Remaining credit, daily spend, per-key logs and real per-token prices for all 400+ OpenRouter models. Free, no ads, no tracking.">
+<meta name="twitter:image" content="https://jphsystems-io.github.io/jphsystems-web/assets/img/og-token-ledger.png">
+
+<!-- Icons -->
+<link rel="icon" href="assets/img/favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<!-- Fonts, self-hosted: no third-party request, no external round-trip -->
+<link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
+
+<!-- Marks JS as available so scroll-reveal styles apply. Without this the
+     [data-reveal] sections render immediately, which is the correct fallback. -->
+<script>
+  (function () {
+    var root = document.documentElement;
+    root.classList.add("js");
+    var stored = null;
+    try { stored = localStorage.getItem("theme"); } catch (e) { /* storage unavailable */ }
+    var theme = stored === "light" || stored === "dark"
+      ? stored
+      : (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    root.setAttribute("data-theme", theme);
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", theme === "light" ? "#f6f7f9" : "#11171f");
+  })();
+</script>
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Token Ledger",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "iOS 27.0 or later",
+      "url": "https://jphsystems-io.github.io/jphsystems-web/token-ledger.html",
+      "image": "https://jphsystems-io.github.io/jphsystems-web/assets/img/app-token-ledger.png",
+      "description": "Token Ledger tracks an OpenRouter account: remaining credit, daily and per-model spend, per-key usage logs and live per-token prices for 400+ models. Keys stay on the device.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "author": {
+        "@type": "Organization",
+        "name": "JPHsystems",
+        "url": "https://jphsystems-io.github.io/jphsystems-web/"
+      },
+      "downloadUrl": "https://apps.apple.com/app/id6809165525",
+      "softwareVersion": "1.0",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jphsystems-io.github.io/jphsystems-web/" },
+        { "@type": "ListItem", "position": 2, "name": "Apps", "item": "https://jphsystems-io.github.io/jphsystems-web/#apps" },
+        { "@type": "ListItem", "position": 3, "name": "Token Ledger", "item": "https://jphsystems-io.github.io/jphsystems-web/token-ledger.html" }
+      ]
+    }
+  ]
+}
+</script>
+
+<script src="assets/js/main.js" defer></script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="JPHsystems — home">
+        <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
+          <path class="mark-body" d="M44 11.2 20 11.2 8 32 20 52.8 44 52.8 56 32Z" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+          <path class="mark-seam" d="M46.6 9.9 58.6 31.2" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-name">JPH<span>systems</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="notes/index.html">Notes</a></li>
+        <li><a href="token-ledger.html" aria-current="page">Apps</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-end">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false">
+          <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="3.6"/>
+            <path d="M12 2.4v2.2M12 19.4v2.2M4.4 12h2.2M17.4 12h2.2M6 6l1.6 1.6M16.4 16.4l1.6 1.6M18 6l-1.6 1.6M9.6 16.4l-1.6 1.6"/>
+          </svg>
+          <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M20.6 14.3A8.4 8.4 0 0 1 9.7 3.6a8.5 8.5 0 1 0 10.9 10.7Z"/>
+          </svg>
+        </button>
+
+        <a class="btn btn--ghost btn--sm" href="contact.html#enquiry">Send a message</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="wrap" style="padding-inline:0">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="notes/index.html">Notes</a>
+      <a href="token-ledger.html" aria-current="page">Apps</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn--primary" href="contact.html#enquiry">Send a message</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section section--edge">
+    <div class="wrap">
+      <div class="grid grid--split">
+        <div data-reveal>
+          <p class="eyebrow">Apps · iOS</p>
+          <h1>Token Ledger</h1>
+          <p class="lede mt-l">
+            Your OpenRouter account, in your pocket. What credit is left, what you
+            spend per day and per model, and the real per-token price of all 400+
+            models &mdash; without the bill arriving as a surprise.
+          </p>
+          <div class="btn-row" style="margin-top:28px">
+            <a class="app-store-badge" href="https://apps.apple.com/app/id6809165525" rel="noopener" target="_blank">
+              <img class="app-store-badge__on-dark" src="assets/img/app-store-badge-white.svg" alt="Download on the App Store" width="144" height="48" decoding="async">
+              <img class="app-store-badge__on-light" src="assets/img/app-store-badge-black.svg" alt="Download on the App Store" width="144" height="48" decoding="async">
+            </a>
+            <a class="arrow-link" href="https://jphermans.github.io/OpenRouter-Tracker-Support/" rel="noopener" target="_blank">Support site</a>
+          </div>
+          <p class="form-note" style="margin-top:22px">
+            Free, no ads, no tracking, no sign-up. Your API keys are stored on the
+            device and never leave it.
+          </p>
+        </div>
+
+        <div class="card" data-reveal data-delay="1">
+          <div style="display:flex; gap:20px; align-items:flex-start">
+            <img src="assets/img/app-token-ledger.png" alt="Token Ledger app icon" width="96" height="96"
+                 decoding="async" style="width:96px; height:96px; border-radius:22px; flex:none">
+            <div>
+              <h2 style="margin:0; font-size:1.35rem">Token Ledger</h2>
+              <p style="margin:8px 0 0">OpenRouter usage tracker for iPhone and iPad.</p>
+            </div>
+          </div>
+          <ul class="spec-list">
+            <li><span><strong>Platforms.</strong> iPhone, iPad and iPhone Duo, built natively in SwiftUI. iOS 27.0 or later.</span></li>
+            <li><span><strong>Price.</strong> Free. No in-app purchases, no subscription.</span></li>
+            <li><span><strong>Category.</strong> Developer Tools on the App Store.</span></li>
+            <li><span><strong>Who makes it.</strong> JPHsystems &mdash; designed, built, shipped and supported by the same engineer you hire.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--edge">
+    <div class="wrap">
+      <div class="section-head section-head--center" data-reveal>
+        <p class="eyebrow">What it does</p>
+        <h2>Everything the API doesn&rsquo;t tell you.</h2>
+        <p class="lede">
+          openrouter.ai gives you a bill. Token Ledger shows you where the money
+          went, which tool spent it, and what each call really cost.
+        </p>
+      </div>
+
+      <div class="grid grid--3" style="margin-top:40px">
+        <div class="card" data-reveal>
+          <h3 style="margin-top:0">Balance &amp; spending</h3>
+          <p>Remaining credit or key limit, lifetime and monthly spend, and a low-balance
+             banner that turns amber below $10 and red below $5.</p>
+        </div>
+        <div class="card" data-reveal data-delay="1">
+          <h3 style="margin-top:0">Usage charts</h3>
+          <p>Daily spend and token bars with a period average and a trend line. Tap a day
+             to see the prompt, completion and reasoning split.</p>
+        </div>
+        <div class="card" data-reveal data-delay="2">
+          <h3 style="margin-top:0">Account log</h3>
+          <p>OpenRouter bills per API key, so give every tool its own key and the log becomes
+             a per-app view: today, 7-day, month and lifetime spend, plus key limits and expiry.</p>
+        </div>
+        <div class="card" data-reveal>
+          <h3 style="margin-top:0">Model catalog</h3>
+          <p>All 400+ models with real per-million-token prices, capability filters for vision,
+             reasoning, developer and free models, search and sorting.</p>
+        </div>
+        <div class="card" data-reveal data-delay="1">
+          <h3 style="margin-top:0">Two providers</h3>
+          <p>OpenRouter and TrustedRouter, or both: remaining credit, prepaid versus BYOK split,
+             per-key limits and a switcher that keeps every account separate.</p>
+        </div>
+        <div class="card" data-reveal data-delay="2">
+          <h3 style="margin-top:0">Privacy first</h3>
+          <p>Keys live in the iOS keychain on the device. No account, no analytics, no third-party
+             SDK, and nothing about your usage reaches me.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--edge">
+    <div class="wrap">
+      <div class="grid grid--split">
+        <div data-reveal>
+          <p class="eyebrow">Built for the foldable</p>
+          <h2>Ready for a screen that changes shape.</h2>
+          <p class="lede mt-l">
+            Token Ledger is built against the iOS 27 SDK, so iPhone Duo is not an
+            afterthought: the app uses the whole display, and nothing is sized to a
+            named device.
+          </p>
+        </div>
+        <div data-reveal data-delay="1">
+          <ul class="spec-list" style="margin-top:0">
+            <li><span><strong>Both displays, one app.</strong> It fills the inner display and returns to the outer one with your place kept.</span></li>
+            <li><span><strong>Two columns when there is room.</strong> Balance and charts pair with the account log on a wide window; anything narrower stays single column.</span></li>
+            <li><span><strong>Nothing under the hinge.</strong> On a partly folded Duo the content is pushed clear of the fold instead of laid across it.</span></li>
+            <li><span><strong>Bars handled.</strong> Refresh and Done stay reachable when the navigation bars move down the side.</span></li>
+            <li><span><strong>Also works in</strong> iPad split view, Stage Manager and iPhone Mirroring.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--edge">
+    <div class="wrap">
+      <div class="cta-band" data-reveal>
+        <p class="eyebrow">Work with me</p>
+        <h2>Software you can operate.</h2>
+        <p class="lede">
+          Token Ledger is the same way I build for clients: small surface, no mystery
+          dependencies, and support from the person who wrote it.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--accent btn--lg" href="contact.html#enquiry">Send a message</a>
+          <a class="btn btn--ghost btn--lg" href="index.html#services">What I do</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="index.html">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+            <path d="M16 3.2 26.4 6.9v9.5c0 6.2-4.3 10.6-10.4 12.4C9.9 27 5.6 22.6 5.6 16.4V6.9L16 3.2Z" stroke="rgba(255,255,255,.34)" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M16 10.4v4.5M12.2 19.1l2.9-2.2M19.8 19.1l-2.9-2.2" stroke="rgba(255,255,255,.30)" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="16" cy="17.2" r="2.9" fill="#5b7cfa"/>
+            <circle cx="16" cy="9.4" r="2.1" fill="#eef1f5" opacity=".55"/>
+            <circle cx="11.2" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+            <circle cx="20.8" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+          </svg>
+          <span class="brand-name">JPH<span>systems</span></span>
+        </a>
+        <p>
+          Cybersecurity, network security and product engineering, for teams that need
+          the stack to work as one thing instead of three vendors pointing at each
+          other.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h2>Site</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="notes/index.html">Notes</a></li>
+          <li><a href="index.html#apps">Apps</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.html#principles">How I work</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2>Get in touch</h2>
+        <ul>
+          <li><a href="mailto:jphermans@jphsystems.io">jphermans@jphsystems.io</a></li>
+          <li><a href="contact.html#enquiry">Send a message</a></li>
+          <li><a href="https://www.linkedin.com/in/jphsystems/" rel="me noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="https://github.com/JPHsystems-io" rel="me noopener" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span data-year>2026</span> JPHsystems. All rights reserved.</p>
+      <p>Independent practice. No reseller commissions.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

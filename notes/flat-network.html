@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>The flat network is still the default — JPHsystems</title>
+<meta name="description" content="One VLAN, one subnet and a VPN that lands you inside it. Why flat networks persist, and the segmentation order that actually gets finished.">
+<link rel="canonical" href="https://jphsystems.github.io/jphsystems-web/notes/flat-network.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="JPHsystems">
+<meta name="theme-color" content="#080a0d">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="JPHsystems">
+<meta property="og:title" content="The flat network is still the default">
+<meta property="og:description" content="One compromised laptop should not be able to reach the database. Here is the segmentation order that actually gets finished.">
+<meta property="og:url" content="https://jphsystems.github.io/jphsystems-web/notes/flat-network.html">
+<meta property="og:image" content="https://jphsystems.github.io/jphsystems-web/assets/img/cover-network.png">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta property="og:image:alt" content="A flat network diagram with one host highlighted.">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The flat network is still the default">
+<meta name="twitter:description" content="One compromised laptop should not be able to reach the database.">
+<meta name="twitter:image" content="https://jphsystems.github.io/jphsystems-web/assets/img/cover-network.png">
+
+<!-- Icons -->
+<link rel="icon" href="../assets/img/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"></noscript>
+
+<script>document.documentElement.className += " js";</script>
+<link rel="stylesheet" href="../assets/css/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The flat network is still the default",
+  "description": "One VLAN, one subnet and a VPN that lands you inside it. Why flat networks persist, and the segmentation order that actually gets finished.",
+  "datePublished": "2026-09-18",
+  "dateModified": "2026-09-18",
+  "author": { "@type": "Person", "name": "JPH" },
+  "publisher": { "@type": "Organization", "name": "JPHsystems" },
+  "mainEntityOfPage": "https://jphsystems.github.io/jphsystems-web/notes/flat-network.html",
+  "image": "https://jphsystems.github.io/jphsystems-web/assets/img/cover-network.png"
+}
+</script>
+
+<script src="../assets/js/main.js" defer></script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="../index.html" aria-label="JPHsystems — home">
+        <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+          <path d="M16 3.2 26.4 6.9v9.5c0 6.2-4.3 10.6-10.4 12.4C9.9 27 5.6 22.6 5.6 16.4V6.9L16 3.2Z" stroke="rgba(255,255,255,.34)" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M16 10.4v4.5M12.2 19.1l2.9-2.2M19.8 19.1l-2.9-2.2" stroke="rgba(255,255,255,.30)" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="16" cy="17.2" r="2.9" fill="#5b7cfa"/>
+          <circle cx="16" cy="9.4" r="2.1" fill="#eef1f5" opacity=".55"/>
+          <circle cx="11.2" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+          <circle cx="20.8" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+        </svg>
+        <span class="brand-name">JPH<span>systems</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../services.html">Services</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="index.html" aria-current="page">Notes</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-end">
+        <a class="btn btn--ghost btn--sm" href="../contact.html#book">Book a call</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="wrap" style="padding-inline:0">
+      <a href="../index.html">Home</a>
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="index.html" aria-current="page">Notes</a>
+      <a href="../contact.html">Contact</a>
+      <a class="btn btn--primary" href="../contact.html#book">Book a call</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <article>
+    <header class="article-head">
+      <div class="wrap wrap--narrow">
+        <ol class="breadcrumb" aria-label="Breadcrumb">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="index.html">Notes</a></li>
+          <li>Network</li>
+        </ol>
+        <div class="post-meta"><span class="tag">Network</span><span>6 min read</span><span>18 Sep 2026</span></div>
+        <h1>The flat network is still the default</h1>
+        <p class="lede">
+          One VLAN, one subnet, a firewall at the edge and a VPN that lands you inside
+          it. It is the default because it works &mdash; until one laptop is
+          compromised.
+        </p>
+        <div class="byline mt-l">
+          <span class="avatar avatar--sm" aria-hidden="true">JPH</span>
+          <span><strong>JPHsystems</strong>Founder &amp; engineer</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap wrap--narrow article">
+      <div class="article-body">
+        <p>
+          A flat network is not a mistake anyone consciously makes. It is what you get
+          when a switch is installed, a subnet is chosen, and every device that arrives
+          afterwards is plugged into the same place. The firewall blocks inbound traffic
+          from the internet. Inside, everything can talk to everything.
+        </p>
+        <p>
+          That design survives because it is convenient. File shares work. Printers
+          appear. The line-of-business app connects to its database without a ticket.
+          The cost only becomes visible on the day an attacker gets one set of
+          credentials and discovers that the laptop in reception can reach the domain
+          controller, the file server and the backup appliance.
+        </p>
+
+        <h2>What flat actually means</h2>
+        <p>
+          In practice, a flat network usually looks like this: workstations, servers,
+          printers, cameras, the phone system and the backup target all share a
+          <code>/16</code> or a handful of <code>/24</code>s. The VPN hands remote users
+          an address on the same plane. The firewall is a perimeter device; it has
+          almost no opinion about traffic that stays inside.
+        </p>
+        <p>
+          So one phished session becomes a network position. The attacker does not need
+          to exploit the server if they can simply authenticate to it with credentials
+          they collected from the laptop. They do not need to break the backup if the
+          backup share is mounted and writable from the machine they already control.
+        </p>
+
+        <h2>Why it stays that way</h2>
+        <ul>
+          <li><strong>Nobody has an accurate diagram.</strong> The network changed, the documentation did not, and nobody wants to touch a design they cannot see.</li>
+          <li><strong>Fear of breaking the app.</strong> Segmentation sounds like an outage, so it gets postponed until after the busy quarter that never ends.</li>
+          <li><strong>The firewall is in the wrong place.</strong> It is treated as an internet boundary, not an internal policy point, so east-west rules are never written.</li>
+          <li><strong>It has always worked.</strong> A control that has not failed yet feels like a control that cannot fail.</li>
+        </ul>
+
+        <h2>The order that gets finished</h2>
+        <p>
+          Segmentation fails when it is planned as a big-bang redesign. It succeeds when
+          it is a sequence of small, reversible changes, each one with a reason and a
+          rollback. This is the order I use.
+        </p>
+        <ol>
+          <li><strong>Inventory and diagram.</strong> What exists, what talks to what, and which flows are actually required. Start with the traffic, not the VLAN plan.</li>
+          <li><strong>Move the management plane out.</strong> Switch and firewall admin, hypervisor consoles, iLO/iDRAC, NAS management. Put them on a separate management network behind a jump host with MFA.</li>
+          <li><strong>Isolate the backups.</strong> Separate credentials, separate network path, and at least one copy that the production estate cannot write to. Ransomware goes for the backup first because it makes recovery optional.</li>
+          <li><strong>Fix guest and Wi-Fi.</strong> Guest to internet only. Corporate Wi-Fi to the services people need. Cameras, door controllers and other appliances on their own segment with no route to user devices.</li>
+          <li><strong>Group by function.</strong> Servers, databases, workstations, development and the management plane. Name the zones by what they do, not by which switch they happen to be on.</li>
+          <li><strong>Log before you block.</strong> Turn on flow logs and firewall logging for a week. You are looking for the flows nobody remembered &mdash; the scanner, the backup job, the one consultant with a mapped drive.</li>
+          <li><strong>Deny by default between zones.</strong> Allow only the flows the diagram requires, by service, source and destination. Every rule gets a name, an owner and a review date.</li>
+          <li><strong>Document the exceptions.</strong> The exception is not the failure. The undocumented exception is.</li>
+        </ol>
+
+        <div class="callout">
+          <strong>The one rule that matters:</strong> between zones, deny by default.
+          If you cannot explain why a rule exists, it is a finding &mdash; not a
+          requirement.
+        </div>
+
+        <h2>Start with one path</h2>
+        <p>
+          You do not need a maintenance window and a new firewall to begin. Pick one
+          path that should not exist: a workstation reaching the NAS management
+          interface, a laptop reaching the database port, a camera reaching a file
+          share. Put a deny rule in front of it, log what happens, and see what breaks.
+        </p>
+        <p>
+          If nothing breaks, you have removed a path an attacker would have used. If
+          something breaks, you have found a dependency that was invisible before. Both
+          outcomes are progress. Do that five times and you have a segmentation
+          programme that is already delivering.
+        </p>
+
+        <h2>What good looks like</h2>
+        <ul>
+          <li>A user can reach the application, not the database behind it.</li>
+          <li>A vendor can reach one host for one agreed window, with a named sponsor.</li>
+          <li>A camera can reach the recorder and nothing else.</li>
+          <li>A backup server accepts connections from the backup job and refuses everything else.</li>
+          <li>The diagram matches the equipment, and somebody owns the difference when it does not.</li>
+        </ul>
+        <p>
+          None of that requires a new product. It requires a boundary, a rule, and the
+          discipline to write down why the boundary is there. That is the unglamorous
+          part, and it is the part that holds.
+        </p>
+      </div>
+
+      <footer class="article-foot">
+        <p class="mono">Filed under Network · 18 Sep 2026</p>
+        <div class="article-cta">
+          <h3>Not sure where your flat paths are?</h3>
+          <p>
+            A short assessment maps the estate, finds the paths that should not exist,
+            and gives you a segmentation order with rollback for each step.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--accent" href="../contact.html?topic=Network%20security">Discuss your network</a>
+            <a class="btn btn--ghost" href="../services.html#network">Network services</a>
+          </div>
+        </div>
+        <p class="mono" style="margin-top:28px">Next note</p>
+        <p><a class="arrow-link" href="pentest-report.html">Your pentest report is not a remediation plan</a></p>
+      </footer>
+    </div>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="../index.html">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+            <path d="M16 3.2 26.4 6.9v9.5c0 6.2-4.3 10.6-10.4 12.4C9.9 27 5.6 22.6 5.6 16.4V6.9L16 3.2Z" stroke="rgba(255,255,255,.34)" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M16 10.4v4.5M12.2 19.1l2.9-2.2M19.8 19.1l-2.9-2.2" stroke="rgba(255,255,255,.30)" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="16" cy="17.2" r="2.9" fill="#5b7cfa"/>
+            <circle cx="16" cy="9.4" r="2.1" fill="#eef1f5" opacity=".55"/>
+            <circle cx="11.2" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+            <circle cx="20.8" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+          </svg>
+          <span class="brand-name">JPH<span>systems</span></span>
+        </a>
+        <p>
+          Cybersecurity, network security and product engineering for teams that need
+          the whole stack to hold together &mdash; not three vendors pointing at each
+          other.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h2>Site</h2>
+        <ul>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="index.html">Notes</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../about.html#principles">How I work</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2>Get in touch</h2>
+        <ul>
+          <li><a href="mailto:hello@jphsystems.com">hello@jphsystems.com</a></li>
+          <li><a href="../contact.html#book">Book a 30-minute call</a></li>
+          <li><a href="https://www.linkedin.com/in/jphsystems/" rel="me noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="https://github.com/JPHsystems" rel="me noopener" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span data-year>2026</span> JPHsystems. All rights reserved.</p>
+      <p>Independent practice. No reseller commissions.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

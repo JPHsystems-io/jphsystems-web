@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Ship the internal tool — JPHsystems</title>
+<meta name="description" content="The spreadsheet that runs an operation is already software — it just has no tests, no audit trail and one owner. How to scope and ship the small replacement.">
+<link rel="canonical" href="https://jphsystems.github.io/jphsystems-web/notes/ship-the-internal-tool.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="JPHsystems">
+<meta name="theme-color" content="#080a0d">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="JPHsystems">
+<meta property="og:title" content="Ship the internal tool">
+<meta property="og:description" content="The spreadsheet with three owners and no tests is costing more than the app you keep postponing.">
+<meta property="og:url" content="https://jphsystems.github.io/jphsystems-web/notes/ship-the-internal-tool.html">
+<meta property="og:image" content="https://jphsystems.github.io/jphsystems-web/assets/img/cover-app.png">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta property="og:image:alt" content="A small internal tool interface with a job list.">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ship the internal tool">
+<meta name="twitter:description" content="The spreadsheet is already software. It just has no tests, no audit trail and one owner.">
+<meta name="twitter:image" content="https://jphsystems.github.io/jphsystems-web/assets/img/cover-app.png">
+
+<!-- Icons -->
+<link rel="icon" href="../assets/img/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"></noscript>
+
+<script>document.documentElement.className += " js";</script>
+<link rel="stylesheet" href="../assets/css/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Ship the internal tool",
+  "description": "The spreadsheet that runs an operation is already software — it just has no tests, no audit trail and one owner. How to scope and ship the small replacement.",
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "author": { "@type": "Person", "name": "JPH" },
+  "publisher": { "@type": "Organization", "name": "JPHsystems" },
+  "mainEntityOfPage": "https://jphsystems.github.io/jphsystems-web/notes/ship-the-internal-tool.html",
+  "image": "https://jphsystems.github.io/jphsystems-web/assets/img/cover-app.png"
+}
+</script>
+
+<script src="../assets/js/main.js" defer></script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="../index.html" aria-label="JPHsystems — home">
+        <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+          <path d="M16 3.2 26.4 6.9v9.5c0 6.2-4.3 10.6-10.4 12.4C9.9 27 5.6 22.6 5.6 16.4V6.9L16 3.2Z" stroke="rgba(255,255,255,.34)" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M16 10.4v4.5M12.2 19.1l2.9-2.2M19.8 19.1l-2.9-2.2" stroke="rgba(255,255,255,.30)" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="16" cy="17.2" r="2.9" fill="#5b7cfa"/>
+          <circle cx="16" cy="9.4" r="2.1" fill="#eef1f5" opacity=".55"/>
+          <circle cx="11.2" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+          <circle cx="20.8" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+        </svg>
+        <span class="brand-name">JPH<span>systems</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../services.html">Services</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="index.html" aria-current="page">Notes</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-end">
+        <a class="btn btn--ghost btn--sm" href="../contact.html#book">Book a call</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="wrap" style="padding-inline:0">
+      <a href="../index.html">Home</a>
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="index.html" aria-current="page">Notes</a>
+      <a href="../contact.html">Contact</a>
+      <a class="btn btn--primary" href="../contact.html#book">Book a call</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <article>
+    <header class="article-head">
+      <div class="wrap wrap--narrow">
+        <ol class="breadcrumb" aria-label="Breadcrumb">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="index.html">Notes</a></li>
+          <li>Engineering</li>
+        </ol>
+        <div class="post-meta"><span class="tag">Engineering</span><span>5 min read</span><span>16 Oct 2026</span></div>
+        <h1>Ship the internal tool</h1>
+        <p class="lede">
+          The spreadsheet with three owners and no tests is costing more than the app
+          you keep postponing. It is also already software &mdash; it just has none of
+          the safeguards.
+        </p>
+        <div class="byline mt-l">
+          <span class="avatar avatar--sm" aria-hidden="true">JPH</span>
+          <span><strong>JPHsystems</strong>Founder &amp; engineer</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap wrap--narrow article">
+      <div class="article-body">
+        <p>
+          Every operations team has one. A spreadsheet that became a system: a workbook
+          with macros, a colour code, a tab called <code>FINAL_v3</code>, and three people
+          who know how it works. One of them is leaving, or already has.
+        </p>
+        <p>
+          The tool is not the problem. The problem is that the business now depends on
+          logic that lives in cells, permissions that live in a file share, and history
+          that lives in whoever remembers to save a copy before the month closes.
+        </p>
+
+        <h2>The spreadsheet is already software</h2>
+        <p>
+          It has an interface, a data model, business rules and an access model. What it
+          does not have is version control, tests, an audit trail, or a way to run the
+          same rule twice and get the same answer. It fails silently: a deleted row, a
+          formula dragged one column too far, a hardcoded value that nobody notices until
+          the numbers stop reconciling.
+        </p>
+        <p>
+          The cost is not the licence. It is the reconciliation hours, the onboarding
+          that only happens by shadowing, the errors found a quarter late, and the audit
+          question you cannot answer because the evidence was overwritten.
+        </p>
+
+        <h2>Why the app keeps getting postponed</h2>
+        <ul>
+          <li><strong>It works well enough on a good day.</strong> The failure is invisible until month-end, so it never becomes urgent.</li>
+          <li><strong>Internal tools do not demo well.</strong> There is no launch video for &ldquo;the job list now has an owner field&rdquo;.</li>
+          <li><strong>&ldquo;We&rsquo;ll buy something.&rdquo;</strong> Then procurement takes six months and delivers a platform that fits 70% of the workflow and none of the exceptions.</li>
+          <li><strong>Scope creep at the first draft.</strong> SSO, role-based access, mobile, audit, reporting and an AI assistant &mdash; before anyone has agreed what the tool actually does.</li>
+        </ul>
+
+        <h2>Scope it like an incident, not a platform</h2>
+        <p>
+          The smallest useful version has one workflow, end to end, and one source of
+          truth. Concretely:
+        </p>
+        <ul>
+          <li><strong>One workflow.</strong> A form to create a record, a list to see it, and a state change to close it. That is the application.</li>
+          <li><strong>One database.</strong> Not a shared drive, not a synced folder, not a second spreadsheet that &ldquo;mirrors&rdquo; the first.</li>
+          <li><strong>One import.</strong> Bring the existing data across once, and produce a reconciliation report that shows what did not map.</li>
+          <li><strong>One boring deployment.</strong> A small managed database and a container or static host. No Kubernetes for a tool with nine users.</li>
+          <li><strong>One instrument.</strong> Log who did what and when. If it does not record changes, it is not ready.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>If you cannot describe it in one sentence, it is not a tool yet.</strong>
+          &ldquo;Technicians log a job and a supervisor closes it&rdquo; is a tool.
+          &ldquo;A unified operations platform&rdquo; is a programme with a steering
+          committee.
+        </div>
+
+        <h2>What you get for the effort</h2>
+        <ul>
+          <li>One place where the truth lives, instead of four copies with different dates.</li>
+          <li>Every change attributable to a person and a time.</li>
+          <li>Rules in code, so they run the same way on a busy Friday as on a quiet Tuesday.</li>
+          <li>Onboarding that is a link and a short guide, not a week of shadowing.</li>
+          <li>Answers to &ldquo;how many, how long, how often&rdquo; without a manual count.</li>
+        </ul>
+        <p>
+          None of that requires a large team. It requires a narrow scope and the
+          discipline to keep it narrow until the first version is in use.
+        </p>
+
+        <h2>Build it small, then earn the next version</h2>
+        <ol>
+          <li><strong>Ship v1 in weeks.</strong> If the first release is a quarter away, the scope is wrong.</li>
+          <li><strong>Run both for one cycle.</strong> Keep the spreadsheet read-only, enter data in both, and reconcile at the end of the month.</li>
+          <li><strong>Retire the old one only when the numbers agree twice.</strong> Not when the app is &ldquo;done&rdquo; &mdash; when the evidence says it is.</li>
+          <li><strong>Add what you missed, not what you predicted.</strong> The second version should come from the first month of real use.</li>
+        </ol>
+        <p>
+          This is also the safest way to handle the person who built the spreadsheet.
+          They are not the obstacle. They are the specification. Sit with them, write
+          down the exceptions, and let the reconciliation prove the replacement is
+          faithful before anyone takes their workbook away.
+        </p>
+
+        <h2>When not to build</h2>
+        <p>
+          Building is not always the answer, and pretending otherwise is how consultancies
+          lose trust.
+        </p>
+        <ul>
+          <li><strong>If a commodity product already does 90%</strong> at a price the business will pay, buy it. The remaining 10% is rarely worth a custom estate.</li>
+          <li><strong>If the process is broken,</strong> fix the process first. Software makes a bad process faster and harder to change.</li>
+          <li><strong>If nobody will own it after launch,</strong> do not start. An unowned tool becomes the next spreadsheet, with a login page.</li>
+        </ul>
+        <p>
+          Internal tools are not glamorous. They are the difference between a team that
+          scales and a team that depends on one person&rsquo;s memory. Pick the workflow
+          that hurts most, scope it to one sentence, and ship the small one.
+        </p>
+      </div>
+
+      <footer class="article-foot">
+        <p class="mono">Filed under Engineering · 16 Oct 2026</p>
+        <div class="article-cta">
+          <h3>Have a spreadsheet that runs the business?</h3>
+          <p>
+            I scope, build and ship small internal tools &mdash; with an import path, an
+            audit trail and a plan for retiring the workbook safely.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--accent" href="../contact.html?topic=Application%20development">Scope your tool</a>
+            <a class="btn btn--ghost" href="../services.html#engineering">Engineering services</a>
+          </div>
+        </div>
+        <p class="mono" style="margin-top:28px">Next note</p>
+        <p><a class="arrow-link" href="flat-network.html">The flat network is still the default</a></p>
+      </footer>
+    </div>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="../index.html">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+            <path d="M16 3.2 26.4 6.9v9.5c0 6.2-4.3 10.6-10.4 12.4C9.9 27 5.6 22.6 5.6 16.4V6.9L16 3.2Z" stroke="rgba(255,255,255,.34)" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M16 10.4v4.5M12.2 19.1l2.9-2.2M19.8 19.1l-2.9-2.2" stroke="rgba(255,255,255,.30)" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="16" cy="17.2" r="2.9" fill="#5b7cfa"/>
+            <circle cx="16" cy="9.4" r="2.1" fill="#eef1f5" opacity=".55"/>
+            <circle cx="11.2" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+            <circle cx="20.8" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+          </svg>
+          <span class="brand-name">JPH<span>systems</span></span>
+        </a>
+        <p>
+          Cybersecurity, network security and product engineering for teams that need
+          the whole stack to hold together &mdash; not three vendors pointing at each
+          other.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h2>Site</h2>
+        <ul>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="index.html">Notes</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../about.html#principles">How I work</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2>Get in touch</h2>
+        <ul>
+          <li><a href="mailto:hello@jphsystems.com">hello@jphsystems.com</a></li>
+          <li><a href="../contact.html#book">Book a 30-minute call</a></li>
+          <li><a href="https://www.linkedin.com/in/jphsystems/" rel="me noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="https://github.com/JPHsystems" rel="me noopener" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span data-year>2026</span> JPHsystems. All rights reserved.</p>
+      <p>Independent practice. No reseller commissions.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

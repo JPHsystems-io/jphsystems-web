@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>JPHsystems — Cybersecurity, Network Security &amp; Product Engineering</title>
+<meta name="description" content="Independent cybersecurity, network security and software engineering. Assessments, hardening and applications built to be operated — by one accountable engineer.">
+<link rel="canonical" href="https://jphsystems.github.io/jphsystems-web/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="JPHsystems">
+<meta name="theme-color" content="#080a0d">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JPHsystems">
+<meta property="og:title" content="Cybersecurity, network security &amp; product engineering">
+<meta property="og:description" content="Most security work ends with a report. I stay for the part where it has to run.">
+<meta property="og:url" content="https://jphsystems.github.io/jphsystems-web/">
+<meta property="og:image" content="https://jphsystems.github.io/jphsystems-web/assets/img/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="JPHsystems — cybersecurity, network security and product engineering.">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cybersecurity, network security &amp; product engineering">
+<meta name="twitter:description" content="Most security work ends with a report. I stay for the part where it has to run.">
+<meta name="twitter:image" content="https://jphsystems.github.io/jphsystems-web/assets/img/og-default.png">
+
+<!-- Icons -->
+<link rel="icon" href="assets/img/favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<!-- Fonts, loaded without blocking first paint -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"></noscript>
+
+<!-- Marks JS as available so scroll-reveal styles apply. Without this the
+     [data-reveal] sections render immediately, which is the correct fallback. -->
+<script>document.documentElement.className += " js";</script>
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://jphsystems.github.io/jphsystems-web/#business",
+      "name": "JPHsystems",
+      "url": "https://jphsystems.github.io/jphsystems-web/",
+      "image": "https://jphsystems.github.io/jphsystems-web/assets/img/og-default.png",
+      "logo": "https://jphsystems.github.io/jphsystems-web/assets/img/apple-touch-icon.png",
+      "description": "Independent cybersecurity, network security and software engineering: assessments, hardening, segmentation, and applications built to be operated.",
+      "email": "hello@jphsystems.com",
+      "founder": { "@id": "https://jphsystems.github.io/jphsystems-web/#person" },
+      "areaServed": "Worldwide",
+      "availableLanguage": "en",
+      "priceRange": "$$",
+      "knowsAbout": [
+        "Cybersecurity",
+        "Network security",
+        "Penetration testing",
+        "Zero trust",
+        "Incident response",
+        "Cloud security",
+        "Web application development",
+        "API development"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Cybersecurity assessment and hardening",
+              "url": "https://jphsystems.github.io/jphsystems-web/services.html#security"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Network security and segmentation",
+              "url": "https://jphsystems.github.io/jphsystems-web/services.html#network"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Application and service development",
+              "url": "https://jphsystems.github.io/jphsystems-web/services.html#engineering"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://jphsystems.github.io/jphsystems-web/#person",
+      "name": "JPH",
+      "jobTitle": "Cybersecurity, Network & Software Engineer",
+      "url": "https://jphsystems.github.io/jphsystems-web/about.html",
+      "worksFor": { "@id": "https://jphsystems.github.io/jphsystems-web/#business" },
+      "knowsAbout": [
+        "Cybersecurity",
+        "Network architecture",
+        "Cloud infrastructure",
+        "Application security",
+        "Software engineering"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://jphsystems.github.io/jphsystems-web/#website",
+      "url": "https://jphsystems.github.io/jphsystems-web/",
+      "name": "JPHsystems",
+      "publisher": { "@id": "https://jphsystems.github.io/jphsystems-web/#business" },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
+
+<script src="assets/js/main.js" defer></script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="JPHsystems — home">
+        <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+          <path d="M16 3.2 26.4 6.9v9.5c0 6.2-4.3 10.6-10.4 12.4C9.9 27 5.6 22.6 5.6 16.4V6.9L16 3.2Z" stroke="rgba(255,255,255,.34)" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M16 10.4v4.5M12.2 19.1l2.9-2.2M19.8 19.1l-2.9-2.2" stroke="rgba(255,255,255,.30)" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="16" cy="17.2" r="2.9" fill="#5b7cfa"/>
+          <circle cx="16" cy="9.4" r="2.1" fill="#eef1f5" opacity=".55"/>
+          <circle cx="11.2" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+          <circle cx="20.8" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+        </svg>
+        <span class="brand-name">JPH<span>systems</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="notes/index.html">Notes</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-end">
+        <a class="btn btn--ghost btn--sm" href="contact.html#book">Book a call</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="wrap" style="padding-inline:0">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="notes/index.html">Notes</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn--primary" href="contact.html#book">Book a call</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ═══ Hero ═══════════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Cybersecurity · Network security · Product engineering</p>
+        <h1>Most security work ends with a report.<br>I stay for the part where it has to <span class="mark">run</span>.</h1>
+        <p class="lede">
+          JPHsystems is a one-person practice for companies that need the network, the
+          perimeter and the software on top of it to hold together &mdash; designed,
+          hardened and documented by the same engineer who answers when something breaks.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--primary btn--lg" href="contact.html">Start a conversation</a>
+          <a class="btn btn--ghost btn--lg" href="services.html">See how I work</a>
+        </div>
+        <p class="hero-note"><span class="pulse" aria-hidden="true"></span> Available for new engagements</p>
+
+        <span class="scroll-cue" aria-hidden="true">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 4.5 6 8.5l4-4"/>
+          </svg>
+        </span>
+      </div>
+
+      <!-- Signature graphic: signals converge on a triage layer, then fan out -->
+      <div class="flow" role="img"
+           aria-label="Diagram: endpoint, network and application signals converge on a triage layer, which blocks a host, allows known-good traffic, or escalates a decision to a human.">
+        <svg class="flow-svg" viewBox="0 0 1200 380" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="triageGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#5b7cfa" stop-opacity=".22"/>
+              <stop offset="100%" stop-color="#5b7cfa" stop-opacity=".04"/>
+            </linearGradient>
+          </defs>
+
+          <path class="flow-path" d="M 60 72 C 210 72 280 190 470 190"/>
+          <path class="flow-path" d="M 60 190 C 200 190 300 190 470 190"/>
+          <path class="flow-path" d="M 60 308 C 210 308 280 190 470 190"/>
+          <path class="flow-path flow-path--hot" d="M 590 190 C 780 190 880 78 1140 78"/>
+          <path class="flow-path" d="M 590 190 C 780 190 900 190 1140 190"/>
+          <path class="flow-path" d="M 590 190 C 780 190 880 302 1140 302"/>
+
+          <!-- Source nodes -->
+          <circle class="flow-node" cx="60" cy="72" r="9"/>
+          <circle class="flow-node flow-node--live" cx="60" cy="190" r="9"/>
+          <circle class="flow-node" cx="60" cy="308" r="9"/>
+          <text class="flow-label" x="60" y="48" text-anchor="middle">endpoints</text>
+          <text class="flow-label" x="60" y="166" text-anchor="middle">network</text>
+          <text class="flow-label" x="60" y="284" text-anchor="middle">apps</text>
+
+          <!-- The triage layer -->
+          <rect x="470" y="142" width="120" height="96" rx="14"
+                fill="url(#triageGrad)" stroke="#5b7cfa" stroke-opacity=".45" stroke-width="1.2"/>
+          <text x="530" y="178" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+                font-size="13" fill="#93a7ff" letter-spacing="1">triage</text>
+          <text x="530" y="200" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+                font-size="11" fill="#7f8993">normalize</text>
+          <text x="530" y="218" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+                font-size="11" fill="#7f8993">+ policy</text>
+
+          <!-- Destination nodes -->
+          <circle class="flow-node" cx="1140" cy="78" r="10"/>
+          <circle class="flow-node flow-node--live" cx="1140" cy="190" r="10"/>
+          <circle class="flow-node" cx="1140" cy="302" r="10"/>
+          <text class="flow-label" x="1140" y="54" text-anchor="middle">block</text>
+          <text class="flow-label" x="1140" y="166" text-anchor="middle">allow</text>
+          <text class="flow-label" x="1140" y="278" text-anchor="middle">escalate</text>
+
+          <!-- Signals in flight -->
+          <circle class="flow-dot" style="offset-path:path('M 60 72 C 210 72 280 190 470 190');animation-delay:0s"/>
+          <circle class="flow-dot" style="offset-path:path('M 60 190 C 200 190 300 190 470 190');animation-delay:1.4s"/>
+          <circle class="flow-dot" style="offset-path:path('M 60 308 C 210 308 280 190 470 190');animation-delay:2.6s"/>
+          <circle class="flow-dot" style="offset-path:path('M 590 190 C 780 190 880 78 1140 78');animation-delay:1.1s"/>
+          <circle class="flow-dot" style="offset-path:path('M 590 190 C 780 190 900 190 1140 190');animation-delay:2.4s"/>
+          <circle class="flow-dot" style="offset-path:path('M 590 190 C 780 190 880 302 1140 302');animation-delay:3.5s"/>
+        </svg>
+
+        <span class="chip" style="--in:.35s; top:-7%; left:1%">
+          <span class="dot dot--accent"></span> 1,284 events/s
+        </span>
+        <span class="chip chip--hide-sm" style="--in:.62s; top:64%; left:24%">
+          dedupe &middot; <b>&minus;71%</b>
+        </span>
+        <span class="chip chip--wide" style="--in:.44s; top:-9%; right:2%">
+          <span class="dot dot--danger"></span> blocked &middot; <b>12 hosts</b>
+        </span>
+        <span class="chip chip--wide" style="--in:.53s; top:43%; right:0">
+          p95 triage &middot; <b>38 ms</b>
+        </span>
+        <span class="chip" style="--in:.71s; bottom:-6%; right:13%">
+          <span class="dot dot--warn"></span> escalated &middot; <b>on-call</b>
+        </span>
+        <span class="chip chip--wide" style="--in:.8s; bottom:2%; left:2%">
+          TLS 1.3 &middot; pinned
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Stack marquee ══════════════════════════════════════════════════ -->
+  <section class="section section--tight section--edge">
+    <div class="wrap">
+      <p class="eyebrow center" style="text-align:center">The stack I work in</p>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Suricata</span><span>Wazuh</span><span>pfSense</span><span>Nmap</span>
+          <span>Burp Suite</span><span>Wireshark</span><span>Zeek</span><span>MITRE ATT&amp;CK</span>
+          <span>Python</span><span>TypeScript</span><span>React</span><span>Node.js</span>
+          <span>PostgreSQL</span><span>Docker</span><span>Terraform</span><span>AWS</span>
+          <span>Azure</span><span>Cloudflare</span><span>Grafana</span><span>Prometheus</span>
+          <span>Linux</span><span>Git</span>
+        </div>
+      </div>
+      <p class="visually-hidden">
+        Tools I work in: Suricata, Wazuh, pfSense, Nmap, Burp Suite, Wireshark, Zeek,
+        MITRE ATT&amp;CK, Python, TypeScript, React, Node.js, PostgreSQL, Docker,
+        Terraform, AWS, Azure, Cloudflare, Grafana, Prometheus, Linux and Git.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ Scrubbed scene: three signals through triage ═══════════════════ -->
+  <section class="scene" data-scrub>
+    <div class="scene-pin">
+      <div class="scene-inner">
+        <div class="scene-caption">
+          <p class="eyebrow">One Minute on a Hostile Network</p>
+          <h2>Not every alert deserves a page at 3am.</h2>
+          <p class="lede">Watch what a triage layer does to the same three signals.</p>
+        </div>
+
+        <div class="lanes">
+          <div class="lane" style="--t:.06; --from:-56px">
+            <span class="glyph">01</span>
+            <span>
+              <span class="label">&ldquo;SSH brute force from three ASNs.&rdquo;</span><br>
+              <span class="meta">auth &middot; 1,840 attempts &middot; 02:14</span>
+            </span>
+            <span class="verdict verdict--block">block &middot; edge ACL</span>
+          </div>
+
+          <div class="lane" data-hot="1" style="--t:.24; --from:-56px">
+            <span class="glyph">02</span>
+            <span>
+              <span class="label">&ldquo;2.4 GB leaving a database host for an unknown IP.&rdquo;</span><br>
+              <span class="meta">egress &middot; unusual ASN &middot; 02:19</span>
+            </span>
+            <span class="verdict verdict--contain">contain &middot; isolate host</span>
+          </div>
+
+          <div class="lane" style="--t:.42; --from:-56px">
+            <span class="glyph">03</span>
+            <span>
+              <span class="label">&ldquo;Vendor asks for standing domain admin.&rdquo;</span><br>
+              <span class="meta">identity &middot; no ticket &middot; 02:26</span>
+            </span>
+            <span class="verdict verdict--escalate">escalate &middot; human</span>
+          </div>
+        </div>
+
+        <div class="tally">
+          <span class="label">Unreviewed alerts per day</span>
+          <span class="figure" data-tally data-tally-from="1840" data-tally-to="120">1,840</span>
+          <span class="delta">&minus;93% once triage is in</span>
+        </div>
+
+        <p class="scene-step">Scroll &mdash; the triage layer decides</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Showcase: the dashboard that ends the argument ═════════════════ -->
+  <section class="showcase" data-scrub>
+    <div class="wrap">
+      <div class="grid grid--split">
+        <div data-reveal>
+          <p class="eyebrow">What You Actually Get</p>
+          <h2>Exposure you can point at, per asset.</h2>
+          <p class="lede mt-l">
+            A findings document is only useful if it survives contact with a Monday
+            morning. Every engagement ends with the inventory, the owner and the fix
+            for each item &mdash; and a dashboard that shows whether it stayed fixed.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--ghost" href="services.html#assessment">How an assessment works</a>
+          </div>
+        </div>
+
+        <div class="ui parallax" data-reveal data-delay="1">
+          <div class="ui-bar">
+            <span class="lights"><i></i><i></i><i></i></span>
+            <span class="title">exposure &mdash; last 30 days</span>
+            <span class="pill">live</span>
+          </div>
+          <div class="ui-body">
+            <div class="ui-chart">
+              <span style="--h:92; --i:0"></span><span style="--h:88; --i:1"></span>
+              <span style="--h:84; --i:2"></span><span style="--h:90; --i:3"></span>
+              <span style="--h:76; --i:4"></span><span class="hot" style="--h:64; --i:5"></span>
+              <span class="hot" style="--h:52; --i:6"></span><span class="hot" style="--h:41; --i:7"></span>
+              <span class="hot" style="--h:32; --i:8"></span><span class="hot" style="--h:24; --i:9"></span>
+            </div>
+
+            <div class="ui-row">
+              <span class="k"><span class="ui-tag ui-tag--accent">edge</span> Internet-facing admin ports</span>
+              <span class="v down">closed</span>
+            </div>
+            <div class="ui-row">
+              <span class="k"><span class="ui-tag">network</span> Flat VLAN, prod &harr; office</span>
+              <span class="v down">segmented</span>
+            </div>
+            <div class="ui-row">
+              <span class="k"><span class="ui-tag">identity</span> Standing admin accounts</span>
+              <span class="v down">&minus;14</span>
+            </div>
+            <div class="ui-row">
+              <span class="k"><span class="ui-tag">appsec</span> Critical findings open</span>
+              <span class="v up">2</span>
+            </div>
+            <div class="ui-row">
+              <span class="k">Mean time to detect</span>
+              <span class="v down">4m 12s</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Services ═══════════════════════════════════════════════════════ -->
+  <section class="section section--edge">
+    <div class="wrap">
+      <div class="section-head section-head--center" data-reveal>
+        <p class="eyebrow">What I Do</p>
+        <h2>Three ways I&rsquo;m usually brought in.</h2>
+        <p class="lede">
+          Fixed-scope work, quoted in writing before anything starts. Most engagements
+          begin with a short assessment so the build is based on what is actually there
+          &mdash; not what the diagram says is there.
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        <a class="card" data-reveal href="services.html#security">
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2.8 20 6v6.2c0 4.6-3.3 7.9-8 9.2-4.7-1.3-8-4.6-8-9.2V6l8-3.2Z"/>
+              <path d="m8.6 12.2 2.4 2.4 4.6-4.8"/>
+            </svg>
+          </span>
+          <h3>Cybersecurity</h3>
+          <p>
+            Penetration testing, hardening and incident readiness for teams without a
+            security department. Find the way in, close it, and leave the evidence
+            behind.
+          </p>
+          <span class="arrow-link">Explore security work</span>
+        </a>
+
+        <a class="card" data-delay="1" data-reveal href="services.html#network">
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="2.5" width="6" height="5" rx="1.5"/>
+              <rect x="2" y="16.5" width="6" height="5" rx="1.5"/>
+              <rect x="16" y="16.5" width="6" height="5" rx="1.5"/>
+              <path d="M12 7.5v4M5 16.5v-2.2a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2.2"/>
+            </svg>
+          </span>
+          <h3>Network security</h3>
+          <p>
+            Segmentation, firewall policy, remote access and monitoring that assume the
+            network will be attacked, not that it won&rsquo;t. Fewer flat planes, fewer
+            surprises.
+          </p>
+          <span class="arrow-link">Explore network work</span>
+        </a>
+
+        <a class="card" data-delay="2" data-reveal href="services.html#engineering">
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.5" y="3.5" width="19" height="17" rx="2.5"/>
+              <path d="M2.5 8.5h19"/>
+              <path d="m8 12.5-2 2 2 2M16 12.5l2 2-2 2M13.2 12l-2.4 5"/>
+            </svg>
+          </span>
+          <h3>Apps &amp; services</h3>
+          <p>
+            Web apps, APIs and internal tools built to be deployed, observed and
+            maintained. Security is part of the build, not a review bolted on at the
+            end.
+          </p>
+          <span class="arrow-link">Explore engineering</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ The gap ════════════════════════════════════════════════════════ -->
+  <section class="section section--edge">
+    <div class="wrap">
+      <div class="grid grid--split">
+        <div data-reveal>
+          <p class="eyebrow">The Gap</p>
+          <h2>The tool was never the hard part.</h2>
+          <p class="lede mt-l">
+            A firewall, an EDR agent and a scanner are all purchasable. What is not
+            purchasable is the policy behind them, the person who owns the alert, and
+            the boring work of keeping the whole thing true six months later.
+          </p>
+          <div class="btn-row">
+            <a class="arrow-link" href="about.html#principles">How I work</a>
+          </div>
+        </div>
+
+        <ul class="spec-list" data-reveal data-delay="1" style="margin-top:0">
+          <li><span><strong>Flat networks.</strong> One compromised laptop can reach the database, the file server and the backup appliance, because nobody drew the line.</span></li>
+          <li><span><strong>Standing access.</strong> Admin rights granted for one afternoon in 2022, still active, never reviewed.</span></li>
+          <li><span><strong>Alerts nobody owns.</strong> A dashboard full of red that everyone has learned to ignore is worse than no dashboard.</span></li>
+          <li><span><strong>Exposure without inventory.</strong> You cannot patch what you don&rsquo;t know exists, and spreadsheets age faster than infrastructure.</span></li>
+          <li><span><strong>Security as a PDF.</strong> A report with sixty findings and no owners is a transfer of liability, not a reduction of risk.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Dial ═══════════════════════════════════════════════════════════ -->
+  <section class="section section--edge">
+    <div class="wrap">
+      <div class="grid grid--split">
+        <div class="dial" data-reveal>
+          <div class="dial-ring" style="--pct:1">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <defs>
+                <linearGradient id="dialGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#93a7ff"/>
+                  <stop offset="100%" stop-color="#3a5ae8"/>
+                </linearGradient>
+              </defs>
+              <circle class="track" cx="100" cy="100" r="85"/>
+              <circle class="value" cx="100" cy="100" r="85"/>
+            </svg>
+            <span class="dial-figure"><span data-count-to="100" data-count-suffix="%">100%</span></span>
+          </div>
+          <p class="mono">of findings leave with an owner, a fix and a test</p>
+        </div>
+
+        <div data-reveal data-delay="1">
+          <p class="eyebrow">The Arithmetic</p>
+          <h2>No orphan findings.</h2>
+          <p class="lede mt-l">
+            The deliverable is not a document. It is a list where every line has an
+            owner, a fix, and a way to prove the fix held. That is the difference
+            between an assessment and a shelf ornament &mdash; and it is why the
+            hand-off takes as long as it takes.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--ghost" href="services.html#assessment">What an assessment includes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Process ════════════════════════════════════════════════════════ -->
+  <section class="section section--edge">
+    <div class="wrap">
+      <div class="section-head section-head--center" data-reveal>
+        <p class="eyebrow">How an Engagement Runs</p>
+        <h2>Short loops, visible work, no surprises.</h2>
+      </div>
+
+      <ol class="steps">
+        <li class="step" data-reveal>
+          <span class="step-num">Scope</span>
+          <div>
+            <h3>A call, then a written problem statement</h3>
+            <p>Thirty minutes to work out whether I&rsquo;m the right person at all. If I&rsquo;m not, I&rsquo;ll say so and point you somewhere better. If I am, you get the problem written down in plain language before any money changes hands.</p>
+          </div>
+        </li>
+        <li class="step" data-reveal>
+          <span class="step-num">Assess</span>
+          <div>
+            <h3>One to two weeks inside the estate</h3>
+            <p>I read the configs, the firewall rules, the cloud accounts and the logs. You get a findings document ranked by what it actually unlocks: where an attacker gets in, where they go next, and what it costs to stop them.</p>
+          </div>
+        </li>
+        <li class="step" data-reveal>
+          <span class="step-num">Build</span>
+          <div>
+            <h3>Fixed scope, weekly demos</h3>
+            <p>We agree on a specific outcome and a date. Segmentation, identity, hardened apps, monitoring &mdash; built in your environment, in your repository, with your team watching. No black boxes and nothing that only runs on my laptop.</p>
+          </div>
+        </li>
+        <li class="step" data-reveal>
+          <span class="step-num">Hand off</span>
+          <div>
+            <h3>Runbooks, dashboards, and a team that can operate it</h3>
+            <p>The engagement ends with your people able to change what I built without calling me. Runbooks, alert ownership, and a walkthrough recording. Ongoing support is available, never assumed.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══ Credentials ════════════════════════════════════════════════════ -->
+  <section class="section section--tight section--edge">
+    <div class="wrap">
+      <div class="stats" data-reveal>
+        <div class="stat">
+          <p class="stat-figure">72h</p>
+          <p class="stat-label">Typical time from kickoff to the first written findings, so you can act on something concrete in the first week.</p>
+        </div>
+        <div class="stat">
+          <p class="stat-figure">100%</p>
+          <p class="stat-label">Of findings leave with an owner, a proposed fix and a way to test that the fix held.</p>
+        </div>
+        <div class="stat">
+          <p class="stat-figure">01</p>
+          <p class="stat-label">Engineer, start to finish. No account managers, no hand-offs to a call centre, no reseller commission.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Position ═══════════════════════════════════════════════════════ -->
+  <section class="section section--edge">
+    <div class="wrap wrap--narrow">
+      <blockquote class="quote" data-reveal>
+        <p>
+          I have been the person on call when a &ldquo;minor&rdquo; misconfiguration
+          became an incident. A control nobody can operate is not a control &mdash;
+          it is a document.
+        </p>
+        <footer class="byline">
+          <span class="avatar" aria-hidden="true">JPH</span>
+          <span><strong>JPHsystems</strong>Founder &amp; engineer</span>
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ═══ Notes ══════════════════════════════════════════════════════════ -->
+  <section class="section section--edge">
+    <div class="wrap">
+      <div class="section-head section-head--center" data-reveal>
+        <p class="eyebrow">Notes</p>
+        <h2>Field notes, not thought leadership.</h2>
+        <p class="lede">Specific problems, with the fix attached. Written from the work.</p>
+      </div>
+
+      <div class="post-list">
+        <a class="card post-card" data-reveal href="notes/flat-network.html">
+          <img class="post-cover" src="assets/img/cover-network.png" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          <div class="post-card-body">
+            <div class="post-meta"><span class="tag">Network</span><span>6 min read</span></div>
+            <h3>The flat network is still the default</h3>
+            <p>One compromised laptop should not be able to reach the database. Here is the segmentation order that actually gets finished.</p>
+            <span class="arrow-link">Read the note</span>
+          </div>
+        </a>
+
+        <a class="card post-card" data-delay="1" data-reveal href="notes/pentest-report.html">
+          <img class="post-cover" src="assets/img/cover-report.png" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          <div class="post-card-body">
+            <div class="post-meta"><span class="tag">Security</span><span>7 min read</span></div>
+            <h3>Your pentest report is not a remediation plan</h3>
+            <p>Sixty findings, no owners, and a PDF nobody opens twice. What to ask for instead.</p>
+            <span class="arrow-link">Read the note</span>
+          </div>
+        </a>
+
+        <a class="card post-card" data-delay="2" data-reveal href="notes/ship-the-internal-tool.html">
+          <img class="post-cover" src="assets/img/cover-app.png" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          <div class="post-card-body">
+            <div class="post-meta"><span class="tag">Engineering</span><span>5 min read</span></div>
+            <h3>Ship the internal tool</h3>
+            <p>The spreadsheet with three owners and no tests is costing more than the app you keep postponing.</p>
+            <span class="arrow-link">Read the note</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ════════════════════════════════════════════════════════════ -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="cta-band" data-reveal>
+        <p class="eyebrow">Next Step</p>
+        <h2>Tell me what&rsquo;s exposed.</h2>
+        <p class="lede">
+          Send a couple of paragraphs about what you&rsquo;re running and what worries
+          you. I answer every message myself, usually within a business day, and
+          I&rsquo;ll tell you honestly if it isn&rsquo;t something I should take on.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--accent btn--lg" href="contact.html">Get in touch</a>
+          <a class="btn btn--ghost btn--lg" href="contact.html#book">Book a 30-minute call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="index.html">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+            <path d="M16 3.2 26.4 6.9v9.5c0 6.2-4.3 10.6-10.4 12.4C9.9 27 5.6 22.6 5.6 16.4V6.9L16 3.2Z" stroke="rgba(255,255,255,.34)" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M16 10.4v4.5M12.2 19.1l2.9-2.2M19.8 19.1l-2.9-2.2" stroke="rgba(255,255,255,.30)" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="16" cy="17.2" r="2.9" fill="#5b7cfa"/>
+            <circle cx="16" cy="9.4" r="2.1" fill="#eef1f5" opacity=".55"/>
+            <circle cx="11.2" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+            <circle cx="20.8" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+          </svg>
+          <span class="brand-name">JPH<span>systems</span></span>
+        </a>
+        <p>
+          Cybersecurity, network security and product engineering for teams that need
+          the whole stack to hold together &mdash; not three vendors pointing at each
+          other.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h2>Site</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="notes/index.html">Notes</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.html#principles">How I work</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2>Get in touch</h2>
+        <ul>
+          <li><a href="mailto:hello@jphsystems.com">hello@jphsystems.com</a></li>
+          <li><a href="contact.html#book">Book a 30-minute call</a></li>
+          <li><a href="https://www.linkedin.com/in/jphsystems/" rel="me noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="https://github.com/JPHsystems" rel="me noopener" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span data-year>2026</span> JPHsystems. All rights reserved.</p>
+      <p>Independent practice. No reseller commissions.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

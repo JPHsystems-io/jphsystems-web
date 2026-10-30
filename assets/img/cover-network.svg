@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <radialGradient id="a" cx="0.2" cy="0.1" r="0.9">
+      <stop offset="0%" stop-color="#5b7cfa" stop-opacity="0.28"/>
+      <stop offset="70%" stop-color="#5b7cfa" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="g" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="#0a0d12"/>
+  <rect width="1600" height="900" fill="url(#g)"/>
+  <rect width="1600" height="900" fill="url(#a)"/>
+
+  <!-- Flat network: one flat plane, one host highlighted -->
+  <g stroke="#ffffff" stroke-opacity="0.16" stroke-width="2" fill="none">
+    <path d="M360 300 560 220 760 300 960 220 1160 300"/>
+    <path d="M360 300 560 380 760 300 960 380 1160 300"/>
+    <path d="M360 460 560 380 760 460 960 380 1160 460"/>
+    <path d="M360 460 560 540 760 460 960 540 1160 460"/>
+    <path d="M560 220v160M560 380v160M760 300v160M960 220v160M960 380v160"/>
+    <path d="M360 300v160M1160 300v160"/>
+  </g>
+  <g fill="#0a0d12" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2">
+    <circle cx="360" cy="300" r="10"/><circle cx="560" cy="220" r="10"/><circle cx="760" cy="300" r="10"/>
+    <circle cx="960" cy="220" r="10"/><circle cx="1160" cy="300" r="10"/><circle cx="360" cy="460" r="10"/>
+    <circle cx="560" cy="380" r="10"/><circle cx="760" cy="460" r="10"/><circle cx="960" cy="380" r="10"/>
+    <circle cx="1160" cy="460" r="10"/><circle cx="560" cy="540" r="10"/><circle cx="960" cy="540" r="10"/>
+  </g>
+  <circle cx="760" cy="300" r="16" fill="#ff6b6b"/>
+  <circle cx="760" cy="300" r="34" fill="none" stroke="#ff6b6b" stroke-opacity="0.35"/>
+  <text x="800" y="270" font-family="Menlo, monospace" font-size="20" fill="#ff9d9d">one host, whole subnet</text>
+
+  <text x="120" y="760" font-family="Menlo, monospace" font-size="20" letter-spacing="3" fill="#6a737d">NETWORK SECURITY · 01</text>
+</svg>

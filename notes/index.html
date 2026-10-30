@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Notes — JPHsystems</title>
+<meta name="description" content="Field notes on network segmentation, security remediation and internal tools. Specific problems, with the fix attached.">
+<link rel="canonical" href="https://jphsystems.github.io/jphsystems-web/notes/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="JPHsystems">
+<meta name="theme-color" content="#080a0d">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JPHsystems">
+<meta property="og:title" content="Notes — field notes on security, networks and software">
+<meta property="og:description" content="Specific problems, with the fix attached. Written from the work.">
+<meta property="og:url" content="https://jphsystems.github.io/jphsystems-web/notes/">
+<meta property="og:image" content="https://jphsystems.github.io/jphsystems-web/assets/img/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="JPHsystems notes.">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Notes — field notes on security, networks and software">
+<meta name="twitter:description" content="Specific problems, with the fix attached.">
+<meta name="twitter:image" content="https://jphsystems.github.io/jphsystems-web/assets/img/og-default.png">
+
+<!-- Icons -->
+<link rel="icon" href="../assets/img/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"></noscript>
+
+<script>document.documentElement.className += " js";</script>
+<link rel="stylesheet" href="../assets/css/styles.css">
+
+<script src="../assets/js/main.js" defer></script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="../index.html" aria-label="JPHsystems — home">
+        <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+          <path d="M16 3.2 26.4 6.9v9.5c0 6.2-4.3 10.6-10.4 12.4C9.9 27 5.6 22.6 5.6 16.4V6.9L16 3.2Z" stroke="rgba(255,255,255,.34)" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M16 10.4v4.5M12.2 19.1l2.9-2.2M19.8 19.1l-2.9-2.2" stroke="rgba(255,255,255,.30)" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="16" cy="17.2" r="2.9" fill="#5b7cfa"/>
+          <circle cx="16" cy="9.4" r="2.1" fill="#eef1f5" opacity=".55"/>
+          <circle cx="11.2" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+          <circle cx="20.8" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+        </svg>
+        <span class="brand-name">JPH<span>systems</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../services.html">Services</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="index.html" aria-current="page">Notes</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-end">
+        <a class="btn btn--ghost btn--sm" href="../contact.html#book">Book a call</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="wrap" style="padding-inline:0">
+      <a href="../index.html">Home</a>
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="index.html" aria-current="page">Notes</a>
+      <a href="../contact.html">Contact</a>
+      <a class="btn btn--primary" href="../contact.html#book">Book a call</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <ol class="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="../index.html">Home</a></li>
+        <li>Notes</li>
+      </ol>
+      <p class="eyebrow">Notes</p>
+      <h1>Field notes, not thought leadership.</h1>
+      <p class="lede">
+        Specific problems, with the fix attached. No predictions about where the
+        industry is heading, and no listicles. Written from the work.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="visually-hidden">All notes</h2>
+      <div class="post-list">
+        <a class="card post-card" data-reveal href="flat-network.html">
+          <img class="post-cover" src="../assets/img/cover-network.png" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          <div class="post-card-body">
+            <div class="post-meta"><span class="tag">Network</span><span>6 min read</span></div>
+            <h3>The flat network is still the default</h3>
+            <p>One compromised laptop should not be able to reach the database. Here is the segmentation order that actually gets finished.</p>
+            <span class="arrow-link">Read the note</span>
+          </div>
+        </a>
+
+        <a class="card post-card" data-delay="1" data-reveal href="pentest-report.html">
+          <img class="post-cover" src="../assets/img/cover-report.png" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          <div class="post-card-body">
+            <div class="post-meta"><span class="tag">Security</span><span>7 min read</span></div>
+            <h3>Your pentest report is not a remediation plan</h3>
+            <p>Sixty findings, no owners, and a PDF nobody opens twice. What to ask for instead.</p>
+            <span class="arrow-link">Read the note</span>
+          </div>
+        </a>
+
+        <a class="card post-card" data-delay="2" data-reveal href="ship-the-internal-tool.html">
+          <img class="post-cover" src="../assets/img/cover-app.png" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          <div class="post-card-body">
+            <div class="post-meta"><span class="tag">Engineering</span><span>5 min read</span></div>
+            <h3>Ship the internal tool</h3>
+            <p>The spreadsheet with three owners and no tests is costing more than the app you keep postponing.</p>
+            <span class="arrow-link">Read the note</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--edge">
+    <div class="wrap wrap--narrow">
+      <div class="section-head section-head--center" data-reveal>
+        <p class="eyebrow">Why Write</p>
+        <h2>The notes are the sales pitch.</h2>
+        <p class="lede">
+          If the thinking in these pieces matches the way you want your systems
+          handled, the engagement will probably go well. If it does not, better to find
+          out here than in week three.
+        </p>
+      </div>
+      <div class="btn-row" style="justify-content:center" data-reveal>
+        <a class="btn btn--primary" href="../contact.html">Start a conversation</a>
+        <a class="btn btn--ghost" href="../services.html">See the services</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="../index.html">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+            <path d="M16 3.2 26.4 6.9v9.5c0 6.2-4.3 10.6-10.4 12.4C9.9 27 5.6 22.6 5.6 16.4V6.9L16 3.2Z" stroke="rgba(255,255,255,.34)" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M16 10.4v4.5M12.2 19.1l2.9-2.2M19.8 19.1l-2.9-2.2" stroke="rgba(255,255,255,.30)" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="16" cy="17.2" r="2.9" fill="#5b7cfa"/>
+            <circle cx="16" cy="9.4" r="2.1" fill="#eef1f5" opacity=".55"/>
+            <circle cx="11.2" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+            <circle cx="20.8" cy="20.2" r="2.1" fill="#eef1f5" opacity=".55"/>
+          </svg>
+          <span class="brand-name">JPH<span>systems</span></span>
+        </a>
+        <p>
+          Cybersecurity, network security and product engineering for teams that need
+          the whole stack to hold together &mdash; not three vendors pointing at each
+          other.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h2>Site</h2>
+        <ul>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="index.html">Notes</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../about.html#principles">How I work</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2>Get in touch</h2>
+        <ul>
+          <li><a href="mailto:hello@jphsystems.com">hello@jphsystems.com</a></li>
+          <li><a href="../contact.html#book">Book a 30-minute call</a></li>
+          <li><a href="https://www.linkedin.com/in/jphsystems/" rel="me noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="https://github.com/JPHsystems" rel="me noopener" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span data-year>2026</span> JPHsystems. All rights reserved.</p>
+      <p>Independent practice. No reseller commissions.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

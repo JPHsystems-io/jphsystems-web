@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <radialGradient id="a" cx="0.8" cy="0.15" r="0.9">
+      <stop offset="0%" stop-color="#5b7cfa" stop-opacity="0.24"/>
+      <stop offset="70%" stop-color="#5b7cfa" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="g" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="#0a0d12"/>
+  <rect width="1600" height="900" fill="url(#g)"/>
+  <rect width="1600" height="900" fill="url(#a)"/>
+
+  <!-- Report sheet -->
+  <g transform="translate(560 130)">
+    <rect width="520" height="660" rx="14" fill="#0e1116" stroke="#ffffff" stroke-opacity="0.18"/>
+    <rect x="40" y="44" width="220" height="14" rx="7" fill="#eef1f5" opacity="0.8"/>
+    <rect x="40" y="74" width="130" height="9" rx="4.5" fill="#6a737d"/>
+    <line x1="40" y1="112" x2="480" y2="112" stroke="#ffffff" stroke-opacity="0.12"/>
+
+    <g fill="#ffffff" opacity="0.14">
+      <rect x="40" y="142" width="360" height="9" rx="4.5"/>
+      <rect x="40" y="168" width="420" height="9" rx="4.5"/>
+      <rect x="40" y="194" width="300" height="9" rx="4.5"/>
+    </g>
+
+    <g>
+      <rect x="40" y="238" width="16" height="16" rx="4" fill="#5b7cfa" opacity="0.25" stroke="#5b7cfa" stroke-opacity="0.6"/>
+      <rect x="70" y="241" width="290" height="10" rx="5" fill="#eef1f5" opacity="0.55"/>
+      <rect x="40" y="278" width="16" height="16" rx="4" fill="#5b7cfa" opacity="0.25" stroke="#5b7cfa" stroke-opacity="0.6"/>
+      <rect x="70" y="281" width="340" height="10" rx="5" fill="#eef1f5" opacity="0.55"/>
+      <rect x="40" y="318" width="16" height="16" rx="4" fill="#5b7cfa" opacity="0.25" stroke="#5b7cfa" stroke-opacity="0.6"/>
+      <rect x="70" y="321" width="250" height="10" rx="5" fill="#eef1f5" opacity="0.55"/>
+    </g>
+
+    <line x1="40" y1="372" x2="480" y2="372" stroke="#ffffff" stroke-opacity="0.12"/>
+
+    <g fill="#ffffff" opacity="0.14">
+      <rect x="40" y="400" width="400" height="9" rx="4.5"/>
+      <rect x="40" y="426" width="360" height="9" rx="4.5"/>
+      <rect x="40" y="452" width="410" height="9" rx="4.5"/>
+      <rect x="40" y="478" width="270" height="9" rx="4.5"/>
+    </g>
+
+    <rect x="40" y="536" width="200" height="38" rx="8" fill="#3a5ae8"/>
+    <rect x="76" y="552" width="128" height="7" rx="3.5" fill="#ffffff" opacity="0.85"/>
+  </g>
+
+  <g transform="translate(1180 190)">
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#5b7cfa" stroke-opacity="0.4" stroke-width="2"/>
+    <circle cx="0" cy="0" r="46" fill="none" stroke="#5b7cfa" stroke-opacity="0.25" stroke-width="2"/>
+    <circle cx="0" cy="0" r="9" fill="#5b7cfa"/>
+    <path d="M0 -70V-46M0 46v24M-70 0h24M46 0h24" stroke="#5b7cfa" stroke-opacity="0.4" stroke-width="2"/>
+  </g>
+
+  <text x="120" y="760" font-family="Menlo, monospace" font-size="20" letter-spacing="3" fill="#6a737d">CYBERSECURITY · 02</text>
+</svg>

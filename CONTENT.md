@@ -1,7 +1,7 @@
 # Content checklist
 
 Everything below is a placeholder or an unverified claim. Replace or confirm each item
-before the site is published. Nothing here should be treated as fact until you have
+before the site is promoted. Nothing here should be treated as fact until you have
 checked it.
 
 ## 1. Identity and contact
@@ -12,7 +12,7 @@ checked it.
 | Practice description | “Founder & engineer, JPHsystems” | Bylines on every page, about page |
 | Email | `hello@jphsystems.com` | Footer on every page, `contact.html` (form `action`, `data-mailto`, direct links, JSON-LD), `index.html` JSON-LD |
 | LinkedIn | `https://www.linkedin.com/in/jphsystems/` | Footer on every page |
-| GitHub | `https://github.com/JPHsystems` | Footer on every page |
+| GitHub | `https://github.com/JPHsystems-io` | Footer on every page |
 | Location / time zones | “Remote-first, working with teams across European and US time zones” | `about.html` portrait caption |
 | Booking | In-page `#book` section and a `mailto:` “Request a call” link | `contact.html`, every “Book a call” button |
 
@@ -25,7 +25,7 @@ an embed, note that it introduces a third-party script and cookies.
 The canonical/OG base is assumed to be:
 
 ```
-https://jphsystems.github.io/jphsystems-web/
+https://jphsystems-io.github.io/jphsystems-web/
 ```
 
 If the repository name changes, or you add a custom domain, update it in:

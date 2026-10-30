@@ -36,9 +36,9 @@ GitHub Pages.
 ## Deploy to GitHub Pages
 
 The site is set up for a **project site** at
-`https://jphsystems.github.io/jphsystems-web/`, served from the repository root.
+`https://jphsystems-io.github.io/jphsystems-web/`, served from the repository root.
 
-1. Create a public repository named `jphsystems-web` under the `JPHsystems` account.
+1. Create a public repository named `jphsystems-web` under the `JPHsystems-io` organization.
 2. From this folder:
 
    ```sh
@@ -46,7 +46,7 @@ The site is set up for a **project site** at
    git add .
    git commit -m "Initial site"
    git branch -M main
-   git remote add origin https://github.com/JPHsystems/jphsystems-web.git
+   git remote add origin https://github.com/JPHsystems-io/jphsystems-web.git
    git push -u origin main
    ```
 
@@ -55,7 +55,7 @@ The site is set up for a **project site** at
    - Branch: **main**, folder: **/ (root)**
    - Save.
 4. The first build takes a minute or two. The site appears at
-   `https://jphsystems.github.io/jphsystems-web/`.
+   `https://jphsystems-io.github.io/jphsystems-web/`.
 
 `.nojekyll` is included so GitHub Pages serves the files as-is without running
 Jekyll. All internal links are relative (`../assets/...`, `notes/...`), so the
@@ -65,7 +65,7 @@ depth.
 
 ### If you rename the repository or add a custom domain
 
-The base URL `https://jphsystems.github.io/jphsystems-web/` appears in:
+The base URL `https://jphsystems-io.github.io/jphsystems-web/` appears in:
 
 - `<link rel="canonical">`, Open Graph and Twitter tags on every page
 - the JSON-LD blocks on `index.html` and the three notes

@@ -1,8 +1,13 @@
 # JPHsystems — website
 
-A static, dark-mode site for JPHsystems: cybersecurity, network security and
+A static site for JPHsystems: cybersecurity, network security and
 application/service engineering. Plain HTML, CSS and JavaScript — no build step, no
 framework, no server. It is designed to be served directly from GitHub Pages.
+
+The site ships with a **dark** theme and a **light** (white) theme. The active theme is
+set on `<html data-theme="dark|light">`; without a stored choice the head script follows
+the OS `prefers-color-scheme`. The header toggle (`data-theme-toggle`) switches themes and
+persists the choice in `localStorage`.
 
 **Live:** <https://jphsystems-io.github.io/jphsystems-web/> — GitHub Pages, `main`
 branch, repository root.
@@ -97,7 +102,8 @@ and set the same domain in **Settings → Pages**.
 ## Editing
 
 - **Design tokens** (colour, type, spacing, radii) live at the top of
-  `assets/css/styles.css` under `:root`. Change the accent once and it propagates.
+  `assets/css/styles.css` under `:root`, plus a `:root[data-theme="light"]` override
+  block with the light palette. Change the accent once and it propagates.
 - **Navigation and footer** are duplicated in each HTML file. If you add a page,
   update the header, mobile menu and footer on every page, plus `sitemap.xml`.
 - **Adding a note:** copy `notes/flat-network.html`, update the `<title>`,

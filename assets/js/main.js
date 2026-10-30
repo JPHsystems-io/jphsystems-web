@@ -30,6 +30,27 @@
     });
   }
 
+  /* ── Theme toggle ─────────────────────────────────────────────────────── */
+  var themeToggle = document.querySelector("[data-theme-toggle]");
+  if (themeToggle) {
+    var applyTheme = function (theme) {
+      var root = document.documentElement;
+      root.setAttribute("data-theme", theme);
+      var light = theme === "light";
+      themeToggle.setAttribute("aria-pressed", String(light));
+      themeToggle.setAttribute("aria-label", light ? "Switch to dark theme" : "Switch to light theme");
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", light ? "#f6f7f9" : "#080a0d");
+    };
+    applyTheme(document.documentElement.getAttribute("data-theme") || "dark");
+
+    themeToggle.addEventListener("click", function () {
+      var next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+      try { localStorage.setItem("theme", next); } catch (e) { /* storage unavailable */ }
+      applyTheme(next);
+    });
+  }
+
   /* ── Header background on scroll ─────────────────────────────────────── */
   var header = document.querySelector(".site-header");
   if (header) {

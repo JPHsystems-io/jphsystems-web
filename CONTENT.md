@@ -59,8 +59,8 @@ claims in the site. If you add any, they must be real and attributable.
 
 ## 4. Notes
 
-- The **Apps** section on the home page (`index.html#apps`, linked from every
-  footer) points at the live App Store listing for Token Ledger
+- The **Apps** section on the home page (`index.html#apps`, linked from the
+  header nav as **Apps** and from every footer) points at the live App Store listing for Token Ledger
   (<https://apps.apple.com/app/id6809165525>, Apple ID 6809165525) and its
   support site. The icon (`assets/img/app-token-ledger.png`, 192px) is the
   app's App Store icon. Add the next shipped app as another card in that

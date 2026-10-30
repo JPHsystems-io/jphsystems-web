@@ -4,8 +4,13 @@ A static, dark-mode site for JPHsystems: cybersecurity, network security and
 application/service engineering. Plain HTML, CSS and JavaScript — no build step, no
 framework, no server. It is designed to be served directly from GitHub Pages.
 
-**Live:** <https://jphsystems.io/> — GitHub Pages, `main`
+**Live:** <https://jphsystems-io.github.io/jphsystems-web/> — GitHub Pages, `main`
 branch, repository root.
+
+`jphsystems.io` is the practice's domain identity (and the contact address,
+`jphermans@jphsystems.io`). It is not used to host this site and has no A/AAAA
+records pointing at GitHub Pages. The site is served from the GitHub Pages project
+URL above.
 
 ## Pages
 
@@ -38,10 +43,15 @@ GitHub Pages.
 
 ## Deploy to GitHub Pages
 
-The site is served at **https://jphsystems.io/** from the repository root, using the
-custom domain recorded in `CNAME`. Pages is enabled for this repository
-(Settings → Pages → Deploy from a branch → `main` / root). Pushing to `main`
-rebuilds it.
+The site is served at **https://jphsystems-io.github.io/jphsystems-web/** from the
+repository root of the `jphsystems-web` project. Pages is enabled for this repository
+(Settings → Pages → Deploy from a branch → `main` / root), with **no custom domain**
+set. Pushing to `main` rebuilds it.
+
+There is deliberately no `CNAME` file. If Pages still has a custom domain configured,
+clear it in **Settings → Pages → Custom domain** (or with
+`gh api -X PUT repos/JPHsystems-io/jphsystems-web/pages -f cname=""`); otherwise
+GitHub redirects the `github.io` URL to a domain that does not serve the site.
 
 To recreate the setup from scratch:
 
@@ -60,42 +70,29 @@ To recreate the setup from scratch:
 3. In the repository: **Settings → Pages → Build and deployment**.
    - Source: **Deploy from a branch**
    - Branch: **main**, folder: **/ (root)**
-   - Custom domain: `jphsystems.io`
+   - Custom domain: leave empty
    - Save.
-4. At the DNS provider (Cloudflare for this domain), point the apex at GitHub Pages:
 
-   | Type | Name | Value | Proxy |
-   | --- | --- | --- | --- |
-   | A | `@` | `185.199.108.153` | DNS only |
-   | A | `@` | `185.199.109.153` | DNS only |
-   | A | `@` | `185.199.110.153` | DNS only |
-   | A | `@` | `185.199.111.153` | DNS only |
-   | AAAA | `@` | `2606:50c0:8000::153` | DNS only |
-   | AAAA | `@` | `2606:50c0:8001::153` | DNS only |
-   | AAAA | `@` | `2606:50c0:8002::153` | DNS only |
-   | AAAA | `@` | `2606:50c0:8003::153` | DNS only |
-   | CNAME | `www` | `jphsystems-io.github.io` | DNS only |
-
-   Keep the existing MX records for mail. Leave the proxy off (grey cloud) until
-   GitHub has issued the certificate, then enable **Enforce HTTPS** in Pages. If
-   GitHub asks for domain verification, add the `_github-pages-challenge-JPHsystems-io`
-   TXT record it shows in Settings → Pages.
+No DNS changes are needed. Do not point `jphsystems.io` at GitHub Pages unless you
+decide to host the site on the apex domain later; the domain is currently used for
+mail only, and its MX records must be left alone.
 
 `.nojekyll` is included so GitHub Pages serves the files as-is without running
 Jekyll. All internal links are relative (`../assets/...`, `notes/...`), so the site
-works at the domain root. `404.html` uses root-relative paths (`/assets/...`)
-because a 404 can be served from any depth.
+works under the `/jphsystems-web/` project subpath. `404.html` uses absolute paths
+(`/jphsystems-web/assets/...`) because a 404 can be served from any depth.
 
-### If you change the domain
+### If you change the base URL
 
-The base URL `https://jphsystems.io/` appears in:
+The base URL `https://jphsystems-io.github.io/jphsystems-web/` appears in:
 
 - `<link rel="canonical">`, Open Graph and Twitter tags on every page
 - the JSON-LD blocks on `index.html` and the three notes
 - `robots.txt` and every `<loc>` in `sitemap.xml`
-- the root-relative asset/nav paths in `404.html`
+- the absolute asset/nav paths in `404.html`
 
-Update all of them together, along with the `CNAME` file.
+Update all of them together. If you ever move to a custom domain, add a `CNAME` file
+and set the same domain in **Settings → Pages**.
 
 ## Editing
 

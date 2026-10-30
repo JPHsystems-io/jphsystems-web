@@ -22,24 +22,22 @@ an embed, note that it introduces a third-party script and cookies.
 
 ## 2. Base URL
 
-The site is served from the custom domain:
+The site is served from the GitHub Pages project URL:
 
 ```
-https://jphsystems.io/
+https://jphsystems-io.github.io/jphsystems-web/
 ```
 
-The `CNAME` file contains `jphsystems.io`. If the domain changes, update it in:
+There is no `CNAME` file and no custom domain configured in Pages. `jphsystems.io` is
+only the practice's domain identity and the mail domain for
+`jphermans@jphsystems.io`; it does not host the site. If the base URL ever changes,
+update it in:
 
 - every `<link rel="canonical">`, `og:url`, `og:image`, `twitter:image` and JSON-LD
   `mainEntityOfPage` / `image` across all pages
 - `robots.txt` (the `Sitemap:` line)
 - `sitemap.xml` (every `<loc>`)
-- `404.html` (asset and navigation paths are root-relative, e.g. `/assets/...`)
-- the `CNAME` file and the Pages custom-domain setting
-
-DNS lives at Cloudflare. The apex points at GitHub Pages with four A and four AAAA
-records; `www` is a CNAME to `jphsystems-io.github.io`. The existing MX records for
-iCloud mail must be left alone. See `README.md` for the exact records.
+- `404.html` (asset and navigation paths are absolute under `/jphsystems-web/`)
 
 ## 3. Claims to verify or soften
 
@@ -86,8 +84,8 @@ claims in the site. If you add any, they must be real and attributable.
 
 - `assets/js/main.js` builds the `mailto:` body. Review the subject and body template
   in `composeMail` if you want different fields or wording.
-- `404.html` is the only page using root-relative paths (`/assets/...`). It needs
-  updating only if the site ever moves to a subpath.
+- `404.html` is the only page using absolute paths (`/jphsystems-web/assets/...`).
+  Update them if the repository or hosting base path changes.
 - The OG image (`assets/img/og-default.png`) uses the wordmark only. Replace it if you
   want a photo or a different composition.
 - `favicon.ico`, `favicon.svg`, `favicon-32.png` and `apple-touch-icon.png` are

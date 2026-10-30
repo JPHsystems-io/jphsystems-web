@@ -558,6 +558,26 @@ p:last-child { margin-bottom: 0; }
   margin-top: 32px;
 }
 
+/* Official Apple "Download on the App Store" badge. The artwork is used
+   unmodified: Apple's white badge on the dark theme, black badge on the
+   light theme (both variants ship from Apple's badge service). */
+.app-store-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  flex: none;
+  line-height: 0;
+  border-radius: 9px;
+  transition: opacity 0.2s var(--ease);
+}
+.app-store-badge:hover { opacity: 0.86; }
+.app-store-badge:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.app-store-badge img { display: block; height: 48px; width: auto; }
+.app-store-badge .app-store-badge__on-light { display: none; }
+[data-theme="light"] .app-store-badge .app-store-badge__on-dark { display: none; }
+[data-theme="light"] .app-store-badge .app-store-badge__on-light { display: block; }
+@media (max-width: 420px) { .app-store-badge img { height: 44px; } }
+
 .arrow-link {
   display: inline-flex;
   align-items: center;

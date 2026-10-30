@@ -45,7 +45,7 @@ These are written as commitments. Keep them only if they are true for you.
 
 | Claim | File | Notes |
 | --- | --- | --- |
-| “72h — typical time from kickoff to the first written findings” | `index.html` | Delivery commitment; make sure it holds for your process |
+| “72h — from kickoff to the first written findings, so you have something concrete to act on in week one” | `index.html` | Delivery commitment; make sure it holds for your process |
 | “100% of findings leave with an owner, a proposed fix and a way to test” | `index.html` | Absolute claim; consider “every finding” instead of “100%” if you prefer |
 | “1 day — typical reply time to a new enquiry” | `about.html` | Response-time commitment |
 | “30 days of questions included after hand-off” | `about.html`, `services.html` | Commercial term; confirm it matches your contracts |

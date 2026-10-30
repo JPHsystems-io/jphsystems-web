@@ -215,20 +215,23 @@
   /* ── Scroll progress → CSS custom property ───────────────────────────── */
   var scrubbers = [].slice.call(document.querySelectorAll("[data-scrub]"));
 
+  /* Formats one scrubbed number for a given progress (0–1). */
+  var paintTally = function (out, p) {
+    var from = parseFloat(out.getAttribute("data-tally-from"));
+    var to = parseFloat(out.getAttribute("data-tally-to"));
+    var decimals = (out.getAttribute("data-tally-decimals") | 0);
+    out.textContent = (out.getAttribute("data-tally-prefix") || "") +
+      (from + (to - from) * p).toLocaleString("en-US", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+      }) + (out.getAttribute("data-tally-suffix") || "");
+  };
+
   if (scrubbers.length && !reduced) {
     var ticking = false;
 
     var scrubberInfo = scrubbers.map(function (el) {
-      var tallies = [].slice.call(el.querySelectorAll("[data-tally]")).map(function (out) {
-        return {
-          el: out,
-          from: parseFloat(out.getAttribute("data-tally-from")),
-          to: parseFloat(out.getAttribute("data-tally-to")),
-          prefix: out.getAttribute("data-tally-prefix") || "",
-          suffix: out.getAttribute("data-tally-suffix") || "",
-          decimals: (out.getAttribute("data-tally-decimals") | 0)
-        };
-      });
+      var tallies = [].slice.call(el.querySelectorAll("[data-tally]"));
       return { el: el, tallies: tallies };
     });
 
@@ -249,13 +252,8 @@
         p = Math.max(0, Math.min(1, p));
         info.el.style.setProperty("--p", p.toFixed(4));
 
-        info.tallies.forEach(function (t) {
-          var value = t.from + (t.to - t.from) * p;
-          t.el.textContent = t.prefix +
-            value.toLocaleString("en-US", {
-              minimumFractionDigits: t.decimals,
-              maximumFractionDigits: t.decimals
-            }) + t.suffix;
+        info.tallies.forEach(function (out) {
+          paintTally(out, p);
         });
       });
 
@@ -269,6 +267,12 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
     update();
+  } else {
+    /* Reduced motion, or no scrub sections: show the end state so the
+       numbers agree with the captions next to them. */
+    [].slice.call(document.querySelectorAll("[data-tally]")).forEach(function (el) {
+      paintTally(el, 1);
+    });
   }
 
   /* ── Count-up numbers ────────────────────────────────────────────────── */

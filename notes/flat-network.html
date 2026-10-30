@@ -143,8 +143,8 @@
         <div class="post-meta"><span class="tag">Network</span><span>6 min read</span><span>18 Sep 2026</span></div>
         <h1>The flat network is still the default</h1>
         <p class="lede">
-          One VLAN, one subnet, a firewall at the edge and a VPN that lands you inside
-          it. It is the default because it works &mdash; until one laptop is
+          One VLAN, one subnet, a firewall at the edge, and a VPN that lands you inside
+          it. It is the default because it works, right up until one laptop is
           compromised.
         </p>
         <div class="byline mt-l">
@@ -163,11 +163,11 @@
           from the internet. Inside, everything can talk to everything.
         </p>
         <p>
-          That design survives because it is convenient. File shares work. Printers
-          appear. The line-of-business app connects to its database without a ticket.
-          The cost only becomes visible on the day an attacker gets one set of
-          credentials and discovers that the laptop in reception can reach the domain
-          controller, the file server and the backup appliance.
+          That design survives because it is convenient: file shares work, printers
+          appear, and the line-of-business app connects to its database without a ticket.
+          The cost only shows up on the day an attacker gets one set of credentials and
+          finds that the laptop in reception can reach the domain controller, the file
+          server and the backup appliance.
         </p>
 
         <h2>What flat actually means</h2>
@@ -179,10 +179,10 @@
           almost no opinion about traffic that stays inside.
         </p>
         <p>
-          So one phished session becomes a network position. The attacker does not need
-          to exploit the server if they can simply authenticate to it with credentials
-          they collected from the laptop. They do not need to break the backup if the
-          backup share is mounted and writable from the machine they already control.
+          So one phished session becomes a network position. An attacker does not have to
+          exploit the server when they can simply log into it with credentials lifted from
+          the laptop, and they do not have to break the backup at all if the backup share is
+          mounted and writable from a machine they already control.
         </p>
 
         <h2>Why it stays that way</h2>
@@ -195,9 +195,9 @@
 
         <h2>The order that gets finished</h2>
         <p>
-          Segmentation fails when it is planned as a big-bang redesign. It succeeds when
-          it is a sequence of small, reversible changes, each one with a reason and a
-          rollback. This is the order I use.
+          Segmentation fails when it is planned as a big-bang redesign. It works when it
+          is a sequence of small, reversible changes, each one with a reason and a rollback.
+          This is the order I use.
         </p>
         <ol>
           <li><strong>Inventory and diagram.</strong> What exists, what talks to what, and which flows are actually required. Start with the traffic, not the VLAN plan.</li>
@@ -205,15 +205,14 @@
           <li><strong>Isolate the backups.</strong> Separate credentials, separate network path, and at least one copy that the production estate cannot write to. Ransomware goes for the backup first because it makes recovery optional.</li>
           <li><strong>Fix guest and Wi-Fi.</strong> Guest to internet only. Corporate Wi-Fi to the services people need. Cameras, door controllers and other appliances on their own segment with no route to user devices.</li>
           <li><strong>Group by function.</strong> Servers, databases, workstations, development and the management plane. Name the zones by what they do, not by which switch they happen to be on.</li>
-          <li><strong>Log before you block.</strong> Turn on flow logs and firewall logging for a week. You are looking for the flows nobody remembered &mdash; the scanner, the backup job, the one consultant with a mapped drive.</li>
+          <li><strong>Log before you block.</strong> Turn on flow logs and firewall logging for a week. You are looking for the flows nobody remembered: the scanner, the backup job, the one consultant with a mapped drive.</li>
           <li><strong>Deny by default between zones.</strong> Allow only the flows the diagram requires, by service, source and destination. Every rule gets a name, an owner and a review date.</li>
           <li><strong>Document the exceptions.</strong> The exception is not the failure. The undocumented exception is.</li>
         </ol>
 
         <div class="callout">
           <strong>The one rule that matters:</strong> between zones, deny by default.
-          If you cannot explain why a rule exists, it is a finding &mdash; not a
-          requirement.
+          If you cannot explain why a rule exists, that is a finding, not a requirement.
         </div>
 
         <h2>Start with one path</h2>
@@ -227,7 +226,7 @@
           If nothing breaks, you have removed a path an attacker would have used. If
           something breaks, you have found a dependency that was invisible before. Both
           outcomes are progress. Do that five times and you have a segmentation
-          programme that is already delivering.
+          programme that is already paying off.
         </p>
 
         <h2>What good looks like</h2>
@@ -239,8 +238,8 @@
           <li>The diagram matches the equipment, and somebody owns the difference when it does not.</li>
         </ul>
         <p>
-          None of that requires a new product. It requires a boundary, a rule, and the
-          discipline to write down why the boundary is there. That is the unglamorous
+          None of that needs a new product. It needs a boundary, a rule, and someone
+          disciplined enough to write down why the boundary is there. That is the boring
           part, and it is the part that holds.
         </p>
       </div>
@@ -282,8 +281,8 @@
           <span class="brand-name">JPH<span>systems</span></span>
         </a>
         <p>
-          Cybersecurity, network security and product engineering for teams that need
-          the whole stack to hold together &mdash; not three vendors pointing at each
+          Cybersecurity, network security and product engineering, for teams that need
+          the stack to work as one thing instead of three vendors pointing at each
           other.
         </p>
       </div>

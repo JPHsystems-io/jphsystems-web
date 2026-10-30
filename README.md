@@ -4,7 +4,7 @@ A static, dark-mode site for JPHsystems: cybersecurity, network security and
 application/service engineering. Plain HTML, CSS and JavaScript — no build step, no
 framework, no server. It is designed to be served directly from GitHub Pages.
 
-**Live:** <https://jphsystems-io.github.io/jphsystems-web/> — GitHub Pages, `main`
+**Live:** <https://jphsystems.io/> — GitHub Pages, `main`
 branch, repository root.
 
 ## Pages
@@ -38,10 +38,10 @@ GitHub Pages.
 
 ## Deploy to GitHub Pages
 
-The site is deployed as a **project site** at
-`https://jphsystems-io.github.io/jphsystems-web/`, served from the repository root.
-Pages is already enabled for this repository (Settings → Pages → Deploy from a
-branch → `main` / root). Pushing to `main` rebuilds it.
+The site is served at **https://jphsystems.io/** from the repository root, using the
+custom domain recorded in `CNAME`. Pages is enabled for this repository
+(Settings → Pages → Deploy from a branch → `main` / root). Pushing to `main`
+rebuilds it.
 
 To recreate the setup from scratch:
 
@@ -60,28 +60,42 @@ To recreate the setup from scratch:
 3. In the repository: **Settings → Pages → Build and deployment**.
    - Source: **Deploy from a branch**
    - Branch: **main**, folder: **/ (root)**
+   - Custom domain: `jphsystems.io`
    - Save.
-4. The first build takes a minute or two. The site appears at
-   `https://jphsystems-io.github.io/jphsystems-web/`.
+4. At the DNS provider (Cloudflare for this domain), point the apex at GitHub Pages:
+
+   | Type | Name | Value | Proxy |
+   | --- | --- | --- | --- |
+   | A | `@` | `185.199.108.153` | DNS only |
+   | A | `@` | `185.199.109.153` | DNS only |
+   | A | `@` | `185.199.110.153` | DNS only |
+   | A | `@` | `185.199.111.153` | DNS only |
+   | AAAA | `@` | `2606:50c0:8000::153` | DNS only |
+   | AAAA | `@` | `2606:50c0:8001::153` | DNS only |
+   | AAAA | `@` | `2606:50c0:8002::153` | DNS only |
+   | AAAA | `@` | `2606:50c0:8003::153` | DNS only |
+   | CNAME | `www` | `jphsystems-io.github.io` | DNS only |
+
+   Keep the existing MX records for mail. Leave the proxy off (grey cloud) until
+   GitHub has issued the certificate, then enable **Enforce HTTPS** in Pages. If
+   GitHub asks for domain verification, add the `_github-pages-challenge-JPHsystems-io`
+   TXT record it shows in Settings → Pages.
 
 `.nojekyll` is included so GitHub Pages serves the files as-is without running
-Jekyll. All internal links are relative (`../assets/...`, `notes/...`), so the
-project-site subpath works without configuration. The one exception is `404.html`,
-which uses `/jphsystems-web/...` absolute paths because a 404 can be served from any
-depth.
+Jekyll. All internal links are relative (`../assets/...`, `notes/...`), so the site
+works at the domain root. `404.html` uses root-relative paths (`/assets/...`)
+because a 404 can be served from any depth.
 
-### If you rename the repository or add a custom domain
+### If you change the domain
 
-The base URL `https://jphsystems-io.github.io/jphsystems-web/` appears in:
+The base URL `https://jphsystems.io/` appears in:
 
 - `<link rel="canonical">`, Open Graph and Twitter tags on every page
 - the JSON-LD blocks on `index.html` and the three notes
 - `robots.txt` and every `<loc>` in `sitemap.xml`
-- the absolute asset/nav paths in `404.html`
+- the root-relative asset/nav paths in `404.html`
 
-Update all of them together. For a custom domain, add a `CNAME` file containing the
-bare domain, then change the base URL to `https://your-domain.example/` and switch
-`404.html` to root-relative paths (`/assets/...`).
+Update all of them together, along with the `CNAME` file.
 
 ## Editing
 

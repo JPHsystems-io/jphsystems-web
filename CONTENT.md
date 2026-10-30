@@ -31,13 +31,15 @@ copy and in any privacy statement, or swap `data-endpoint` for an EU processor.
 The site is served from the GitHub Pages project URL:
 
 ```
-https://jphsystems-io.github.io/jphsystems-web/
+https://www.jphsystems.io/          (public address)
+https://jphsystems-io.github.io/jphsystems-web/   (GitHub Pages origin, same files)
 ```
 
-There is no `CNAME` file and no custom domain configured in Pages. `jphsystems.io` is
-only the practice's domain identity and the mail domain for
-`jphermans@jphsystems.io`; it does not host the site. If the base URL ever changes,
-update it in:
+The site is live on **www.jphsystems.io**; the apex `jphsystems.io` does not resolve and
+is used for mail only (`jphermans@jphsystems.io`). There is no `CNAME` file — the www
+host is fronted by Cloudflare and serves the same GitHub Pages build. The `github.io`
+URL, not the www one, is what the markup still declares as canonical. If the base URL
+ever changes, update it in:
 
 - every `<link rel="canonical">`, `og:url`, `og:image`, `twitter:image` and JSON-LD
   `mainEntityOfPage` / `image` across all pages

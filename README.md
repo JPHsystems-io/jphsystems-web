@@ -9,13 +9,15 @@ set on `<html data-theme="dark|light">`; without a stored choice the head script
 the OS `prefers-color-scheme`. The header toggle (`data-theme-toggle`) switches themes and
 persists the choice in `localStorage`.
 
-**Live:** <https://jphsystems-io.github.io/jphsystems-web/> — GitHub Pages, `main`
-branch, repository root.
+**Live:** <https://www.jphsystems.io/> — the site is published at
+**www.jphsystems.io**. The GitHub Pages project URL
+<https://jphsystems-io.github.io/jphsystems-web/> serves the same files from `main`
+(branch, repository root) and stays as the origin.
 
-`jphsystems.io` is the practice's domain identity (and the contact address,
-`jphermans@jphsystems.io`). It is not used to host this site and has no A/AAAA
-records pointing at GitHub Pages. The site is served from the GitHub Pages project
-URL above.
+The apex `jphsystems.io` has no A/AAAA records, so it does not resolve; only the
+`www` host serves the site. `jphsystems.io` is also the practice's mail domain
+(`jphermans@jphsystems.io`). There is no `CNAME` file in the repository — the
+custom host is fronted by Cloudflare and reaches the same GitHub Pages content.
 
 ## Pages
 
@@ -49,15 +51,15 @@ GitHub Pages.
 
 ## Deploy to GitHub Pages
 
-The site is served at **https://jphsystems-io.github.io/jphsystems-web/** from the
-repository root of the `jphsystems-web` project. Pages is enabled for this repository
-(Settings → Pages → Deploy from a branch → `main` / root), with **no custom domain**
-set. Pushing to `main` rebuilds it.
+The site is published at **https://www.jphsystems.io/** and, unchanged, at
+**https://jphsystems-io.github.io/jphsystems-web/** from the repository root of the
+`jphsystems-web` project. Pages is enabled for this repository (Settings → Pages →
+Deploy from a branch → `main` / root). Pushing to `main` rebuilds the site, and the
+www host picks the new build up (currently served through Cloudflare).
 
-There is deliberately no `CNAME` file. If Pages still has a custom domain configured,
-clear it in **Settings → Pages → Custom domain** (or with
-`gh api -X PUT repos/JPHsystems-io/jphsystems-web/pages -f cname=""`); otherwise
-GitHub redirects the `github.io` URL to a domain that does not serve the site.
+There is no `CNAME` file in the repository: the www host is fronted by Cloudflare and
+reaches the same build, so Pages keeps serving the project URL directly. Leave the
+Pages custom-domain field as it is — clearing it can take www down with it.
 
 To recreate the setup from scratch:
 
@@ -79,9 +81,10 @@ To recreate the setup from scratch:
    - Custom domain: leave empty
    - Save.
 
-No DNS changes are needed. Do not point `jphsystems.io` at GitHub Pages unless you
-decide to host the site on the apex domain later; the domain is currently used for
-mail only, and its MX records must be left alone.
+The apex `jphsystems.io` does not resolve (no A/AAAA records) and is not used to
+serve the site — `www` is. The domain is also the mail domain, so leave its MX records
+alone. If you recreate the hosting from scratch, re-point the `www` host at the new
+build afterwards; nothing in the repository needs to change.
 
 `.nojekyll` is included so GitHub Pages serves the files as-is without running
 Jekyll. All internal links are relative (`../assets/...`, `notes/...`), so the site
@@ -90,7 +93,9 @@ works under the `/jphsystems-web/` project subpath. `404.html` uses absolute pat
 
 ### If you change the base URL
 
-The base URL `https://jphsystems-io.github.io/jphsystems-web/` appears in:
+The base URL `https://jphsystems-io.github.io/jphsystems-web/` still appears in the
+markup (the site is also served from `https://www.jphsystems.io/`, so these two
+disagree):
 
 - `<link rel="canonical">`, Open Graph and Twitter tags on every page
 - the JSON-LD blocks on `index.html` and the three notes

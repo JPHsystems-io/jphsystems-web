@@ -24,7 +24,7 @@ URL above.
 | `index.html` | Home: positioning, triage diagram, services, process, proof, shipped apps, CTA |
 | `services.html` | Three service lines, assessment, comparison, FAQ |
 | `about.html` | Story, principles, toolbox, what the practice is not |
-| `contact.html` | Enquiry form (validates and composes a `mailto:` draft in the visitor's mail client) |
+| `contact.html` | Enquiry form (posts to the form relay; falls back to a `mailto:` draft if the relay is unreachable) |
 | `notes/index.html` | Notes hub |
 | `notes/flat-network.html` | Network segmentation note |
 | `notes/pentest-report.html` | Remediation note |
@@ -110,8 +110,11 @@ and set the same domain in **Settings → Pages**.
   description, canonical, OG/Twitter tags, JSON-LD, breadcrumb, meta line, body and
   the “next note” link. Add a card to `notes/index.html` and a `<url>` to
   `sitemap.xml`. Covers are 1600×900; the current ones are in `assets/img/`.
-- **Contact form:** there is no backend. `assets/js/main.js` validates the fields and
-  opens a prefilled `mailto:`. The form's fallback `action` is also a `mailto:`, so it
+- **Contact form:** no backend of our own. `assets/js/main.js` validates the fields and
+  POSTs them to FormSubmit (`data-endpoint`), which relays them to the inbox. If the relay
+  fails or times out (12 s), the form degrades to a prefilled `mailto:` draft. Swap
+  providers by changing `data-endpoint`/`action` on the form — nothing else references it.
+  The old mailto-only behaviour remains the path when the attribute is absent. The form's fallback `action` is also a `mailto:`, so it
   still works without JavaScript. Change the address in both the `action` and the
   `data-mailto` attribute, and in the footer links.
 - **Motion:** scroll reveals, the pinned scene, the flow animation and the count-ups

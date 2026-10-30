@@ -18,10 +18,12 @@ checked it.
 
 There is no scheduler and no booking widget, by design. Every call to action lands on
 the form. The form has no server: `assets/js/main.js` validates the fields and composes
-a `mailto:` draft in the visitor's own mail client, then shows a fallback link in case
+the message to FormSubmit, which relays it to the inbox; if the relay is unreachable it
+falls back to a `mailto:` draft in the visitor's mail client and says so, in case
 the mail client does not open. If server-side delivery is ever wanted, point the form's
 `action` at a form endpoint (Formspree, Web3Forms, a Cloudflare Worker) and drop the
-`data-mailto` attribute — but that introduces a third party and needs a privacy note.
+`data-mailto` attribute. The relay is a third party (FormSubmit): name it in the consent
+copy and in any privacy statement, or swap `data-endpoint` for an EU processor.
 
 ## 2. Base URL
 
@@ -88,7 +90,8 @@ claims in the site. If you add any, they must be real and attributable.
 - The site sets no cookies and loads no analytics. Fonts come from Google Fonts,
   which receives the visitor's IP address. If that matters for your jurisdiction,
   self-host the two font families and remove the Google Fonts links.
-- The contact form does not submit to the site. It opens the visitor's mail client.
+- The contact form posts to a third-party relay (FormSubmit) and keeps no copy on the
+  site. Decide whether a DPA with that processor is needed, or move to an EU provider.
   The consent checkbox says so. If you later add a form backend, update that copy and
   add a privacy notice covering what is stored and for how long.
 - There is no imprint/Impressum, privacy policy or terms page. Add them if you are

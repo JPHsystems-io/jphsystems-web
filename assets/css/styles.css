@@ -26,20 +26,20 @@
   color-scheme: dark;
 
   /* Surfaces */
-  --ink:          #080a0d;
-  --ink-raised:   #0e1116;
-  --surface:      #14181e;
-  --surface-2:    #1a1f26;
+  --ink:          #11171f;
+  --ink-raised:   #171f2a;
+  --surface:      #1c2532;
+  --surface-2:    #232e3c;
 
   /* Lines */
-  --line:         rgba(255, 255, 255, 0.085);
-  --line-strong:  rgba(255, 255, 255, 0.16);
+  --line:         rgba(255, 255, 255, 0.095);
+  --line-strong:  rgba(255, 255, 255, 0.175);
   --line-hover:   rgba(255, 255, 255, 0.28);
 
   /* Text */
   --text:         #eef1f5;
   --text-dim:     #99a3ae;
-  --text-faint:   #7f8993;
+  --text-faint:   #8a94a0;
   --prose:        #d5dade;
 
   /* Accent — signal blue */
@@ -70,10 +70,10 @@
   --shadow-soft:  rgba(0, 0, 0, 0.30);
 
   /* Component surfaces */
-  --header-bg:    rgba(8, 10, 13, 0.82);
-  --menu-bg:      rgba(8, 10, 13, 0.97);
-  --chip-bg:      rgba(14, 17, 22, 0.88);
-  --showcase-bg:  #0a0d12;
+  --header-bg:    rgba(17, 23, 31, 0.82);
+  --menu-bg:      rgba(17, 23, 31, 0.97);
+  --chip-bg:      rgba(23, 31, 42, 0.9);
+  --showcase-bg:  #141c26;
   --card-bg:      linear-gradient(180deg, rgba(255, 255, 255, 0.038), rgba(255, 255, 255, 0.012));
   --card-bg-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.018));
   --ui-bg:        linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015)), var(--ink-raised);
@@ -1748,9 +1748,10 @@ a.card:hover, .card--hover:hover {
     0 44px 70px -46px var(--shadow),
     0 1px 0 rgba(255, 255, 255, 0.04) inset;
   transform:
-    rotateX(calc(15deg + var(--pt-x, 0deg) + var(--sc-x, 0deg)))
-    rotateY(calc(-9deg + var(--pt-y, 0deg)));
+    rotateX(calc(10deg + var(--pt-x, 0deg) + var(--sc-x, 0deg)))
+    rotateY(calc(-6deg + var(--pt-y, 0deg)));
   transform-origin: 50% 50%;
+  transform-style: preserve-3d;
   transition: transform 0.8s var(--ease);
   will-change: transform;
 }

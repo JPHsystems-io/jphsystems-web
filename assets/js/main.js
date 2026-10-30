@@ -40,7 +40,7 @@
       themeToggle.setAttribute("aria-pressed", String(light));
       themeToggle.setAttribute("aria-label", light ? "Switch to dark theme" : "Switch to light theme");
       var meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute("content", light ? "#f6f7f9" : "#080a0d");
+      if (meta) meta.setAttribute("content", light ? "#f6f7f9" : "#11171f");
     };
     applyTheme(document.documentElement.getAttribute("data-theme") || "dark");
 
@@ -396,7 +396,7 @@
         window.requestAnimationFrame(function () {
           var rect = hero.getBoundingClientRect();
           var progress = Math.min(1, Math.max(0, -rect.top / Math.max(1, rect.height)));
-          flow.style.setProperty("--sc-x", (progress * 16).toFixed(2) + "deg");
+          flow.style.setProperty("--sc-x", (progress * 7).toFixed(2) + "deg");
           scrollFrame = false;
         });
       };

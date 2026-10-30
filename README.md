@@ -4,6 +4,9 @@ A static, dark-mode site for JPHsystems: cybersecurity, network security and
 application/service engineering. Plain HTML, CSS and JavaScript — no build step, no
 framework, no server. It is designed to be served directly from GitHub Pages.
 
+**Live:** <https://jphsystems-io.github.io/jphsystems-web/> — GitHub Pages, `main`
+branch, repository root.
+
 ## Pages
 
 | Path | Purpose |
@@ -35,8 +38,12 @@ GitHub Pages.
 
 ## Deploy to GitHub Pages
 
-The site is set up for a **project site** at
+The site is deployed as a **project site** at
 `https://jphsystems-io.github.io/jphsystems-web/`, served from the repository root.
+Pages is already enabled for this repository (Settings → Pages → Deploy from a
+branch → `main` / root). Pushing to `main` rebuilds it.
+
+To recreate the setup from scratch:
 
 1. Create a public repository named `jphsystems-web` under the `JPHsystems-io` organization.
 2. From this folder:

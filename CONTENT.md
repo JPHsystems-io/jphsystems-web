@@ -22,7 +22,7 @@ an embed, note that it introduces a third-party script and cookies.
 
 ## 2. Base URL
 
-The canonical/OG base is assumed to be:
+The canonical/OG base is currently:
 
 ```
 https://jphsystems-io.github.io/jphsystems-web/

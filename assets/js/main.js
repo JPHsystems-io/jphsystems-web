@@ -358,6 +358,111 @@
     }
   }
 
+
+  /* ── Depth: pointer tilt and scroll attitude ─────────────────────────────
+     The 3D is decoration, so it only runs where there is a real pointer and
+     no reduced-motion preference. CSS does the transforms; this only writes
+     the custom properties it needs. */
+  var depthQuery = window.matchMedia("(min-width: 901px) and (hover: hover) and (pointer: fine)");
+  var stillMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  var initDepth = function () {
+    var flow = document.querySelector(".flow");
+    var hero = document.querySelector(".hero");
+
+    if (flow && hero) {
+      var heroPointer = function (e) {
+        var rect = flow.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        flow.classList.add("is-tilting");
+        flow.style.setProperty("--pt-x", (-y * 7).toFixed(2) + "deg");
+        flow.style.setProperty("--pt-y", (x * 9).toFixed(2) + "deg");
+      };
+      var heroReset = function () {
+        flow.classList.remove("is-tilting");
+        flow.style.setProperty("--pt-x", "0deg");
+        flow.style.setProperty("--pt-y", "0deg");
+      };
+
+      hero.addEventListener("pointermove", heroPointer, { passive: true });
+      hero.addEventListener("pointerleave", heroReset);
+
+      /* As the hero leaves, the plane lies down a little. */
+      var scrollFrame = false;
+      var onDepthScroll = function () {
+        if (scrollFrame) return;
+        scrollFrame = true;
+        window.requestAnimationFrame(function () {
+          var rect = hero.getBoundingClientRect();
+          var progress = Math.min(1, Math.max(0, -rect.top / Math.max(1, rect.height)));
+          flow.style.setProperty("--sc-x", (progress * 16).toFixed(2) + "deg");
+          scrollFrame = false;
+        });
+      };
+      window.addEventListener("scroll", onDepthScroll, { passive: true });
+      onDepthScroll();
+    }
+
+    var tiltables = document.querySelectorAll(".card, .aside-card, .panel, .cta-band");
+    [].forEach.call(tiltables, function (card) {
+      var maxX = 4.6;
+      var maxY = 5.4;
+
+      card.classList.add("tiltable");
+
+      card.addEventListener("pointermove", function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.classList.add("is-tilting");
+        /* Inline so it beats the stylesheet's own hover transform. */
+        card.style.transform =
+          "perspective(1000px) rotateX(" + (-y * maxX).toFixed(2) + "deg)" +
+          " rotateY(" + (x * maxY).toFixed(2) + "deg) translateZ(0)";
+      }, { passive: true });
+
+      card.addEventListener("pointerleave", function () {
+        card.classList.remove("is-tilting");
+        card.style.removeProperty("transform");
+      });
+    });
+  };
+
+  var depthEnabled = false;
+  var syncDepth = function () {
+    var wanted = depthQuery.matches && !stillMotion.matches;
+    if (wanted === depthEnabled) return;
+    depthEnabled = wanted;
+
+    if (wanted) {
+      initDepth();
+    } else {
+      document.querySelectorAll(".tiltable").forEach(function (el) {
+        el.classList.remove("tiltable", "is-tilting");
+        el.style.removeProperty("transform");
+      });
+      var flowEl = document.querySelector(".flow");
+      if (flowEl) {
+        flowEl.classList.remove("is-tilting");
+        ["--pt-x", "--pt-y", "--sc-x"].forEach(function (prop) {
+          flowEl.style.removeProperty(prop);
+        });
+      }
+    }
+  };
+
+  if ("matchMedia" in window) {
+    syncDepth();
+    if (depthQuery.addEventListener) {
+      depthQuery.addEventListener("change", function () { depthEnabled = false; syncDepth(); });
+      stillMotion.addEventListener("change", function () { depthEnabled = false; syncDepth(); });
+    } else if (depthQuery.addListener) {
+      depthQuery.addListener(function () { depthEnabled = false; syncDepth(); });
+      stillMotion.addListener(function () { depthEnabled = false; syncDepth(); });
+    }
+  }
+
   /* ── Marquee: duplicate the track so the loop is seamless ─────────────── */
   document.querySelectorAll(".marquee-track").forEach(function (track) {
     track.innerHTML += track.innerHTML;

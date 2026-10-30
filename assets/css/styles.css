@@ -1717,3 +1717,111 @@ a.card:hover, .card--hover:hover {
   .lane { transform: none; opacity: 1; grid-template-columns: auto 1fr; }
   .lane .verdict { opacity: 1; grid-column: 2; justify-self: start; }
 }
+
+
+/* 21 ── Depth: CSS 3D ─────────────────────────────────────────────────────
+   Three touches, no libraries and no canvas:
+   1. the hero diagram is a plane tilted in space, with the chips floating
+      above it at different depths;
+   2. the triage lanes are a stack of plates seen in perspective;
+   3. cards tilt a few degrees toward the pointer (pointer-driven, JS sets
+      the transform inline, so the CSS hover rules stay intact).
+   Everything here is switched off for reduced motion, for touch and for
+   narrow screens — the flat design is still the true design. */
+
+/* 1 — hero diagram as a plane in space ------------------------------------ */
+.flow {
+  perspective: 1250px;
+  perspective-origin: 50% 52%;
+}
+.flow-plane {
+  position: relative;
+  /* inset from the flow box so the floating chips hang outside the plate */
+  margin-inline: clamp(10px, 3vw, 44px);
+  padding: clamp(10px, 1.5vw, 20px);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background:
+    radial-gradient(120% 130% at 18% 0%, var(--glow-accent-soft), transparent 62%),
+    var(--card-bg);
+  box-shadow:
+    0 44px 70px -46px var(--shadow),
+    0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  transform:
+    rotateX(calc(15deg + var(--pt-x, 0deg) + var(--sc-x, 0deg)))
+    rotateY(calc(-9deg + var(--pt-y, 0deg)));
+  transform-origin: 50% 50%;
+  transition: transform 0.8s var(--ease);
+  will-change: transform;
+}
+/* the plate's own shadow, left flat on the ground so the tilt reads */
+.flow::after {
+  content: "";
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  bottom: -6px;
+  height: 46px;
+  border-radius: 50%;
+  background: radial-gradient(50% 100% at 50% 0%, var(--shadow-soft), transparent 72%);
+  filter: blur(12px);
+  pointer-events: none;
+}
+.flow-svg { display: block; width: 100%; height: auto; }
+.flow.is-tilting .flow-plane { transition-duration: 0.14s; }
+
+/* chips ride above the plane; --z is the lift, read by the keyframes below */
+.flow .chip:nth-of-type(1) { --z: 26px; }
+.flow .chip:nth-of-type(2) { --z: 58px; }
+.flow .chip:nth-of-type(3) { --z: 32px; }
+.flow .chip:nth-of-type(4) { --z: 62px; }
+.flow .chip:nth-of-type(5) { --z: 30px; }
+.flow .chip:nth-of-type(6) { --z: 46px; }
+
+@keyframes chip-in {
+  from { opacity: 0; transform: translate3d(0, 10px, var(--z, 0px)) scale(0.96); }
+  to   { opacity: 1; transform: translate3d(0, 0, var(--z, 0px)); }
+}
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, var(--z, 0px)); }
+  50%      { transform: translate3d(0, -7px, var(--z, 0px)); }
+}
+
+/* 2 — triage lanes as a stack of plates ----------------------------------- */
+.lanes {
+  perspective: 1500px;
+  perspective-origin: 50% 100%;
+  transform: rotateX(7deg);
+  transform-origin: 50% 100%;
+  transform-style: preserve-3d;
+}
+.lane {
+  transform:
+    translateX(calc((1 - clamp(0, (var(--p) - var(--t)) * 4, 1)) * var(--from, -40px)))
+    translateZ(var(--plate-z, 0px));
+  transform-origin: 50% 100%;
+  box-shadow: 0 18px 34px -26px var(--shadow);
+}
+.lane:nth-child(1) { --plate-z: 0px; }
+.lane:nth-child(2) { --plate-z: 24px; }
+.lane:nth-child(3) { --plate-z: 48px; }
+.tally { transform: translateZ(72px); transform-origin: 50% 100%; box-shadow: 0 26px 44px -30px var(--shadow); }
+
+/* 3 — pointer tilt on cards ------------------------------------------------ */
+.tiltable {
+  transform-style: preserve-3d;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  will-change: transform;
+}
+.tiltable.is-tilting { transition-duration: 0.12s; }
+
+@media (max-width: 900px), (hover: none), (prefers-reduced-motion: reduce) {
+  .flow { perspective: none; }
+  .flow-plane { transform: none; }
+  .flow::after { display: none; }
+  .lanes { perspective: none; transform: none; }
+  .lane { transform: translateX(0); box-shadow: none; }
+  .tally { transform: none; }
+  .tiltable { transform: none !important; transition: none; }
+  .flow .chip { --z: 0px; }
+}

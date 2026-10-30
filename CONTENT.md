@@ -59,6 +59,12 @@ claims in the site. If you add any, they must be real and attributable.
 
 ## 4. Notes
 
+- The **Apps** section on the home page (`index.html#apps`, linked from every
+  footer) points at the live App Store listing for Token Ledger
+  (<https://apps.apple.com/app/id6809165525>, Apple ID 6809165525) and its
+  support site. The icon (`assets/img/app-token-ledger.png`, 192px) is the
+  app's App Store icon. Add the next shipped app as another card in that
+  section.
 - Article dates (`18 Sep 2026`, `2 Oct 2026`, `16 Oct 2026`), read times and
   “Filed under” lines are illustrative. Update them to the real publication dates, and
   keep the `<time>`-style text, JSON-LD `datePublished`/`dateModified` and

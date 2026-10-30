@@ -21,7 +21,7 @@ URL above.
 
 | Path | Purpose |
 | --- | --- |
-| `index.html` | Home: positioning, triage diagram, services, process, proof, CTA |
+| `index.html` | Home: positioning, triage diagram, services, process, proof, shipped apps, CTA |
 | `services.html` | Three service lines, assessment, comparison, FAQ |
 | `about.html` | Story, principles, toolbox, what the practice is not |
 | `contact.html` | Enquiry form (composes a `mailto:`) and booking section |

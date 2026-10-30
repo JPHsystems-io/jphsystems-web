@@ -68,6 +68,30 @@
     onHeaderScroll();
   }
 
+  /* ── Depth: hero progress pushes the diagram toward the camera ──────────
+     One property on <html>, read by CSS for both the hero copy (which drifts
+     slower) and the diagram (which grows and passes you). */
+  var heroEl = document.querySelector(".hero");
+  var flowPlane = document.querySelector(".flow-plane");
+
+  if (heroEl && flowPlane) {
+    var heroTicking = false;
+    var onHeroScroll = function () {
+      if (heroTicking) return;
+      heroTicking = true;
+      window.requestAnimationFrame(function () {
+        var rect = heroEl.getBoundingClientRect();
+        var span = Math.max(1, rect.height * 0.85);
+        var progress = Math.min(1, Math.max(0, -rect.top / span));
+        document.documentElement.style.setProperty("--hero-p", progress.toFixed(4));
+        heroTicking = false;
+      });
+    };
+    window.addEventListener("scroll", onHeroScroll, { passive: true });
+    window.addEventListener("resize", onHeroScroll, { passive: true });
+    onHeroScroll();
+  }
+
   /* ── Reveal on scroll ────────────────────────────────────────────────── */
   var reveals = document.querySelectorAll("[data-reveal]");
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

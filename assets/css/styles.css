@@ -1748,6 +1748,8 @@ a.card:hover, .card--hover:hover {
     0 44px 70px -46px var(--shadow),
     0 1px 0 rgba(255, 255, 255, 0.04) inset;
   transform:
+    translateZ(calc(var(--hero-p, 0) * 150px))
+    scale(calc(1 + var(--hero-p, 0) * 0.1))
     rotateX(calc(10deg + var(--pt-x, 0deg) + var(--sc-x, 0deg)))
     rotateY(calc(-6deg + var(--pt-y, 0deg)));
   transform-origin: 50% 50%;
@@ -1825,4 +1827,43 @@ a.card:hover, .card--hover:hover {
   .tally { transform: none; }
   .tiltable { transform: none !important; transition: none; }
   .flow .chip { --z: 0px; }
+}
+
+
+/* 22 ── Depth rig: the page as space ──────────────────────────────────────
+   "Deep" rather than "tilted": content arrives out of the page's depth
+   (reveals travel on Z, not just Y), the hero copy drifts slower than the
+   diagram so the hero opens like a window, and the diagram you scroll into
+   grows and passes the camera. Driven by one custom property per element,
+   written from a single scroll frame in main.js. */
+
+/* every revealed block comes forward out of the page */
+/* :not(.parallax) so the scrubbed UI panel keeps its own translateY */
+.js [data-reveal]:not(.parallax) {
+  opacity: 0;
+  transform: perspective(1200px) translate3d(0, 18px, -70px);
+  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+}
+.js [data-reveal]:not(.parallax).is-visible {
+  opacity: 1;
+  transform: perspective(1200px) translate3d(0, 0, 0);
+}
+
+/* hero: copy and diagram move at different depths */
+.hero-copy {
+  transform: translate3d(0, calc(var(--hero-p, 0) * -46px), 0);
+  will-change: transform;
+}
+
+/* the triage lanes advance toward the camera as the scene scrubs */
+.lane {
+  transform:
+    translateX(calc((1 - clamp(0, (var(--p) - var(--t)) * 4, 1)) * var(--from, -40px)))
+    translateZ(calc(var(--plate-z, 0px) + var(--p, 0) * 46px));
+}
+.tally { transform: translateZ(calc(72px + var(--p, 0) * 84px)); }
+
+@media (max-width: 900px), (hover: none), (prefers-reduced-motion: reduce) {
+  .hero-copy { transform: none; }
+  .js [data-reveal]:not(.parallax) { transform: none; }
 }

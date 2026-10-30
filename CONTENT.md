@@ -37,8 +37,8 @@ https://jphsystems-io.github.io/jphsystems-web/   (GitHub Pages origin, same fil
 
 The site is live on **www.jphsystems.io**; the apex `jphsystems.io` does not resolve and
 is used for mail only (`jphermans@jphsystems.io`). There is no `CNAME` file — the www
-host is fronted by Cloudflare and serves the same GitHub Pages build. The `github.io`
-URL, not the www one, is what the markup still declares as canonical. If the base URL
+host is fronted by Cloudflare and serves the same GitHub Pages build. The markup declares `www.jphsystems.io` as canonical in every page, the JSON-LD, `robots.txt` and
+`sitemap.xml`; `_headers` adds the edge security headers on Cloudflare. If the base URL
 ever changes, update it in:
 
 - every `<link rel="canonical">`, `og:url`, `og:image`, `twitter:image` and JSON-LD

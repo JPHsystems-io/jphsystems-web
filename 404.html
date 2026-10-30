@@ -8,16 +8,37 @@
 <meta name="description" content="That path does not resolve. Head back to the home page or the notes.">
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#11171f">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self' https://formsubmit.co; form-action https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<script>
+  /* This page uses root-absolute paths so it works from any depth. On the
+     GitHub Pages project URL the site lives under /jphsystems-web/, so rewrite
+     them once, before the first asset link is parsed. */
+  (function () {
+    if (location.pathname.indexOf("/jphsystems-web/") !== 0) return;
+    var fix = function () {
+      var els = document.querySelectorAll('link[href^="/"], script[src^="/"], a[href^="/"], img[src^="/"]');
+      for (var i = 0; i < els.length; i++) {
+        var attr = els[i].hasAttribute("href") ? "href" : "src";
+        els[i].setAttribute(attr, "/jphsystems-web" + els[i].getAttribute(attr));
+      }
+    };
+    fix();
+    document.addEventListener("DOMContentLoaded", fix);
+  })();
+</script>
 
 <!-- Icons -->
-<link rel="icon" href="/jphsystems-web/assets/img/favicon.ico" sizes="32x32">
-<link rel="icon" href="/jphsystems-web/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/jphsystems-web/assets/img/apple-touch-icon.png">
+<link rel="icon" href="/assets/img/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="JPHsystems — field notes" href="/notes/feed.xml">
 
 <!-- Fonts, self-hosted: no third-party request, no external round-trip -->
-<link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="preload" href="/assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
 
 <script>
   (function () {
@@ -33,9 +54,9 @@
     if (meta) meta.setAttribute("content", theme === "light" ? "#f6f7f9" : "#11171f");
   })();
 </script>
-<link rel="stylesheet" href="/jphsystems-web/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
 
-<script src="/jphsystems-web/assets/js/main.js" defer></script>
+<script src="/assets/js/main.js" defer></script>
 </head>
 
 <body>
@@ -44,7 +65,7 @@
 <header class="site-header">
   <div class="wrap">
     <nav class="nav" aria-label="Primary">
-      <a class="brand" href="/jphsystems-web/" aria-label="JPHsystems — home">
+      <a class="brand" href="/" aria-label="JPHsystems — home">
         <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
           <path class="mark-body" d="M44 11.2 20 11.2 8 32 20 52.8 44 52.8 56 32Z" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
           <path class="mark-seam" d="M46.6 9.9 58.6 31.2" stroke-width="5" stroke-linecap="round"/>
@@ -53,12 +74,12 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="/jphsystems-web/">Home</a></li>
-        <li><a href="/jphsystems-web/services.html">Services</a></li>
-        <li><a href="/jphsystems-web/about.html">About</a></li>
-        <li><a href="/jphsystems-web/notes/">Notes</a></li>
-        <li><a href="/jphsystems-web/token-ledger.html">Apps</a></li>
-        <li><a href="/jphsystems-web/contact.html">Contact</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/notes/">Notes</a></li>
+        <li><a href="/token-ledger.html">Apps</a></li>
+        <li><a href="/contact.html">Contact</a></li>
       </ul>
 
       <div class="nav-end">
@@ -72,7 +93,7 @@
           </svg>
         </button>
 
-        <a class="btn btn--ghost btn--sm" href="/jphsystems-web/contact.html#enquiry">Send a message</a>
+        <a class="btn btn--ghost btn--sm" href="/contact.html#enquiry">Send a message</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
         </button>
@@ -82,13 +103,13 @@
 
   <div class="mobile-menu" id="mobile-menu">
     <div class="wrap" style="padding-inline:0">
-      <a href="/jphsystems-web/">Home</a>
-      <a href="/jphsystems-web/services.html">Services</a>
-      <a href="/jphsystems-web/about.html">About</a>
-      <a href="/jphsystems-web/notes/">Notes</a>
-      <a href="/jphsystems-web/token-ledger.html">Apps</a>
-      <a href="/jphsystems-web/contact.html">Contact</a>
-      <a class="btn btn--primary" href="/jphsystems-web/contact.html#enquiry">Send a message</a>
+      <a href="/">Home</a>
+      <a href="/services.html">Services</a>
+      <a href="/about.html">About</a>
+      <a href="/notes/">Notes</a>
+      <a href="/token-ledger.html">Apps</a>
+      <a href="/contact.html">Contact</a>
+      <a class="btn btn--primary" href="/contact.html#enquiry">Send a message</a>
     </div>
   </div>
 </header>
@@ -104,8 +125,8 @@
         typo. Nothing was blocked; there is simply no route to it.
       </p>
       <div class="btn-row mt-l">
-        <a class="btn btn--primary" href="/jphsystems-web/">Back to home</a>
-        <a class="btn btn--ghost" href="/jphsystems-web/notes/">Read the notes</a>
+        <a class="btn btn--primary" href="/">Back to home</a>
+        <a class="btn btn--ghost" href="/notes/">Read the notes</a>
       </div>
     </div>
   </section>
@@ -117,7 +138,7 @@
         <p class="mono" style="color:var(--accent-hi);margin-top:10px">HTTP/2 404</p>
         <p style="margin-top:16px;color:var(--text-dim)">
           If you followed a link from this site, that is a bug worth fixing.
-          <a href="/jphsystems-web/contact.html">Tell me where it came from.</a>
+          <a href="/contact.html">Tell me where it came from.</a>
         </p>
       </div>
     </div>
@@ -129,7 +150,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-about">
-        <a class="brand" href="/jphsystems-web/">
+        <a class="brand" href="/">
           <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
             <path class="mark-body" d="M44 11.2 20 11.2 8 32 20 52.8 44 52.8 56 32Z" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
             <path class="mark-seam" d="M46.6 9.9 58.6 31.2" stroke-width="5" stroke-linecap="round"/>
@@ -146,12 +167,12 @@
       <div class="footer-col">
         <h2>Site</h2>
         <ul>
-          <li><a href="/jphsystems-web/about.html">About</a></li>
-          <li><a href="/jphsystems-web/services.html">Services</a></li>
-          <li><a href="/jphsystems-web/notes/">Notes</a></li>
-          <li><a href="/jphsystems-web/token-ledger.html">Apps</a></li>
-          <li><a href="/jphsystems-web/contact.html">Contact</a></li>
-          <li><a href="/jphsystems-web/about.html#principles">How I work</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/notes/">Notes</a></li>
+          <li><a href="/token-ledger.html">Apps</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/about.html#principles">How I work</a></li>
         </ul>
       </div>
 
@@ -159,8 +180,7 @@
         <h2>Get in touch</h2>
         <ul>
           <li><a href="mailto:jphermans@jphsystems.io">jphermans@jphsystems.io</a></li>
-          <li><a href="/jphsystems-web/contact.html#enquiry">Send a message</a></li>
-          <li><a href="https://www.linkedin.com/in/jphsystems/" rel="me noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="/contact.html#enquiry">Send a message</a></li>
           <li><a href="https://github.com/JPHsystems-io" rel="me noopener" target="_blank">GitHub</a></li>
         </ul>
       </div>

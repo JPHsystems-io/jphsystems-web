@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>JPHsystems — field notes</title>
+    <link>https://www.jphsystems.io/notes/</link>
+    <description>Specific problems, with the fix attached: network segmentation, security remediation and small internal tools.</description>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 30 Oct 2026 09:00:00 +0000</lastBuildDate>
+    <atom:link href="https://www.jphsystems.io/notes/feed.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://www.jphsystems.io/assets/img/apple-touch-icon.png</url>
+      <title>JPHsystems — field notes</title>
+      <link>https://www.jphsystems.io/notes/</link>
+    </image>
+    <item>
+      <title>Ship the internal tool</title>
+      <link>https://www.jphsystems.io/notes/ship-the-internal-tool.html</link>
+      <guid isPermaLink="true">https://www.jphsystems.io/notes/ship-the-internal-tool.html</guid>
+      <pubDate>Thu, 16 Oct 2026 09:00:00 +0000</pubDate>
+      <dc:creator>JPHsystems</dc:creator>
+      <description>The spreadsheet that runs an operation is already software — it just has no tests, no audit trail and one owner. How to scope and ship the small replacement.</description>
+    </item>
+    <item>
+      <title>Your pentest report is not a remediation plan</title>
+      <link>https://www.jphsystems.io/notes/pentest-report.html</link>
+      <guid isPermaLink="true">https://www.jphsystems.io/notes/pentest-report.html</guid>
+      <pubDate>Fri, 02 Oct 2026 09:00:00 +0000</pubDate>
+      <dc:creator>JPHsystems</dc:creator>
+      <description>A pentest produces evidence, not a plan. What to ask for before the engagement, and how to turn findings into work with owners, sequence and proof.</description>
+    </item>
+    <item>
+      <title>The flat network is still the default</title>
+      <link>https://www.jphsystems.io/notes/flat-network.html</link>
+      <guid isPermaLink="true">https://www.jphsystems.io/notes/flat-network.html</guid>
+      <pubDate>Fri, 18 Sep 2026 09:00:00 +0000</pubDate>
+      <dc:creator>JPHsystems</dc:creator>
+      <description>One VLAN, one subnet and a VPN that lands you inside it. Why flat networks persist, and the segmentation order that actually gets finished.</description>
+    </item>
+  </channel>
+</rss>

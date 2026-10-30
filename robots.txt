@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jphsystems-io.github.io/jphsystems-web/sitemap.xml
+Sitemap: https://www.jphsystems.io/sitemap.xml

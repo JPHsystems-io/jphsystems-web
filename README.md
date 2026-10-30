@@ -28,10 +28,12 @@ custom host is fronted by Cloudflare and reaches the same GitHub Pages content.
 | `about.html` | Story, principles, toolbox, what the practice is not |
 | `token-ledger.html` | Token Ledger app page: what it does, specs, App Store badge, SoftwareApplication JSON-LD |
 | `contact.html` | Enquiry form (posts to the form relay; falls back to a `mailto:` draft if the relay is unreachable) |
-| `notes/index.html` | Notes hub |
+| `notes/index.html` | Notes hub, with the RSS link |
+| `notes/feed.xml` | RSS 2.0 feed for the notes |
 | `notes/flat-network.html` | Network segmentation note |
 | `notes/pentest-report.html` | Remediation note |
 | `notes/ship-the-internal-tool.html` | Internal tools note |
+| `_headers` | CSP, HSTS and other response headers for Cloudflare Pages (ignored by GitHub Pages) |
 | `404.html` | Not-found page |
 
 Supporting files: `assets/css/styles.css`, `assets/js/main.js`, `assets/img/*`,
@@ -104,6 +106,53 @@ disagree):
 
 Update all of them together. If you ever move to a custom domain, add a `CNAME` file
 and set the same domain in **Settings → Pages**.
+
+## Deploy to Cloudflare
+
+The site also runs on Cloudflare, and that is how **www.jphsystems.io** is served today.
+It is a static directory — no build step, no functions — so any static host works, but
+Cloudflare adds the security headers and the redirects that GitHub Pages cannot.
+
+### Cloudflare Pages (git-connected)
+
+1. **Workers & Pages → Create → Pages → Connect to Git**, pick
+   `JPHsystems-io/jphsystems-web`.
+2. Framework preset **None**, build command **empty**, build output directory **`/`**,
+   production branch **`main`**.
+3. **Custom domains → Set up a domain**, enter `www.jphsystems.io`. Cloudflare creates
+   the DNS record; make sure it is **proxied** (orange cloud).
+4. Every push to `main` starts a new deployment. Preview deployments get their own URL.
+
+The apex `jphsystems.io` is not attached to the project and has no A/AAAA records — add
+a **Redirect Rule** (Rules → Redirect Rules) sending `jphsystems.io/*` to
+`https://www.jphsystems.io/$1` with a 301 if you ever point it at Cloudflare. Leave the
+MX records alone; the domain is also the mail domain.
+
+### Headers
+
+`_headers` in the repository root is read by Pages on every deployment and carries the
+CSP, HSTS, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`,
+`Permissions-Policy` and `Cross-Origin-Opener-Policy`. GitHub Pages ignores the file, so
+each page also ships a `<meta http-equiv="Content-Security-Policy">` and
+`<meta name="referrer">` as the fallback — keep the two in step when either changes.
+
+If the www host is instead a plain proxy in front of GitHub Pages, `_headers` is not
+read: copy the same headers into a **Transform Rule** (Rules → Transform Rules →
+Modify response header) so they apply at the edge.
+
+### Analytics
+
+Cloudflare Web Analytics is a toggle per zone (Analytics → Web Analytics): no cookie, no
+consent banner, no script in the repository. Turn it on for `jphsystems.io` and the
+visits, referrers and top pages land in the dashboard without changing the site.
+
+### What Cloudflare replaces from GitHub Pages
+
+- HTTPS redirect and HSTS (Pages serves TLS for the custom domain automatically).
+- Caching and compression at the edge (Brotli), instead of GitHub's fixed ten minutes.
+- Response headers, which GitHub Pages cannot set at all.
+- Fast rollback: every deployment keeps its own URL, so a bad push can be rolled back
+  from the dashboard without touching Git.
 
 ## Editing
 

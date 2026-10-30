@@ -14,11 +14,14 @@ checked it.
 | LinkedIn | `https://www.linkedin.com/in/jphsystems/` | Footer on every page |
 | GitHub | `https://github.com/JPHsystems-io` | Footer on every page |
 | Location / time zones | “Remote-first, working with teams across European and US time zones” | `about.html` portrait caption |
-| Booking | In-page `#book` section and a `mailto:` “Request a call” link | `contact.html`, every “Book a call” button |
+| Contact route | One route only: the enquiry form at `contact.html#enquiry` | Nav CTA, mobile menu CTA, every CTA band, footer on every page |
 
-If you prefer a real scheduler (Calendly, Cal.com, Google Appointment), replace the
-`#book` buttons and the “Request a call” `mailto:` with the scheduler URL. If you add
-an embed, note that it introduces a third-party script and cookies.
+There is no scheduler and no booking widget, by design. Every call to action lands on
+the form. The form has no server: `assets/js/main.js` validates the fields and composes
+a `mailto:` draft in the visitor's own mail client, then shows a fallback link in case
+the mail client does not open. If server-side delivery is ever wanted, point the form's
+`action` at a form endpoint (Formspree, Web3Forms, a Cloudflare Worker) and drop the
+`data-mailto` attribute — but that introduces a third party and needs a privacy note.
 
 ## 2. Base URL
 
@@ -52,7 +55,7 @@ These are written as commitments. Keep them only if they are true for you.
 | “Remote-first… European and US time zones” | `about.html` | Confirm your actual working hours |
 | “Independent practice. No reseller commissions.” | Footer, every page | Confirm no affiliate/reseller arrangements |
 | Service scope and deliverables | `services.html` | Check the assessment contents and pricing language match what you actually offer |
-| 30-minute call length | Nav, contact, footer | Change if your intro call is a different length |
+| Response promise | “Usually within one business day” | Contact page, home CTA |
 
 There are no client names, logos, testimonials, certifications or years-of-experience
 claims in the site. If you add any, they must be real and attributable.

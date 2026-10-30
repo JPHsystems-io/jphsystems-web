@@ -113,7 +113,7 @@
           </svg>
         </button>
 
-        <a class="btn btn--ghost btn--sm" href="contact.html#book">Book a call</a>
+        <a class="btn btn--ghost btn--sm" href="#enquiry">Send a message</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
         </button>
@@ -129,7 +129,7 @@
       <a href="notes/index.html">Notes</a>
       <a href="index.html#apps">Apps</a>
       <a href="contact.html" aria-current="page">Contact</a>
-      <a class="btn btn--primary" href="contact.html#book">Book a call</a>
+      <a class="btn btn--primary" href="#enquiry">Send a message</a>
     </div>
   </div>
 </header>
@@ -151,7 +151,7 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="enquiry">
     <div class="wrap">
       <div class="grid grid--split">
         <div data-reveal>
@@ -161,6 +161,14 @@
             and nothing is stored on this site. If you would rather write directly, the
             address is below.
           </p>
+
+          <noscript>
+            <p class="alert alert--bad" style="margin-top:20px">
+              This form needs JavaScript to assemble the message. Write to
+              <a class="text-link" href="mailto:jphermans@jphsystems.io">jphermans@jphsystems.io</a>
+              directly and it will reach the same inbox.
+            </p>
+          </noscript>
 
           <form class="form mt-l" action="mailto:jphermans@jphsystems.io" method="post" enctype="text/plain"
                 data-validate data-mailto="jphermans@jphsystems.io" novalidate>
@@ -271,45 +279,6 @@
     </div>
   </section>
 
-  <!-- ═══ Book ═══════════════════════════════════════════════════════════ -->
-  <section class="section section--edge" id="book">
-    <div class="wrap">
-      <div class="grid grid--split">
-        <div data-reveal>
-          <p class="eyebrow">Book a Call</p>
-          <h2>Thirty minutes, no slides.</h2>
-          <p class="lede mt-l">
-            The first call is free and deliberately short. I ask what you are running,
-            what changed, and what you have already tried. You get an honest read on whether
-            the work is worth doing, and whether I am the right person for it.
-          </p>
-          <p class="lede">
-            There is no calendar widget on this site. Send a note with two or three
-            times that work, and you will get a confirmation with a meeting link.
-          </p>
-          <div class="btn-row">
-            <a class="btn btn--accent" href="mailto:jphermans@jphsystems.io?subject=Call%20%E2%80%94%20JPHsystems&amp;body=Hi%2C%0A%0AWhat%20we%20run%3A%0AWhat%20worries%20me%3A%0A%0ATimes%20that%20work%20for%20a%2030-minute%20call%3A%0A">Request a call</a>
-            <a class="btn btn--ghost" href="services.html">Read the services first</a>
-          </div>
-        </div>
-
-        <div class="aside-card" data-reveal data-delay="1">
-          <h3>On the call</h3>
-          <ul>
-            <li><span>01</span><span>What you run and who owns it</span></li>
-            <li><span>02</span><span>What changed recently</span></li>
-            <li><span>03</span><span>What you have already tried</span></li>
-            <li><span>04</span><span>The constraint: time, money or people</span></li>
-            <li><span>05</span><span>Whether a written scope makes sense</span></li>
-          </ul>
-          <p class="form-note" style="margin-top:16px">
-            If I am not the right fit, the call still ends with a suggestion for who is.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="section section--tight">
     <div class="wrap">
       <div class="cta-band" data-reveal>
@@ -367,7 +336,7 @@
         <h2>Get in touch</h2>
         <ul>
           <li><a href="mailto:jphermans@jphsystems.io">jphermans@jphsystems.io</a></li>
-          <li><a href="contact.html#book">Book a 30-minute call</a></li>
+          <li><a href="#enquiry">Send a message</a></li>
           <li><a href="https://www.linkedin.com/in/jphsystems/" rel="me noopener" target="_blank">LinkedIn</a></li>
           <li><a href="https://github.com/JPHsystems-io" rel="me noopener" target="_blank">GitHub</a></li>
         </ul>

@@ -24,7 +24,7 @@ URL above.
 | `index.html` | Home: positioning, triage diagram, services, process, proof, shipped apps, CTA |
 | `services.html` | Three service lines, assessment, comparison, FAQ |
 | `about.html` | Story, principles, toolbox, what the practice is not |
-| `contact.html` | Enquiry form (composes a `mailto:`) and booking section |
+| `contact.html` | Enquiry form (validates and composes a `mailto:` draft in the visitor's mail client) |
 | `notes/index.html` | Notes hub |
 | `notes/flat-network.html` | Network segmentation note |
 | `notes/pentest-report.html` | Remediation note |

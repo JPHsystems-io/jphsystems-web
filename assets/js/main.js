@@ -179,7 +179,26 @@
       if (status) {
         status.hidden = false;
         status.className = "alert alert--ok";
-        status.textContent = "Your email app should be opening with the message ready to send. If it does not, write to " + address + " directly.";
+        status.textContent = "";
+        status.appendChild(document.createTextNode(
+          "Your email app should be opening with the message ready to send. "
+        ));
+
+        var draftLink = document.createElement("a");
+        draftLink.href = href;
+        draftLink.className = "text-link";
+        draftLink.textContent = "Open the draft again";
+        status.appendChild(draftLink);
+
+        status.appendChild(document.createTextNode(". If nothing opens, write to "));
+        var directLink = document.createElement("a");
+        directLink.href = "mailto:" + address;
+        directLink.className = "text-link";
+        directLink.textContent = address;
+        status.appendChild(directLink);
+        status.appendChild(document.createTextNode(
+          " and paste the message from the form — your text is still here."
+        ));
       }
     });
   });

@@ -409,10 +409,10 @@ p:last-child { margin-bottom: 0; }
   flex: none;
 }
 .brand-mark { width: 27px; height: 27px; flex: none; }
-.brand-mark path { stroke: var(--brand-line); }
-.brand-mark path:nth-of-type(2) { stroke: var(--brand-line-dim); }
-.brand-mark circle { fill: var(--brand-node); opacity: 0.55; }
-.brand-mark circle:first-of-type { fill: var(--accent); opacity: 1; }
+.brand-mark { color: var(--text); }
+.brand-mark .mark-body { stroke: currentColor; opacity: 0.82; }
+.brand-mark .mark-seam { stroke: var(--accent); }
+.brand:hover .mark-body { opacity: 1; }
 .brand-name { display: none; }
 @media (min-width: 400px) { .brand-name { display: inline; } }
 .brand-name span { color: var(--text-faint); font-weight: 400; }

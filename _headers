@@ -14,11 +14,48 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), interest-cohort=()
   Cross-Origin-Opener-Policy: same-origin
 
-# Fonts never change in place; images and the stylesheet may.
+# Fonts never change; the stylesheet and the script are stamped with a
+# content hash (scripts/stamp-assets.py), so they can be immutable too.
+# Images are not hashed: a week is enough to pick up a redesign.
 /assets/fonts/*
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/img/*
+  Cache-Control: public, max-age=604800
 
 /*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# The extensionless routes are the canonical URLs (Cloudflare redirects
+# *.html to these), so the page rule has to name them too.
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/privacy
+  Cache-Control: public, max-age=0, must-revalidate
+
+/about
+  Cache-Control: public, max-age=0, must-revalidate
+
+/services
+  Cache-Control: public, max-age=0, must-revalidate
+
+/contact
+  Cache-Control: public, max-age=0, must-revalidate
+
+/token-ledger
+  Cache-Control: public, max-age=0, must-revalidate
+
+/notes
+  Cache-Control: public, max-age=0, must-revalidate
+
+/notes/
   Cache-Control: public, max-age=0, must-revalidate
 
 /sitemap.xml

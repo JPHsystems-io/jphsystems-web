@@ -271,7 +271,8 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
   top: -60px;
   z-index: 200;
   background: var(--accent);
-  color: #fff;
+  color: #0b1017;
+  font-weight: 500;
   padding: 10px 16px;
   border-radius: var(--r-sm);
   font-size: 14px;

@@ -1914,3 +1914,33 @@ a.card:hover, .card--hover:hover {
   .card, .aside-card, .alert { border: 1px solid #c9ced6 !important; background: #fff !important; box-shadow: none !important; }
   .js [data-reveal] { opacity: 1 !important; transform: none !important; }
 }
+
+/* Agent Zero credit strip on the apps hub: the platform the plugins run on */
+.project-strip {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 20px;
+  margin-bottom: clamp(24px, 3vw, 34px);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--tint);
+}
+.project-strip-mark {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+}
+.project-strip-text {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+.project-strip-text .eyebrow { display: block; margin-bottom: 2px; }
+@media (max-width: 560px) {
+  .project-strip { gap: 14px; padding: 16px; align-items: flex-start; }
+  .project-strip-mark { width: 44px; height: 44px; border-radius: 11px; }
+}

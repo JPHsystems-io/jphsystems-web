@@ -128,3 +128,12 @@ written quote per scope, which is what `services.html` already promises ("Everyt
 quoted in writing before any work starts"). If a price is ever published it has to be a
 real floor (an assessment minimum, a day rate), never an invented range; until then the
 route to a number is the enquiry form, and the answer is a quote, not a rate card.
+
+## Third-party marks
+
+- `assets/img/agent-zero.svg` — the Agent Zero icon, copied byte-for-byte from
+  `agent0ai/agent-zero/webui/public/icon.svg` (MIT, © Agent Zero, s.r.o). It is used on
+  the apps hub only to credit the platform the plugins run on, next to a link to
+  agent-zero.ai and to the upstream repository. Served from this domain, never hotlinked,
+  so the page still makes no third-party requests. If the mark is ever restyled or
+  recoloured, stop: MIT covers the file, not a redesigned identity.

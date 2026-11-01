@@ -96,3 +96,19 @@ enable it quietly.
 - After a push: `gh api repos/JPHsystems-io/jphsystems-web/pages/builds/latest --jq '.status+" "+.commit[0:7]'`
   until it reports `built` for **that** commit, then fetch the page again — Cloudflare can
   serve the previous build for a minute after Pages says it is done.
+
+## 4. Keeping /_internal/ off the domain
+
+The housekeeping docs sit in `_internal/` so they are not part of the site, but GitHub
+Pages serves underscore directories as ordinary files (`/_internal/CONTENT.md` returns
+200; only `_headers` is special-cased). The repository is public anyway, so treat those
+files as public: no credentials, no client names.
+
+`robots.txt` disallows `/_internal/`, which keeps search engines away. To make a visitor
+get a 404 as well, add one Cloudflare rule (Rules → Redirect Rules, or a WAF custom rule)
+on `www.jphsystems.io`:
+
+- **If** `http.request.uri.path` matches `^/_internal/`
+- **Then** return 404 (Redirect Rule: "Block", or WAF: block with a 404 response)
+
+Until that rule exists the path answers 200, so nothing sensitive belongs there.

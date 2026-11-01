@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# Housekeeping docs (content checklist, maintenance notes, helper scripts) live under
+# /_internal/ and are not part of the site. GitHub Pages serves underscore directories,
+# so this keeps them out of search results; the Cloudflare rule in _internal/OPS.md is
+# what makes them 404 for a visitor.
+Disallow: /_internal/
+
 Sitemap: https://www.jphsystems.io/sitemap.xml

@@ -11,7 +11,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="JPHsystems">
 <meta name="theme-color" content="#11171f">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self' https://formsubmit.co; form-action https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <!-- Open Graph -->
@@ -156,9 +156,10 @@
         <div data-reveal>
           <h2>Start a conversation</h2>
           <p class="lede mt-l">
-            This form goes straight to my inbox. Nothing is stored on this site, there is no
-            CRM and no newsletter — the message arrives as an email and stays there. If you
-            would rather write directly, the address is in the panel beside the form.
+            This form composes an email in your own mail app and sends it to my inbox
+            directly. Nothing is posted to this site and no third party sees it on the way:
+            no CRM, no newsletter, no analytics. If you would rather write it yourself, the
+            address is in the panel beside the form.
           </p>
 
           <noscript>
@@ -169,16 +170,8 @@
             </p>
           </noscript>
 
-          <form class="form mt-l" action="https://formsubmit.co/jphermans@jphsystems.io" method="post"
-                data-validate data-endpoint="https://formsubmit.co/ajax/jphermans@jphsystems.io"
-                data-mailto="jphermans@jphsystems.io" novalidate>
-            <input type="hidden" name="_subject" value="jphsystems.io — new enquiry">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <div class="hp-field" aria-hidden="true">
-              <label for="bot-field">Leave this field blank</label>
-              <input type="text" id="bot-field" name="bot-field" tabindex="-1" autocomplete="off">
-            </div>
+          <form class="form mt-l" action="mailto:jphermans@jphsystems.io" method="post" enctype="text/plain"
+                data-validate data-mailto="jphermans@jphsystems.io" novalidate>
 
             <div class="form-row">
               <div class="field">
@@ -223,7 +216,7 @@
 
             <label class="consent" for="consent">
               <input type="checkbox" id="consent" name="consent" required aria-describedby="consent-error">
-              <span>I understand this message is delivered to JPHsystems through a form relay (FormSubmit), that nothing is stored on this site, and that I will not send credentials or sensitive personal data in a first message.</span>
+              <span>I understand this button opens a draft in my own email app, that nothing is sent to or stored by this site, and that I will not send credentials or sensitive personal data in a first message.</span>
             </label>
             <p class="field-error" id="consent-error" aria-live="polite"></p>
 
@@ -234,8 +227,8 @@
 
             <p class="alert alert--ok" data-form-status hidden role="status"></p>
             <p class="form-note">
-              Delivered by FormSubmit to a normal inbox. No tracking pixels, no newsletter
-              sign-up, no CRM sequence.
+              This form only builds the email — your own mail app sends it. No relay, no
+              third-party processor, no tracking pixels, no newsletter sign-up.
             </p>
           </form>
         </div>
@@ -338,6 +331,7 @@
           <li><a href="#enquiry">Send a message</a></li>
           <li><a href="https://github.com/JPHsystems-io" rel="me noopener" target="_blank">GitHub &mdash; JPHsystems</a></li>
           <li><a href="https://github.com/jphermans" rel="me noopener" target="_blank">GitHub &mdash; @jphermans</a></li>
+          <li><a href="privacy">Privacy</a></li>
         </ul>
       </div>
     </div>

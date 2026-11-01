@@ -119,9 +119,10 @@
   });
 
   /* ── Form validation and mailto composition ────────────────────────────
-     GitHub Pages has no server, so the enquiry form builds a mailto: URL.
-     The address lives in the form's data-mailto attribute. Without JS the
-     form's own action is a mailto too, so it still does something useful. */
+     There is no server and no relay: the enquiry form builds a mailto: URL
+     and the visitor's own mail client sends it. The address lives in the
+     form's data-mailto attribute; without JS the form's own action is a
+     mailto too, so it still does something useful. */
   var showError = function (input, message) {
     var box = document.getElementById(input.id + "-error");
     input.setAttribute("aria-invalid", "true");
@@ -175,18 +176,10 @@
         return;
       }
 
-      var endpoint = form.getAttribute("data-endpoint");
       var address = form.getAttribute("data-mailto");
       if (!address) return;
 
       e.preventDefault();
-
-      /* honeypot: a real person never fills this in */
-      var trap = form.querySelector("[name='bot-field']");
-      if (trap && trap.value !== "") {
-        if (status) { status.hidden = true; }
-        return;
-      }
 
       var name = (form.querySelector("[name='name']") || {}).value || "";
       var email = (form.querySelector("[name='email']") || {}).value || "";
@@ -206,79 +199,34 @@
         "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
 
-      var setStatus = function (kind, text) {
-        if (!status) return;
-        status.hidden = false;
-        status.className = "alert alert--" + kind;
-        status.textContent = text;
-      };
+      /* No relay, no server: the message is composed in the visitor's own mail
+         client and sent from there. The draft link stays on screen so it can be
+         reopened when no mail handler answers the first click. */
+      window.location.href = href;
 
-      /* Fallback path: no endpoint configured, or the relay could not be
-         reached. Compose the message in the visitor's own mail client. */
-      var openMail = function (kind, lead) {
-        window.location.href = href;
+      if (!status) return;
+      status.hidden = false;
+      status.className = "alert alert--ok";
+      status.textContent = "";
+      status.appendChild(document.createTextNode(
+        "Your email app should be opening with the message ready to send. "
+      ));
 
-        if (!status) return;
-        status.hidden = false;
-        status.className = "alert alert--" + kind;
-        status.textContent = "";
-        status.appendChild(document.createTextNode(lead));
+      var draftLink = document.createElement("a");
+      draftLink.href = href;
+      draftLink.className = "text-link";
+      draftLink.textContent = "Open the draft again";
+      status.appendChild(draftLink);
 
-        var draftLink = document.createElement("a");
-        draftLink.href = href;
-        draftLink.className = "text-link";
-        draftLink.textContent = "Open the draft again";
-        status.appendChild(draftLink);
-
-        status.appendChild(document.createTextNode(". If nothing opens, write to "));
-        var directLink = document.createElement("a");
-        directLink.href = "mailto:" + address;
-        directLink.className = "text-link";
-        directLink.textContent = address;
-        status.appendChild(directLink);
-        status.appendChild(document.createTextNode(
-          " — your text is still in the form."
-        ));
-      };
-
-      if (!endpoint || !window.fetch || !window.FormData) {
-        openMail("ok", "Your email app should be opening with the message ready to send. ");
-        return;
-      }
-
-      var button = form.querySelector("[type='submit']");
-      var buttonLabel = button ? button.textContent : "";
-      if (button) {
-        button.disabled = true;
-        button.textContent = "Sending…";
-      }
-      setStatus("ok", "Sending your message…");
-
-      /* a dead relay must not leave the visitor staring at "Sending…" */
-      var abort = ("AbortController" in window) ? new AbortController() : null;
-      var timer = abort ? window.setTimeout(function () { abort.abort(); }, 12000) : null;
-
-      window.fetch(endpoint, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(form),
-        signal: abort ? abort.signal : undefined
-      }).then(function (response) {
-        if (!response.ok) throw new Error("relay responded " + response.status);
-        form.reset();
-        setStatus("ok", "Sent. Your message is in my inbox — I usually reply within one working day.");
-      }).catch(function () {
-        openMail(
-          "bad",
-          "The form relay could not be reached, so nothing was sent yet. "
-        );
-      }).then(function () {
-        if (timer) window.clearTimeout(timer);
-        if (button) {
-          button.disabled = false;
-          button.textContent = buttonLabel;
-        }
-      });
+      status.appendChild(document.createTextNode(". If nothing opens, write to "));
+      var directLink = document.createElement("a");
+      directLink.href = "mailto:" + address;
+      directLink.className = "text-link";
+      directLink.textContent = address;
+      status.appendChild(directLink);
+      status.appendChild(document.createTextNode(
+        " — your text is still in the form."
+      ));
     });
   });
 

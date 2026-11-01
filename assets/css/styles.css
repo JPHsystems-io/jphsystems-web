@@ -1439,6 +1439,8 @@ a.card:hover, .card--hover:hover {
 /* 15 ── Notes & articles ──────────────────────────────────────────────── */
 .post-list { display: grid; gap: 18px; }
 @media (min-width: 840px) { .post-list { grid-template-columns: repeat(3, 1fr); } }
+/* one item, full width: the apps hub until there is a second app */
+.post-list--single { grid-template-columns: 1fr; }
 
 .post-card { display: flex; flex-direction: column; padding: 0; }
 .post-card .post-cover {

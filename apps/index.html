@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Apps — JPHsystems</title>
-<meta name="description" content="Small, focused apps built by JPHsystems: Token Ledger for OpenRouter usage, shipped free with no ads, no tracking and no sign-up.">
+<meta name="description" content="Apps and Agent Zero plugins built by JPHsystems: Token Ledger for OpenRouter usage, plus five MIT-licensed plugins for Agent Zero.">
 <link rel="canonical" href="https://www.jphsystems.io/apps/">
 <link rel="alternate" type="application/rss+xml" title="JPHsystems — field notes" href="../notes/feed.xml">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -18,7 +18,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="JPHsystems">
 <meta property="og:title" content="Apps — JPHsystems">
-<meta property="og:description" content="Small, focused apps built by JPHsystems, shipped free with no ads and no tracking.">
+<meta property="og:description" content="An iOS app and five MIT-licensed plugins for Agent Zero, built and supported by one engineer.">
 <meta property="og:url" content="https://www.jphsystems.io/apps/">
 <meta property="og:image" content="https://www.jphsystems.io/assets/img/og-default.png">
 <meta property="og:image:width" content="1200">
@@ -29,7 +29,7 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Apps — JPHsystems">
-<meta name="twitter:description" content="Small, focused apps built by JPHsystems, shipped free with no ads and no tracking.">
+<meta name="twitter:description" content="An iOS app and five MIT-licensed plugins for Agent Zero.">
 <meta name="twitter:image" content="https://www.jphsystems.io/assets/img/og-default.png">
 
 <!-- Icons -->
@@ -65,7 +65,7 @@
   "@type": "CollectionPage",
   "url": "https://www.jphsystems.io/apps/",
   "name": "Apps — JPHsystems",
-  "description": "Small, focused apps built by JPHsystems, shipped free with no ads and no tracking.",
+  "description": "An iOS app and five MIT-licensed plugins for Agent Zero, built by JPHsystems.",
   "isPartOf": {
     "@type": "WebSite",
     "name": "JPHsystems",
@@ -78,6 +78,76 @@
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "iOS 27.0 or later",
       "url": "https://www.jphsystems.io/token-ledger",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "24H Clock",
+      "description": "Forces the Agent Zero WebUI header clock into 24-hour format.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Agent Zero",
+      "url": "https://github.com/jphermans/a0-plugin-clock-24h",
+      "codeRepository": "https://github.com/jphermans/a0-plugin-clock-24h",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "OpenRouter Credit Monitor",
+      "description": "OpenRouter credit balance and per-key usage in the Agent Zero WebUI.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Agent Zero",
+      "url": "https://github.com/jphermans/openrouter-credit-monitor",
+      "codeRepository": "https://github.com/jphermans/openrouter-credit-monitor",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Markdown Memory",
+      "description": "Obsidian-compatible Markdown memory with semantic recall for Agent Zero.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Agent Zero",
+      "url": "https://github.com/jphermans/markdown-memory",
+      "codeRepository": "https://github.com/jphermans/markdown-memory",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Honcho Shared Memory",
+      "description": "Self-hosted shared persistent memory for Agent Zero.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Agent Zero",
+      "url": "https://github.com/jphermans/agent-zero-honcho-memory",
+      "codeRepository": "https://github.com/jphermans/agent-zero-honcho-memory",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Pushover",
+      "description": "Agent Zero plugin that sends a Pushover notification on explicit request.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Agent Zero",
+      "url": "https://github.com/jphermans/Push-Agent",
+      "codeRepository": "https://github.com/jphermans/Push-Agent",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -157,18 +227,20 @@
       <p class="eyebrow">Apps</p>
       <h1>Tools I build, then keep running.</h1>
       <p class="lede">
-        Small, focused apps that solve one problem properly. They come from the same
-        practice as the client work, so they ship with a support page, a privacy
-        statement and no subscription.
+        Small, focused tools that solve one problem properly: an iOS app, and a set of
+        plugins for Agent Zero. They come from the same practice as the client work, so
+        they ship with a support page, a privacy statement and no subscription.
       </p>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="apps">
     <div class="wrap">
-      <h2 class="visually-hidden">All apps</h2>
-      <div class="post-list post-list--single">
-
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">01 / Apps</p>
+        <h2>Shipped, supported, still running.</h2>
+      </div>
+      <div class="post-list">
         <a class="card post-card" data-reveal href="../token-ledger">
           <div class="post-card-body">
             <div style="display:flex; gap:20px; align-items:flex-start">
@@ -186,6 +258,84 @@
             </div>
           </div>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--edge" id="plugins">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">02 / Plugins</p>
+        <h2>Plugins for Agent Zero.</h2>
+        <p class="lede">
+          Agent Zero is an open-source agent framework; these are the plugins I wrote and
+          keep working for it. All five are MIT licensed and install from GitHub. The
+          OpenRouter Credit Monitor and the 24H Clock are also listed in the official
+          Agent Zero plugin index.
+        </p>
+      </div>
+
+      <div class="grid grid--split">
+
+        <div class="card" data-reveal>
+          <div class="post-meta"><span class="tag">Plugin</span><span>MIT</span><span>indexed</span></div>
+          <h3>24H Clock</h3>
+          <p>Forces the Agent Zero header clock into 24-hour time — 14:35:07 instead of 2:35:07 PM — and keeps it that way through upgrades.</p>
+          <ul class="spec-list">
+            <li>Toggle from the Plugin Hub</li>
+            <li>Lives in <code>usr/plugins/</code>, so an update does not remove it</li>
+            <li>Watches the clock element instead of editing core files</li>
+          </ul>
+          <a class="arrow-link" href="https://github.com/jphermans/a0-plugin-clock-24h" rel="noopener" target="_blank">Source on GitHub</a>
+        </div>
+
+        <div class="card" data-delay="1" data-reveal>
+          <div class="post-meta"><span class="tag">Plugin</span><span>MIT</span><span>v1.1.0</span><span>indexed</span></div>
+          <h3>OpenRouter Credit Monitor</h3>
+          <p>Shows what is left on your OpenRouter account in the Agent Zero sidebar, so a depleted balance is not a surprise.</p>
+          <ul class="spec-list">
+            <li>Low-credit warnings at $5 and $1</li>
+            <li>Optional per-key usage and limits</li>
+            <li>Refresh between 30 seconds and 10 minutes</li>
+          </ul>
+          <a class="arrow-link" href="https://github.com/jphermans/openrouter-credit-monitor" rel="noopener" target="_blank">Source on GitHub</a>
+        </div>
+
+        <div class="card" data-reveal>
+          <div class="post-meta"><span class="tag">Plugin</span><span>MIT</span><span>v1.2.3</span></div>
+          <h3>Markdown Memory</h3>
+          <p>One Obsidian-compatible Markdown vault as the memory for every Agent Zero chat — readable in your editor, searchable by the agent.</p>
+          <ul class="spec-list">
+            <li>Policy injection plus semantic recall, on local Ollama or cloud embeddings</li>
+            <li><code>memory_search</code> and <code>memory_reindex</code> tools, also from a remote CLI session</li>
+            <li>Markdown is the source of truth; the SQLite index can be deleted and rebuilt</li>
+          </ul>
+          <a class="arrow-link" href="https://github.com/jphermans/markdown-memory" rel="noopener" target="_blank">Source on GitHub</a>
+        </div>
+
+        <div class="card" data-delay="1" data-reveal>
+          <div class="post-meta"><span class="tag">Plugin</span><span>MIT</span><span>v0.0.7</span></div>
+          <h3>Honcho Shared Memory</h3>
+          <p>Persistent memory on a self-hosted Honcho database, shared by one agent or by several working together.</p>
+          <ul class="spec-list">
+            <li>Single-agent and multi-agent modes</li>
+            <li>Stays on your own infrastructure</li>
+            <li>Written with Agent Zero, contributors JPHsystems and Agent Zero</li>
+          </ul>
+          <a class="arrow-link" href="https://github.com/jphermans/agent-zero-honcho-memory" rel="noopener" target="_blank">Source on GitHub</a>
+        </div>
+
+        <div class="card" data-reveal>
+          <div class="post-meta"><span class="tag">Plugin</span><span>MIT</span></div>
+          <h3>Pushover</h3>
+          <p>Gives the agent exactly one way to send a Pushover notification, and only when you have asked for one.</p>
+          <ul class="spec-list">
+            <li>A single <code>pushover_notify</code> tool</li>
+            <li>Token and user key go into the Agent Zero secret store</li>
+            <li>No background hooks: no notification can send itself</li>
+          </ul>
+          <a class="arrow-link" href="https://github.com/jphermans/Push-Agent" rel="noopener" target="_blank">Source on GitHub</a>
+        </div>
 
       </div>
     </div>
@@ -194,12 +344,14 @@
   <section class="section section--edge">
     <div class="wrap wrap--narrow">
       <div class="section-head section-head--center" data-reveal>
-        <p class="eyebrow">Why Apps</p>
+        <p class="eyebrow">Why These Exist</p>
         <h2>Built to be operated, not demoed.</h2>
         <p class="lede">
-          Each app is designed, built, shipped and supported by one engineer, and the
-          support page is part of the deliverable rather than an afterthought. If you need
-          something like this built for your own team, that is the engineering service.
+          Every one of these was written because I needed it, then kept working after the
+          first week — which is the part that usually does not happen. Each is designed,
+          built, shipped and supported by one engineer, and the support page is part of the
+          deliverable rather than an afterthought. If you need something like this built for
+          your own team, that is the engineering service.
         </p>
       </div>
       <div class="btn-row" style="justify-content:center" data-reveal>

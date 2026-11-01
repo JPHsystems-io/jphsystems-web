@@ -36,25 +36,70 @@
     });
   }
 
-  /* ── Theme toggle ─────────────────────────────────────────────────────── */
+  /* ── Theme ──────────────────────────────────────────────────────────────
+     Three ways the theme can be decided, in this order:
+       1. an explicit choice the visitor made with the button (localStorage),
+       2. otherwise the operating system's light/dark setting, followed live —
+          switching the OS while the page is open changes the page too,
+       3. dark, if the browser cannot answer at all.
+     Choosing the theme the system is already showing clears the stored choice,
+     so a second click on the same page puts the site back on auto. */
   var themeToggle = document.querySelector("[data-theme-toggle]");
-  if (themeToggle) {
-    var applyTheme = function (theme) {
-      var root = document.documentElement;
-      root.setAttribute("data-theme", theme);
-      var light = theme === "light";
-      themeToggle.setAttribute("aria-pressed", String(light));
-      themeToggle.setAttribute("aria-label", light ? "Switch to dark theme" : "Switch to light theme");
-      var meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute("content", light ? "#f6f7f9" : "#11171f");
-    };
-    applyTheme(document.documentElement.getAttribute("data-theme") || "dark");
+  var root = document.documentElement;
+  var systemQuery = window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)") : null;
 
+  var storedTheme = function () {
+    try {
+      var value = localStorage.getItem("theme");
+      return value === "light" || value === "dark" ? value : null;
+    } catch (e) { return null; }
+  };
+  var storeTheme = function (theme) {
+    try {
+      if (theme) localStorage.setItem("theme", theme);
+      else localStorage.removeItem("theme");
+    } catch (e) { /* storage unavailable: the page still follows the system */ }
+  };
+  var systemTheme = function () {
+    return systemQuery && systemQuery.matches ? "light" : "dark";
+  };
+
+  var applyTheme = function (theme, mode) {
+    root.setAttribute("data-theme", theme);
+    root.setAttribute("data-theme-mode", mode);
+    var light = theme === "light";
+    if (themeToggle) {
+      themeToggle.setAttribute("aria-pressed", String(light));
+      themeToggle.setAttribute(
+        "aria-label",
+        (light ? "Switch to dark theme" : "Switch to light theme") +
+          (mode === "auto" ? " (auto)" : "")
+      );
+    }
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", light ? "#f6f7f9" : "#11171f");
+  };
+
+  /* the inline <head> script already painted the right theme; this only syncs
+     the button state and the mode marker */
+  applyTheme(root.getAttribute("data-theme") || systemTheme(), storedTheme() ? "manual" : "auto");
+
+  if (themeToggle) {
     themeToggle.addEventListener("click", function () {
-      var next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
-      try { localStorage.setItem("theme", next); } catch (e) { /* storage unavailable */ }
-      applyTheme(next);
+      var current = root.getAttribute("data-theme") === "light" ? "light" : "dark";
+      var next = current === "light" ? "dark" : "light";
+      /* picking the colour the system is showing means "back to auto" */
+      storeTheme(next === systemTheme() ? null : next);
+      applyTheme(next, next === systemTheme() ? "auto" : "manual");
     });
+  }
+
+  if (systemQuery) {
+    var onSystemTheme = function () {
+      if (!storedTheme()) applyTheme(systemTheme(), "auto");
+    };
+    if (systemQuery.addEventListener) systemQuery.addEventListener("change", onSystemTheme);
+    else if (systemQuery.addListener) systemQuery.addListener(onSystemTheme);
   }
 
   /* ── Header background on scroll ─────────────────────────────────────── */

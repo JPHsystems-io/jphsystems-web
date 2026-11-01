@@ -36,6 +36,7 @@
 <link rel="icon" href="assets/img/favicon.ico" sizes="32x32">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="assets/site.webmanifest">
 
 <!-- Fonts, self-hosted: no third-party request, no external round-trip -->
 <link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -56,7 +57,73 @@
     if (meta) meta.setAttribute("content", theme === "light" ? "#f6f7f9" : "#11171f");
   })();
 </script>
-<link rel="stylesheet" href="assets/css/styles.css?v=4003cea7">
+<link rel="stylesheet" href="assets/css/styles.css?v=f02e20e4">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://www.jphsystems.io/services",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you work remotely?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, remote-first, with screen sharing and recorded walkthroughs. On-site work is possible by arrangement for physical network changes, hardware reviews or workshops. Travel is quoted separately and agreed in advance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you sign an NDA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. I am happy to sign yours before any detail is shared, or provide a mutual agreement. Please do not send credentials, customer data or production secrets in a first message."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you resell hardware or licences?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. There is no commission, no quota and no partner tier. If a product is the right answer, I will say so and help you buy it directly. If the gap can be closed with configuration you already own, that comes first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you handle sensitive data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Collect the least data needed, transfer it encrypted, keep it in an agreed location, and delete it at the end of the engagement. Testing is scoped in writing with rules of engagement, a named contact and a stop condition."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "We already have an IT team or MSP. Does that conflict?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The usual pattern is that your team keeps running the estate and I take a specific system, assessment or build. I document what I change and hand it back, rather than creating a second shadow IT function."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does it cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the scope, which is what the first exchange is for. After that you get a written fixed price and a list of what is included. No hourly surprises, no change orders for things that were obviously in scope."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you help during an active incident?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Possibly. Say so in the subject line and include the current state, what has been done and who is coordinating. If I cannot take it, I will tell you quickly rather than leave you waiting."
+      }
+    }
+  ]
+}
+</script>
 
 <script type="application/ld+json">
 {
@@ -93,7 +160,7 @@
 }
 </script>
 
-<script src="assets/js/main.js?v=dd1e1e96" defer></script>
+<script src="assets/js/main.js?v=d4a5eb43" defer></script>
 </head>
 
 <body>
@@ -536,6 +603,7 @@
           <li><a href="https://github.com/JPHsystems-io" rel="me noopener" target="_blank">GitHub &mdash; JPHsystems</a></li>
           <li><a href="https://github.com/jphermans" rel="me noopener" target="_blank">GitHub &mdash; @jphermans</a></li>
           <li><a href="privacy">Privacy</a></li>
+          <li><a href="nl/" hreflang="nl" lang="nl">Nederlands</a></li>
         </ul>
       </div>
     </div>

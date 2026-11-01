@@ -9,7 +9,7 @@ feed's `<lastBuildDate>` becomes the newest of the note dates.
 
 Run before committing anything that touches a page:
 
-    python3 scripts/sync-dates.py
+    python3 _internal/scripts/sync-dates.py
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ import sys
 from email.utils import format_datetime
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 BASE = "https://www.jphsystems.io/"
 
 

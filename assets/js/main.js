@@ -12,6 +12,12 @@
       var open = toggle.getAttribute("aria-expanded") === "true";
       toggle.setAttribute("aria-expanded", String(!open));
       menu.classList.toggle("is-open", !open);
+      /* put the caret at the first link rather than leaving it on the button,
+         so a keyboard user lands inside the panel they just opened */
+      if (!open) {
+        var first = menu.querySelector("a, button");
+        if (first) first.focus();
+      }
     });
 
     menu.addEventListener("click", function (e) {

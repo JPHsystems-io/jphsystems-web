@@ -266,6 +266,9 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
 }
 
 .skip-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   position: absolute;
   left: 12px;
   top: -60px;
@@ -447,8 +450,8 @@ p:last-child { margin-bottom: 0; }
 .theme-toggle {
   display: none;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 1px solid var(--line);
   border-radius: var(--r-btn);
@@ -473,9 +476,10 @@ p:last-child { margin-bottom: 0; }
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0 10px;
   border: 1px solid var(--line);
   border-radius: var(--r-btn);

@@ -11,7 +11,7 @@ Edit an inline script and the hash has to change with it — otherwise the
 browser blocks it and the theme silently stops applying. Run this after any
 edit inside a `<script>` block without `src`:
 
-    python3 scripts/sync-csp.py
+    python3 _internal/scripts/sync-csp.py
 
 It rewrites the `script-src` directive of every page, and the union of all
 hashes in `_headers` (Cloudflare sends one policy for the whole site, so that
@@ -26,7 +26,7 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 LD_JSON = re.compile(r"<script[^>]*application/ld\+json", re.I)
 INLINE = re.compile(r"<script(?![^>]*\bsrc=)(?!([^>]*)application/ld\+json)([^>]*)>(.*?)</script>", re.S)
 SCRIPT_SRC = re.compile(r"script-src [^;]+;")

@@ -11,7 +11,7 @@ produces no diff when nothing changed.
 Run it after any edit to `assets/css/` or `assets/js/`, then commit both the
 assets and the pages in the same commit.
 
-    python3 scripts/stamp-assets.py
+    python3 _internal/scripts/stamp-assets.py
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 ASSETS = ["assets/css/styles.css", "assets/css/fonts.css", "assets/js/main.js"]
 
 

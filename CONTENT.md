@@ -16,15 +16,19 @@ checked it.
 | Location / time zones | “Remote-first, working with teams across European and US time zones” | `about.html` portrait caption |
 | Token Ledger page | `token-ledger.html` — app features, specs, App Store badge, support link |
 | Contact route | One route only: the enquiry form at `contact.html#enquiry` | Nav CTA, mobile menu CTA, every CTA band, footer on every page |
+| Privacy notice | `privacy.html` | Footer on every page |
+| Apps | `apps/index.html` (hub, one card per app) → `token-ledger.html` | Nav item “Apps”, footer on every page |
 
 There is no scheduler and no booking widget, by design. Every call to action lands on
-the form. The form has no server: `assets/js/main.js` validates the fields and composes
-the message to FormSubmit, which relays it to the inbox; if the relay is unreachable it
-falls back to a `mailto:` draft in the visitor's mail client and says so, in case
-the mail client does not open. If server-side delivery is ever wanted, point the form's
-`action` at a form endpoint (Formspree, Web3Forms, a Cloudflare Worker) and drop the
-`data-mailto` attribute. The relay is a third party (FormSubmit): name it in the consent
-copy and in any privacy statement, or swap `data-endpoint` for an EU processor.
+the form. The form has no server and no relay: `assets/js/main.js` validates the fields
+and composes a `mailto:` draft, which the visitor's own mail client sends from their own
+account. If no mail handler answers, the page keeps the draft link and the plain address
+on screen so nothing typed is lost. There is no third-party processor, so there is no
+processor agreement to sign and nothing to disclose beyond the privacy notice.
+If server-side delivery is ever wanted, that is a deliberate change: add an endpoint
+(a Cloudflare Worker on this domain, not a shared public relay), set the form's `action`
+and `data-endpoint`, reinstate `connect-src`/`form-action` in the CSP, and rewrite the
+consent line and `privacy.html` in the same commit.
 
 ## 2. Base URL
 
@@ -90,14 +94,12 @@ claims in the site. If you add any, they must be real and attributable.
 
 ## 5. Legal and privacy
 
-- The site sets no cookies and loads no analytics. Fonts come from Google Fonts,
-  which receives the visitor's IP address. If that matters for your jurisdiction,
-  self-host the two font families and remove the Google Fonts links.
-- The contact form posts to a third-party relay (FormSubmit) and keeps no copy on the
-  site. Decide whether a DPA with that processor is needed, or move to an EU provider.
-  The consent checkbox says so. If you later add a form backend, update that copy and
-  add a privacy notice covering what is stored and for how long.
-- There is no imprint/Impressum, privacy policy or terms page. Add them if you are
+- The site sets no cookies and loads no analytics. Fonts are self-hosted from
+  `assets/fonts/`, so there is no Google Fonts request and no third-party IP exposure.
+- The contact form posts to nothing: it composes a `mailto:` draft in the visitor's mail
+  client. No relay, no processor, no copy on the site. `privacy.html` says so.
+- The privacy notice exists (`privacy.html`, linked from the footer of every page).
+  There is still no imprint/Impressum or terms page. Add them if you are
   subject to a regime that requires them (for example, Germany's Impressum duty).
 
 ## 6. Technical placeholders

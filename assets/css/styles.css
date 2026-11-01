@@ -154,8 +154,8 @@
   --accent-edge:  rgba(58, 90, 232, 0.28);
 
   /* Semantic */
-  --positive:     #0b7a5c;
-  --warn:         #a3650f;
+  --positive:     #0a6e53;
+  --warn:         #8f560a;
   --danger:       #c62f35;
   --danger-text:  #b4232b;
   --danger-strong: #c62f35;
@@ -280,6 +280,9 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
   transition: top 0.2s var(--ease);
 }
 .skip-link:focus { top: 12px; }
+/* the availability line in the hero: one config value, not a hand-edited sentence */
+.hero-note.is-booked .pulse { background: var(--warn); animation: none; }
+[data-theme="light"] .skip-link { color: #fff; }
 
 /* 3 ── Typography ──────────────────────────────────────────────────────── */
 h1, h2, h3, h4 {

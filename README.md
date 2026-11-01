@@ -27,7 +27,9 @@ custom host is fronted by Cloudflare and reaches the same GitHub Pages content.
 | `services.html` | Three service lines, assessment, comparison, FAQ |
 | `about.html` | Story, principles, toolbox, what the practice is not |
 | `token-ledger.html` | Token Ledger app page: what it does, specs, App Store badge, SoftwareApplication JSON-LD |
-| `contact.html` | Enquiry form (posts to the form relay; falls back to a `mailto:` draft if the relay is unreachable) |
+| `apps/index.html` | Apps hub: one card per app, so the nav item is a section and not a single product |
+| `privacy.html` | Privacy notice: what is stored, what is not, where an enquiry goes |
+| `contact.html` | Enquiry form: composes a `mailto:` draft in the visitor's own mail client — no relay, no backend |
 | `notes/index.html` | Notes hub, with the RSS link |
 | `notes/feed.xml` | RSS 2.0 feed for the notes |
 | `notes/flat-network.html` | Network segmentation note |
@@ -37,7 +39,15 @@ custom host is fronted by Cloudflare and reaches the same GitHub Pages content.
 | `404.html` | Not-found page |
 
 Supporting files: `assets/css/styles.css`, `assets/js/main.js`, `assets/img/*`,
-`robots.txt`, `sitemap.xml`, `.nojekyll`.
+`robots.txt`, `sitemap.xml`, `.nojekyll`, and three maintenance scripts in `scripts/`:
+
+| Script | What it does | Run it when |
+| --- | --- | --- |
+| `scripts/stamp-assets.py` | Puts a content hash (`?v=…`) on `styles.css`, `fonts.css` and `main.js` | after editing anything under `assets/css/` or `assets/js/` |
+| `scripts/sync-csp.py` | Recomputes the inline-script SHA-256 hashes in each page's CSP and in `_headers` | after editing any inline `<script>` |
+| `scripts/sync-dates.py` | Derives `sitemap.xml` `lastmod` and the feed's `lastBuildDate` from git | before committing a page change |
+
+All three are idempotent: a second run reports no changes.
 
 ## Preview locally
 
@@ -162,16 +172,25 @@ visits, referrers and top pages land in the dashboard without changing the site.
 - **Navigation and footer** are duplicated in each HTML file. If you add a page,
   update the header, mobile menu and footer on every page, plus `sitemap.xml`.
 - **Adding a note:** copy `notes/flat-network.html`, update the `<title>`,
-  description, canonical, OG/Twitter tags, JSON-LD, breadcrumb, meta line, body and
-  the “next note” link. Add a card to `notes/index.html` and a `<url>` to
-  `sitemap.xml`. Covers are 1600×900; the current ones are in `assets/img/`.
-- **Contact form:** no backend of our own. `assets/js/main.js` validates the fields and
-  POSTs them to FormSubmit (`data-endpoint`), which relays them to the inbox. If the relay
-  fails or times out (12 s), the form degrades to a prefilled `mailto:` draft. Swap
-  providers by changing `data-endpoint`/`action` on the form — nothing else references it.
-  The old mailto-only behaviour remains the path when the attribute is absent. The form's fallback `action` is also a `mailto:`, so it
-  still works without JavaScript. Change the address in both the `action` and the
-  `data-mailto` attribute, and in the footer links.
+  description, canonical, OG/Twitter tags, JSON-LD (including `datePublished`),
+  breadcrumb, the `<time datetime>` in the meta line, body, related-notes links and the
+  in-text “next note” link. Add a card to `notes/index.html` and a `<url>` to
+  `sitemap.xml`, then run `scripts/sync-dates.py`. Covers are 1600×900; the current ones
+  are in `assets/img/`.
+- **Adding an app:** copy the card in `apps/index.html`, point it at the new page, add
+  the page to the nav/footer where it belongs, and add a `<url>` to `sitemap.xml`.
+- **URLs are extensionless.** Pages are linked and canonicalised without `.html`
+  (`/about`, `/notes/pentest-report`); Cloudflare redirects `*.html` to those forms, so
+  both keep working. Do not reintroduce `.html` in `href`, canonical, `og:url`, JSON-LD,
+  the sitemap or the feed.
+- **Contact form:** no backend and no relay. `assets/js/main.js` validates the fields and
+  composes a `mailto:` draft from them; the visitor's mail client sends it. If nothing
+  opens, the page keeps the draft link and the address on screen. The `action` is a
+  `mailto:` too, so the form still does something without JavaScript. Change the address
+  in the `action`, the `data-mailto` attribute and the footer links.
+- **Availability line:** the hero note on `index.html` is driven by the `availability`
+  object at the top of `main.js` (`state: "open" | "booked"`, plus `nextOpening` as
+  `YYYY-MM-DD`). Booked out means editing one value, not rewriting a sentence.
 - **Motion:** scroll reveals, the pinned scene, the flow animation and the count-ups
   all respect `prefers-reduced-motion`. The scene collapses to a static layout below
   760px.

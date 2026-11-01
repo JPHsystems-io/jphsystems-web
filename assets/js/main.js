@@ -118,6 +118,26 @@
     el.textContent = String(new Date().getFullYear());
   });
 
+  /* ── Availability ──────────────────────────────────────────────────────
+     One place to say whether new work is being taken. Set `state` to "booked"
+     and give a `nextOpening` date (YYYY-MM-DD, or an empty string) and the
+     hero line updates itself; nothing else on the page has to be edited. */
+  var availability = { state: "open", nextOpening: "" };
+
+  var availabilityNote = document.querySelector("[data-availability]");
+  var availabilityText = document.querySelector("[data-availability-text]");
+  if (availabilityNote && availabilityText && availability.state !== "open") {
+    var label = "";
+    if (availability.nextOpening) {
+      var opening = new Date(availability.nextOpening + "T00:00:00");
+      if (!isNaN(opening.getTime())) {
+        label = "Next opening " + opening.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+      }
+    }
+    availabilityText.textContent = label || "Not taking new work at the moment";
+    availabilityNote.classList.add("is-booked");
+  }
+
   /* ── Form validation and mailto composition ────────────────────────────
      There is no server and no relay: the enquiry form builds a mailto: URL
      and the visitor's own mail client sends it. The address lives in the

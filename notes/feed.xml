@@ -14,24 +14,24 @@
     </image>
     <item>
       <title>Ship the internal tool</title>
-      <link>https://www.jphsystems.io/notes/ship-the-internal-tool.html</link>
-      <guid isPermaLink="true">https://www.jphsystems.io/notes/ship-the-internal-tool.html</guid>
+      <link>https://www.jphsystems.io/notes/ship-the-internal-tool</link>
+      <guid isPermaLink="true">https://www.jphsystems.io/notes/ship-the-internal-tool</guid>
       <pubDate>Thu, 16 Oct 2026 09:00:00 +0000</pubDate>
       <dc:creator>JPHsystems</dc:creator>
       <description>The spreadsheet that runs an operation is already software — it just has no tests, no audit trail and one owner. How to scope and ship the small replacement.</description>
     </item>
     <item>
       <title>Your pentest report is not a remediation plan</title>
-      <link>https://www.jphsystems.io/notes/pentest-report.html</link>
-      <guid isPermaLink="true">https://www.jphsystems.io/notes/pentest-report.html</guid>
+      <link>https://www.jphsystems.io/notes/pentest-report</link>
+      <guid isPermaLink="true">https://www.jphsystems.io/notes/pentest-report</guid>
       <pubDate>Fri, 02 Oct 2026 09:00:00 +0000</pubDate>
       <dc:creator>JPHsystems</dc:creator>
       <description>A pentest produces evidence, not a plan. What to ask for before the engagement, and how to turn findings into work with owners, sequence and proof.</description>
     </item>
     <item>
       <title>The flat network is still the default</title>
-      <link>https://www.jphsystems.io/notes/flat-network.html</link>
-      <guid isPermaLink="true">https://www.jphsystems.io/notes/flat-network.html</guid>
+      <link>https://www.jphsystems.io/notes/flat-network</link>
+      <guid isPermaLink="true">https://www.jphsystems.io/notes/flat-network</guid>
       <pubDate>Fri, 18 Sep 2026 09:00:00 +0000</pubDate>
       <dc:creator>JPHsystems</dc:creator>
       <description>One VLAN, one subnet and a VPN that lands you inside it. Why flat networks persist, and the segmentation order that actually gets finished.</description>

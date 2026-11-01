@@ -113,26 +113,18 @@ claims in the site. If you add any, they must be real and attributable.
 - `favicon.ico`, `favicon.svg`, `favicon-32.png` and `apple-touch-icon.png` are
   generated from the same mark. Regenerate them together if the mark changes.
 
-## 7. Not yet published
+## 7. Deliberately not on the site
 
-Two things the site is missing because they need facts only you can supply. Both are
-wired into nothing, so neither can be found or indexed until you finish them.
+Two things stay off until they are real, so nothing is implied that does not exist.
 
-**A case study.** `work/case-study-template.html` is a draft: `noindex, nofollow`, not
-linked from any page and absent from `sitemap.xml`. It carries the page shape — situation,
-finding, what changed, cost and duration, what a reader can reuse — with bracketed
-placeholders. To publish it you need, in your own words:
+**No case study.** There is no client write-up yet. Do not add a placeholder page, an
+empty "work" section or a teaser card: a case study appears only when there is one whose
+facts the client permits publishing (sector and size, the before-state, the finding and
+how it was measured, the changes in order, duration). Until then the notes do the work of
+showing how the thinking goes.
 
-1. sector and rough size (no client name unless you have written permission);
-2. the before-state: sites, what was reachable from where, the assumption nobody wrote down;
-3. the finding that mattered, with how it was measured;
-4. the three changes, in the order you made them;
-5. duration, and whether you are willing to publish a figure at all.
-
-Then rename the file to a real slug, fill it, drop the `noindex`, add a `<url>` to
-`sitemap.xml`, and link it from the home page and from the matching service block.
-
-**A price signal.** `services.html` mentions “quote” six times and contains no currency at
-all. Each service already has an “At a glance” list with *Typical start* and *Then*; a
-*From* row needs two numbers only you can set (an assessment floor and a day rate, or a
-fixed-scope band). Nothing is invented here — send the figures and the row goes in.
+**No prices.** Nothing on the site quotes a figure, and nothing should — the unit is a
+written quote per scope, which is what `services.html` already promises ("Everything is
+quoted in writing before any work starts"). If a price is ever published it has to be a
+real floor (an assessment minimum, a day rate), never an invented range; until then the
+route to a number is the enquiry form, and the answer is a quote, not a rate card.

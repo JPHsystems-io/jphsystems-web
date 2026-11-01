@@ -112,3 +112,27 @@ claims in the site. If you add any, they must be real and attributable.
   want a photo or a different composition.
 - `favicon.ico`, `favicon.svg`, `favicon-32.png` and `apple-touch-icon.png` are
   generated from the same mark. Regenerate them together if the mark changes.
+
+## 7. Not yet published
+
+Two things the site is missing because they need facts only you can supply. Both are
+wired into nothing, so neither can be found or indexed until you finish them.
+
+**A case study.** `work/case-study-template.html` is a draft: `noindex, nofollow`, not
+linked from any page and absent from `sitemap.xml`. It carries the page shape — situation,
+finding, what changed, cost and duration, what a reader can reuse — with bracketed
+placeholders. To publish it you need, in your own words:
+
+1. sector and rough size (no client name unless you have written permission);
+2. the before-state: sites, what was reachable from where, the assumption nobody wrote down;
+3. the finding that mattered, with how it was measured;
+4. the three changes, in the order you made them;
+5. duration, and whether you are willing to publish a figure at all.
+
+Then rename the file to a real slug, fill it, drop the `noindex`, add a `<url>` to
+`sitemap.xml`, and link it from the home page and from the matching service block.
+
+**A price signal.** `services.html` mentions “quote” six times and contains no currency at
+all. Each service already has an “At a glance” list with *Typical start* and *Then*; a
+*From* row needs two numbers only you can set (an assessment floor and a day rate, or a
+fixed-scope band). Nothing is invented here — send the figures and the row goes in.

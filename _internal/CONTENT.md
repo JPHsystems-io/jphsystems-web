@@ -65,6 +65,7 @@ These are written as commitments. Keep them only if they are true for you.
 | “Independent practice. No reseller commissions.” | Footer, every page | Confirm no affiliate/reseller arrangements |
 | Service scope and deliverables | `services.html` | Check the assessment contents and pricing language match what you actually offer |
 | Response promise | “Usually within one business day” | Contact page, home CTA |
+| “four of them — the 24H Clock, OpenRouter Credit Monitor, DeepSeek Credit Monitor and Markdown Memory — are also listed in the official Agent Zero plugin index” | `apps/index.html` | Re-check against `agent0ai/a0-plugins` (a `plugins/<name>/index.yaml` whose `github:` points at your repo) before any edit to the apps hub |
 
 There are no client names, logos, testimonials, certifications or years-of-experience
 claims in the site. If you add any, they must be real and attributable.
@@ -82,6 +83,10 @@ claims in the site. If you add any, they must be real and attributable.
   (`https://tools.applemediaservices.com/api/badges/download-on-the-app-store/{black|white}/en-us`);
   swap `en-us` for another locale if the site is ever localised. Add the next
   shipped app as another card in that section.
+- The **plugin cards** on `apps/index.html` carry a version read from that plugin repo's
+  `plugin.yaml` and are tagged `indexed` only while the entry is live in
+  `agent0ai/a0-plugins`. Update the version when a plugin releases, and drop the
+  `indexed` tag if a listing is removed.
 - Article dates (`18 Sep 2026`, `2 Oct 2026`, `16 Oct 2026`), read times and
   “Filed under” lines are illustrative. Update them to the real publication dates, and
   keep the `<time>`-style text, JSON-LD `datePublished`/`dateModified` and

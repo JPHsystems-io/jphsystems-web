@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Apps — JPHsystems</title>
-<meta name="description" content="Apps and Agent Zero plugins built by JPHsystems: Token Ledger for OpenRouter usage, plus five MIT-licensed plugins for Agent Zero.">
+<meta name="description" content="Apps and Agent Zero plugins built by JPHsystems: Token Ledger for OpenRouter usage, plus six MIT-licensed plugins for Agent Zero.">
 <link rel="canonical" href="https://www.jphsystems.io/apps/">
 <link rel="alternate" type="application/rss+xml" title="JPHsystems — field notes" href="../notes/feed.xml">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -18,7 +18,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="JPHsystems">
 <meta property="og:title" content="Apps — JPHsystems">
-<meta property="og:description" content="An iOS app and five MIT-licensed plugins for Agent Zero, built and supported by one engineer.">
+<meta property="og:description" content="An iOS app and six MIT-licensed plugins for Agent Zero, built and supported by one engineer.">
 <meta property="og:url" content="https://www.jphsystems.io/apps/">
 <meta property="og:image" content="https://www.jphsystems.io/assets/img/og-default.png">
 <meta property="og:image:width" content="1200">
@@ -29,7 +29,7 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Apps — JPHsystems">
-<meta name="twitter:description" content="An iOS app and five MIT-licensed plugins for Agent Zero.">
+<meta name="twitter:description" content="An iOS app and six MIT-licensed plugins for Agent Zero.">
 <meta name="twitter:image" content="https://www.jphsystems.io/assets/img/og-default.png">
 
 <!-- Icons -->
@@ -65,7 +65,7 @@
   "@type": "CollectionPage",
   "url": "https://www.jphsystems.io/apps/",
   "name": "Apps — JPHsystems",
-  "description": "An iOS app and five MIT-licensed plugins for Agent Zero, built by JPHsystems.",
+  "description": "An iOS app and six MIT-licensed plugins for Agent Zero, built by JPHsystems.",
   "isPartOf": {
     "@type": "WebSite",
     "name": "JPHsystems",
@@ -106,6 +106,20 @@
       "operatingSystem": "Agent Zero",
       "url": "https://github.com/jphermans/openrouter-credit-monitor",
       "codeRepository": "https://github.com/jphermans/openrouter-credit-monitor",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "DeepSeek Credit Monitor",
+      "description": "DeepSeek API balance with currency-aware low and critical warnings in the Agent Zero WebUI.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Agent Zero",
+      "url": "https://github.com/jphermans/deepseek-credit-monitor",
+      "codeRepository": "https://github.com/jphermans/deepseek-credit-monitor",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -268,9 +282,10 @@
         <p class="eyebrow">02 / Plugins</p>
         <h2>Plugins for Agent Zero.</h2>
         <p class="lede">
-          The plugins I wrote and keep working for Agent Zero. All five are MIT licensed
-          and install from GitHub; the OpenRouter Credit Monitor and the 24H Clock are also
-          listed in the official Agent Zero plugin index.
+          The plugins I wrote and keep working for Agent Zero. All six are MIT licensed
+          and install from GitHub; four of them — the 24H Clock, OpenRouter Credit Monitor,
+          DeepSeek Credit Monitor and Markdown Memory — are also listed in the official
+          Agent Zero plugin index.
         </p>
       </div>
 
@@ -314,7 +329,19 @@
         </div>
 
         <div class="card" data-reveal>
-          <div class="post-meta"><span class="tag">Plugin</span><span>MIT</span><span>v1.2.3</span></div>
+          <div class="post-meta"><span class="tag">Plugin</span><span>MIT</span><span>v0.1.0</span><span>indexed</span></div>
+          <h3>DeepSeek Credit Monitor</h3>
+          <p>The same instinct for DeepSeek: the account balance in the Agent Zero sidebar, in every currency DeepSeek reports, so a depleted key is not discovered by a failing job.</p>
+          <ul class="spec-list">
+            <li>Low and critical warnings (default $5 and $1) that fire on the status change, not on every poll</li>
+            <li>Details popover with total, granted and topped-up balance per currency</li>
+            <li>Refresh between 30 seconds and 10 minutes; the key resolves server-side, from the plugin settings or Agent Zero's secret store</li>
+          </ul>
+          <a class="arrow-link" href="https://github.com/jphermans/deepseek-credit-monitor" rel="noopener" target="_blank">Source on GitHub</a>
+        </div>
+
+        <div class="card" data-delay="1" data-reveal>
+          <div class="post-meta"><span class="tag">Plugin</span><span>MIT</span><span>v1.2.4</span></div>
           <h3>Markdown Memory</h3>
           <p>One Obsidian-compatible Markdown vault as the memory for every Agent Zero chat — readable in your editor, searchable by the agent.</p>
           <ul class="spec-list">
@@ -325,7 +352,7 @@
           <a class="arrow-link" href="https://github.com/jphermans/markdown-memory" rel="noopener" target="_blank">Source on GitHub</a>
         </div>
 
-        <div class="card" data-delay="1" data-reveal>
+        <div class="card" data-reveal>
           <div class="post-meta"><span class="tag">Plugin</span><span>MIT</span><span>v0.0.7</span></div>
           <h3>Honcho Shared Memory</h3>
           <p>Persistent memory on a self-hosted Honcho database, shared by one agent or by several working together.</p>
@@ -337,7 +364,7 @@
           <a class="arrow-link" href="https://github.com/jphermans/agent-zero-honcho-memory" rel="noopener" target="_blank">Source on GitHub</a>
         </div>
 
-        <div class="card" data-reveal>
+        <div class="card" data-delay="1" data-reveal>
           <div class="post-meta"><span class="tag">Plugin</span><span>MIT</span></div>
           <h3>Pushover</h3>
           <p>Gives the agent exactly one way to send a Pushover notification, and only when you have asked for one.</p>

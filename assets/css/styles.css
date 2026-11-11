@@ -1445,6 +1445,9 @@ a.card:hover, .card--hover:hover {
 @media (min-width: 840px) { .post-list { grid-template-columns: repeat(3, 1fr); } }
 /* one item, full width: the apps hub until there is a second app */
 .post-list--single { grid-template-columns: 1fr; }
+/* two items side by side, rather than two of three columns */
+.post-list--pair { grid-template-columns: 1fr; }
+@media (min-width: 840px) { .post-list--pair { grid-template-columns: repeat(2, 1fr); } }
 
 .post-card { display: flex; flex-direction: column; padding: 0; }
 .post-card .post-cover {

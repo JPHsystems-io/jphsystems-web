@@ -17,7 +17,7 @@ checked it.
 | Token Ledger page | `token-ledger.html` — app features, specs, App Store badge, support link |
 | Contact route | One route only: the enquiry form at `contact.html#enquiry` | Nav CTA, mobile menu CTA, every CTA band, footer on every page |
 | Privacy notice | `privacy.html` | Footer on every page |
-| Apps | `apps/index.html` (hub, one card per app) → `token-ledger.html` | Nav item “Apps”, footer on every page |
+| Apps | `apps/index.html` (hub, one card per app): Token Ledger → `token-ledger.html`, Huisrekening → App Store listing | Nav item “Apps”, footer on every page |
 
 There is no scheduler and no booking widget, by design. Every call to action lands on
 the form. The form has no server and no relay: `assets/js/main.js` validates the fields
@@ -83,6 +83,14 @@ claims in the site. If you add any, they must be real and attributable.
   (`https://tools.applemediaservices.com/api/badges/download-on-the-app-store/{black|white}/en-us`);
   swap `en-us` for another locale if the site is ever localised. Add the next
   shipped app as another card in that section.
+- **Two apps on the hub** (`apps/index.html#apps`), in `post-list--pair`: Token Ledger
+  links to its own page, Huisrekening links straight to the store
+  (<https://apps.apple.com/be/app/huisrekening/id6827253404>, Apple ID 6827253404, free, Finance,
+  v0.1.0, iOS 26.0+). The Huisrekening icon (`assets/img/app-huisrekening.png`,
+  192px) is `AppIcon.appiconset/icon-1024.png` from
+  `SwiftUI/Verkoop/Verkoop/Assets.xcassets` resized with `sips -Z 192`; re-export it
+  if the shipped icon changes. The prices and versions on both cards come from the
+  iTunes lookup API, not from the repos — re-check before editing the hub.
 - The **plugin cards** on `apps/index.html` carry a version read from that plugin repo's
   `plugin.yaml` and are tagged `indexed` only while the entry is live in
   `agent0ai/a0-plugins`. Update the version when a plugin releases, and drop the

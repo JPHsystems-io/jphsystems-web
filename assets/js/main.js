@@ -77,7 +77,7 @@
       );
     }
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", light ? "#ebf0f7" : "#11171f");
+    if (meta) meta.setAttribute("content", light ? "#dbe2ec" : "#11171f");
   };
 
   /* the inline <head> script already painted the right theme; this only syncs

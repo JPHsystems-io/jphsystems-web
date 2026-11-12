@@ -65,7 +65,7 @@ These are written as commitments. Keep them only if they are true for you.
 | “Independent practice. No reseller commissions.” | Footer, every page | Confirm no affiliate/reseller arrangements |
 | Service scope and deliverables | `services.html` | Check the assessment contents and pricing language match what you actually offer |
 | Response promise | “Usually within one business day” | Contact page, home CTA |
-| Light theme ground `#ebf0f7` with `--text-faint #5f6773` and `--danger #bd2b31` (darkened so small text clears 4.5:1 on the new surfaces) | `assets/css/styles.css` | Re-check contrast after any change to the ground |
+| Light theme ground `#dbe2ec` (a grey-blue, not a near-white sheet) with `--text-faint #4d5763`, `--accent #2f49cf`, `--accent-hi #263dba`, `--positive #096048`, `--warn #754707` and `--danger #a01f25` — every token darkened so small text still clears 4.5:1 on the grey surfaces | `assets/css/styles.css` | Re-check contrast after any change to the ground; the palette is tuned as a set |
 | “four of them — the 24H Clock, OpenRouter Credit Monitor, DeepSeek Credit Monitor and Markdown Memory — are also listed in the official Agent Zero plugin index” | `apps/index.html` | Re-check against `agent0ai/a0-plugins` (a `plugins/<name>/index.yaml` whose `github:` points at your repo) before any edit to the apps hub |
 
 There are no client names, logos, testimonials, certifications or years-of-experience

@@ -11,7 +11,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="JPHsystems">
 <meta name="theme-color" content="#11171f">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-81gTQFlHvqsIrZlJ7RikpcFBkh4/L22vWy+SGkh+g4I='; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-JkyHZffzlir5BzH5qrDii165sLSTmeAXAF/WrbErlvY='; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <!-- Open Graph -->
@@ -54,10 +54,10 @@
       : (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
     root.setAttribute("data-theme", theme);
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", theme === "light" ? "#f6f7f9" : "#11171f");
+    meta.setAttribute("content", light ? "#ebf0f7" : "#11171f");
   })();
 </script>
-<link rel="stylesheet" href="../assets/css/styles.css?v=95a05515">
+<link rel="stylesheet" href="../assets/css/styles.css?v=890f8a42">
 
 <script type="application/ld+json">
 {
@@ -86,7 +86,7 @@
 }
 </script>
 
-<script src="../assets/js/main.js?v=ce2aa253" defer></script>
+<script src="../assets/js/main.js?v=b69b2048" defer></script>
 </head>
 
 <body>
@@ -219,28 +219,28 @@
           <li><strong>Isolate the backups.</strong> Separate credentials, separate network path, and at least one copy that the production estate cannot write to. Ransomware goes for the backup first because it makes recovery optional.</li>
           <li><strong>Fix guest and Wi-Fi.</strong> Guest to internet only. Corporate Wi-Fi to the services people need. Cameras, door controllers and other appliances on their own segment with no route to user devices.</li>
           <li><strong>Group by function.</strong> Servers, databases, workstations, development and the management plane. Name the zones by what they do, not by which switch they happen to be on.</li>
-          <li><strong>Log before you block.</strong> Turn on flow logs and firewall logging for a week. You are looking for the flows nobody remembered: the scanner, the backup job, the one consultant with a mapped drive.</li>
+          <li><strong>Log before you block.</strong> Turn on flow logs and firewall logging for a week. You&rsquo;re looking for the flows nobody remembered: the scanner, the backup job, the one consultant with a mapped drive.</li>
           <li><strong>Deny by default between zones.</strong> Allow only the flows the diagram requires, by service, source and destination. Every rule gets a name, an owner and a review date.</li>
           <li><strong>Document the exceptions.</strong> The exception is not the failure. The undocumented exception is.</li>
         </ol>
 
         <div class="callout">
           <strong>The one rule that matters:</strong> between zones, deny by default.
-          If you cannot explain why a rule exists, that is a finding, not a requirement.
+          If you can&rsquo;t explain why a rule exists, that is a finding, not a requirement.
         </div>
 
         <h2>Start with one path</h2>
         <p>
-          You do not need a maintenance window and a new firewall to begin. Pick one
+          You don&rsquo;t need a maintenance window and a new firewall to begin. Pick one
           path that should not exist: a workstation reaching the NAS management
           interface, a laptop reaching the database port, a camera reaching a file
           share. Put a deny rule in front of it, log what happens, and see what breaks.
         </p>
         <p>
-          If nothing breaks, you have removed a path an attacker would have used. If
-          something breaks, you have found a dependency that was invisible before. Both
-          outcomes are progress. Do that five times and you have a segmentation
-          programme that is already paying off.
+          If nothing breaks, you&rsquo;ve removed a path an attacker would have used. If
+          something breaks, you&rsquo;ve found a dependency that was invisible before. Both
+          outcomes are progress. Do that five times and you end up with a
+          segmentation programme that is already paying off.
         </p>
 
         <h2>What good looks like</h2>

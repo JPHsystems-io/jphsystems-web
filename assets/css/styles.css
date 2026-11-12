@@ -27,9 +27,17 @@
 
   /* Surfaces */
   --ink:          #11171f;
-  --ink-raised:   #171f2a;
-  --surface:      #1c2532;
-  --surface-2:    #232e3c;
+  --ink-raised:   #161e28;
+  --surface:      #1b2431;
+  --surface-2:    #222e3c;
+
+  /* Terminal — a console window, the same in both themes */
+  --term-bg:      #0b1017;
+  --term-line:    rgba(255, 255, 255, 0.08);
+  --term-text:    #d5dee9;
+  --term-dim:     #7d8b9c;
+  --term-green:   #5fd08a;
+  --term-amber:   #e3a44f;
 
   /* Lines */
   --line:         rgba(255, 255, 255, 0.095);
@@ -113,11 +121,11 @@
   --max: 1180px;
   --max-narrow: 780px;
 
-  /* Radius */
-  --r-sm: 8px;
-  --r:    12px;
-  --r-lg: 16px;
-  --r-btn: 10px;
+  /* Radius — sharper, so the geometry reads as instrumentation */
+  --r-sm: 6px;
+  --r:    10px;
+  --r-lg: 12px;
+  --r-btn: 8px;
   --r-pill: 999px;
 
   /* Motion */
@@ -129,11 +137,11 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  /* Surfaces */
-  --ink:          #f6f7f9;
-  --ink-raised:   #ffffff;
-  --surface:      #eef1f6;
-  --surface-2:    #e4e9f1;
+  /* Surfaces — a substantial gray-blue ground rather than white */
+  --ink:          #ebf0f7;
+  --ink-raised:   #f4f7fc;
+  --surface:      #dfe7f1;
+  --surface-2:    #d4ddeb;
 
   /* Lines */
   --line:         rgba(15, 23, 42, 0.10);
@@ -143,7 +151,7 @@
   /* Text */
   --text:         #0d1420;
   --text-dim:     #49525f;
-  --text-faint:   #636b77;
+  --text-faint:   #5f6773;
   --prose:        #2c3543;
 
   /* Accent — darkened for contrast on white */
@@ -156,7 +164,7 @@
   /* Semantic */
   --positive:     #0a6e53;
   --warn:         #8f560a;
-  --danger:       #c62f35;
+  --danger:       #bd2b31;
   --danger-text:  #b4232b;
   --danger-strong: #c62f35;
   --ok-text:      #0b6b50;
@@ -174,17 +182,17 @@
   --shadow-soft:  rgba(15, 23, 42, 0.08);
 
   /* Component surfaces */
-  --header-bg:    rgba(246, 247, 249, 0.85);
-  --menu-bg:      rgba(246, 247, 249, 0.98);
+  --header-bg:    rgba(235, 240, 247, 0.88);
+  --menu-bg:      rgba(235, 240, 247, 0.98);
   --chip-bg:      rgba(255, 255, 255, 0.92);
-  --showcase-bg:  #eff3f9;
-  --card-bg:      linear-gradient(180deg, #ffffff, #fbfcfe);
-  --card-bg-hover: linear-gradient(180deg, #ffffff, #f4f7fc);
+  --showcase-bg:  #e6edf6;
+  --card-bg:      linear-gradient(180deg, #fcfdff, #f5f8fd);
+  --card-bg-hover: linear-gradient(180deg, #ffffff, #f0f5fc);
   --ui-bg:        linear-gradient(180deg, #ffffff, #f8fafd);
   --input-bg:     #ffffff;
   --input-focus-bg: #ffffff;
   --code-bg:      rgba(15, 23, 42, 0.06);
-  --footer-bg:    linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.025));
+  --footer-bg:    linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.045));
 
   /* Brand mark */
   --brand-line:     rgba(15, 23, 42, 0.35);
@@ -206,7 +214,7 @@
   --pulse-ring:        rgba(11, 122, 92, 0.35);
 
   /* Select arrow */
-  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%236b7480' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%235f6773' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 @media (min-width: 768px)  { :root { --gutter: 32px; } }
@@ -489,6 +497,9 @@ p:last-child { margin-bottom: 0; }
 @media (min-width: 920px) { .nav-toggle { display: none; } }
 .nav-toggle span {
   display: block;
+  /* the bars had no width, so they collapsed to 0 and the button read as an
+     empty box on a phone; the button is 44px wide with 10px of padding */
+  width: 18px;
   height: 1.5px;
   background: var(--text);
   border-radius: 2px;
@@ -518,7 +529,11 @@ p:last-child { margin-bottom: 0; }
 }
 .mobile-menu a:last-of-type { border-bottom: 0; }
 .mobile-menu a[aria-current="page"] { color: var(--text); }
-.mobile-menu .btn { margin-top: 16px; width: 100%; justify-content: center; }
+/* .mobile-menu a is more specific than .btn--primary, so the CTA inherited the
+   dim link colour on its dark fill: 2.3:1. Give the buttons their own colour. */
+.mobile-menu a.btn { margin-top: 16px; width: 100%; justify-content: center; }
+.mobile-menu a.btn--primary { color: var(--ink); }
+.mobile-menu a.btn--ghost { color: var(--text); }
 
 /* 6 ── Buttons & links ─────────────────────────────────────────────────── */
 .btn {
@@ -808,9 +823,10 @@ p:last-child { margin-bottom: 0; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 @keyframes slide { to { transform: translateX(-50%); } }
 .marquee-track span {
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   color: var(--text-faint);
   white-space: nowrap;
   transition: color 0.25s var(--ease);
@@ -1946,4 +1962,159 @@ a.card:hover, .card--hover:hover {
 @media (max-width: 560px) {
   .project-strip { gap: 14px; padding: 16px; align-items: flex-start; }
   .project-strip-mark { width: 44px; height: 44px; border-radius: 11px; }
+}
+
+/* 24 ── Terminal & technical surfaces ───────────────────────────────────────
+   The console is the honest picture of this work: commands in, evidence out.
+   The window keeps its own palette in both themes, so a terminal never reads
+   as a light-mode panel. */
+
+.term {
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r);
+  background: var(--term-bg);
+  box-shadow: 0 30px 70px -42px var(--shadow);
+  overflow: hidden;
+}
+.term-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--term-line);
+  background: rgba(255, 255, 255, 0.035);
+}
+.term-bar .lights { display: flex; gap: 5px; }
+.term-bar .lights i { width: 8px; height: 8px; border-radius: 50%; background: var(--term-line); }
+.term-title {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--term-dim);
+}
+.term-bar .pill {
+  margin-left: auto;
+  padding: 3px 9px;
+  border: 1px solid var(--term-line);
+  border-radius: var(--r-pill);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--term-dim);
+}
+.term-body {
+  padding: clamp(16px, 2.4vw, 22px);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  line-height: 1.85;
+  color: var(--term-text);
+  overflow-x: auto;
+}
+.term-line { display: block; white-space: pre-wrap; word-break: break-word; }
+.term-cmd { color: var(--term-green); font-weight: 500; }
+.term-cmd::before { content: "$ "; color: var(--term-dim); }
+.term-out { color: var(--term-text); }
+.term-tag { color: var(--term-amber); }
+.term-err { color: #ff9d9d; }
+.term-ok { color: var(--term-green); }
+
+/* an inline command, for names inside prose */
+.cmd {
+  display: inline-block;
+  padding: 1px 7px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--code-bg);
+  font-family: var(--mono);
+  font-size: 0.82em;
+  color: var(--accent-hi);
+}
+
+/* technical tables: controls, workstreams, frameworks */
+.table-scroll { overflow-x: auto; }
+.data-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.data-table th {
+  padding: 0 18px 12px 0;
+  border-bottom: 1px solid var(--line-strong);
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.data-table td {
+  padding: 14px 18px 14px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+.data-table td:first-child {
+  color: var(--text);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.data-table tbody tr:hover td { background: var(--tint); }
+.data-table code {
+  padding: 1px 6px;
+  border-radius: var(--r-sm);
+  background: var(--code-bg);
+  font-family: var(--mono);
+  font-size: 0.85em;
+  color: var(--accent-hi);
+  white-space: nowrap;
+}
+
+/* severity markers */
+.sev {
+  display: inline-block;
+  padding: 2px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-pill);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.sev--critical { border-color: rgba(255, 107, 107, 0.45); background: rgba(255, 107, 107, 0.1); color: var(--danger-text); }
+.sev--high { border-color: rgba(227, 164, 79, 0.45); background: rgba(227, 164, 79, 0.1); color: var(--warn); }
+.sev--medium { border-color: var(--accent-edge); background: var(--accent-wash); color: var(--accent-hi); }
+.sev--low { border-color: rgba(79, 214, 176, 0.4); background: rgba(79, 214, 176, 0.08); color: var(--positive); }
+
+/* the ATT&CK steps carry their own tactic id, so the list counter would
+   print a second, redundant number in front of it */
+#attack-path .step-num::before { content: ""; }
+
+/* a command-flavoured eyebrow, for the sections that carry the technical work */
+.eyebrow--cmd { color: var(--text-faint); }
+.eyebrow--cmd::before {
+  content: "$";
+  display: inline;
+  width: auto;
+  height: auto;
+  margin-right: 8px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--term-green);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  vertical-align: 0;
+}
+
+/* the availability line reads as a status check */
+.hero-note::before {
+  content: "$ ";
+  font-family: var(--mono);
+  color: var(--term-green);
 }

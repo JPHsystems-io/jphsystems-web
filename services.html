@@ -11,7 +11,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="JPHsystems">
 <meta name="theme-color" content="#11171f">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-81gTQFlHvqsIrZlJ7RikpcFBkh4/L22vWy+SGkh+g4I='; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-JkyHZffzlir5BzH5qrDii165sLSTmeAXAF/WrbErlvY='; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <!-- Open Graph -->
@@ -54,10 +54,10 @@
       : (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
     root.setAttribute("data-theme", theme);
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", theme === "light" ? "#f6f7f9" : "#11171f");
+    meta.setAttribute("content", light ? "#ebf0f7" : "#11171f");
   })();
 </script>
-<link rel="stylesheet" href="assets/css/styles.css?v=95a05515">
+<link rel="stylesheet" href="assets/css/styles.css?v=890f8a42">
 
 <script type="application/ld+json">
 {
@@ -160,7 +160,7 @@
 }
 </script>
 
-<script src="assets/js/main.js?v=ce2aa253" defer></script>
+<script src="assets/js/main.js?v=b69b2048" defer></script>
 </head>
 
 <body>
@@ -403,6 +403,91 @@
     </div>
   </section>
 
+  <!-- ═══ Technique catalogue ═══════════════════════════════════════════ -->
+  <section class="section section--edge" id="technique">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow eyebrow--cmd">Technique catalogue</p>
+        <h2>What actually runs, and what each run proves.</h2>
+        <p class="lede">
+          This is the working list behind a standard engagement. Nothing here is a
+          black box: every technique has a tool, a scope and an output your team can
+          rerun.
+        </p>
+      </div>
+
+      <div class="table-scroll" data-reveal>
+        <table class="data-table">
+          <caption class="visually-hidden">Assessment techniques, tools and evidence</caption>
+          <thead>
+            <tr>
+              <th scope="col">Technique</th>
+              <th scope="col">Usually run with</th>
+              <th scope="col">What it proves</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Host and service discovery</td>
+              <td><code>nmap</code>, <code>naabu</code></td>
+              <td>The real outside view of the estate, against the diagram</td>
+            </tr>
+            <tr>
+              <td>Service and version fingerprinting</td>
+              <td><code>nmap -sV</code>, <code>httpx</code></td>
+              <td>Which patch levels and configurations are actually exposed</td>
+            </tr>
+            <tr>
+              <td>Template-driven exposure checks</td>
+              <td><code>nuclei</code></td>
+              <td>Known misconfigurations and CVEs, checked against your live hosts</td>
+            </tr>
+            <tr>
+              <td>Web content discovery</td>
+              <td><code>ffuf</code>, <code>feroxbuster</code></td>
+              <td>Unlinked directories, backup files and forgotten admin paths</td>
+            </tr>
+            <tr>
+              <td>Authenticated application testing</td>
+              <td><code>Burp Suite</code></td>
+              <td>Broken access control and injection behind the login</td>
+            </tr>
+            <tr>
+              <td>Network path analysis</td>
+              <td><code>Zeek</code>, <code>Wireshark</code></td>
+              <td>Which segments really talk to which, and on which port</td>
+            </tr>
+            <tr>
+              <td>Detection validation</td>
+              <td><code>Suricata</code>, <code>Wazuh</code></td>
+              <td>Whether your rules fire on a real technique, not just on theory</td>
+            </tr>
+            <tr>
+              <td>Identity and entitlement review</td>
+              <td>Directory exports, <code>BloodHound</code></td>
+              <td>Who can reach what, and which paths are one stolen password wide</td>
+            </tr>
+            <tr>
+              <td>Cloud configuration review</td>
+              <td><code>aws</code>, <code>az</code>, <code>ScoutSuite</code></td>
+              <td>Public exposure and over-permissive policies, compared to a baseline</td>
+            </tr>
+            <tr>
+              <td>Attack-path mapping</td>
+              <td>MITRE ATT&amp;CK</td>
+              <td>Which technique gets an attacker furthest, and where to break the chain</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="btn-row" style="margin-top:34px">
+        <a class="btn btn--ghost" href="contact?topic=Cybersecurity">Ask about a specific test</a>
+        <a class="arrow-link" href="about#principles">How I work</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ Engagement models ══════════════════════════════════════════════ -->
   <section class="section section--edge" id="assessment">
     <div class="wrap">
@@ -411,7 +496,7 @@
         <h2>Start with something small enough to say yes to.</h2>
         <p class="lede">
           Every engagement is fixed-scope and quoted in writing. If the first step is not
-          worth the money, I will say so before you spend it.
+          worth the money, I&rsquo;ll say so before you spend it.
         </p>
       </div>
 
@@ -472,7 +557,7 @@
     <div class="wrap">
       <div class="grid grid--split">
         <div data-reveal>
-          <p class="eyebrow">The Difference</p>
+          <p class="eyebrow">Ways of working</p>
           <h2>The person who finds it is the person who fixes it.</h2>
           <p class="lede mt-l">
             Most security work is split across a reseller, an auditor and an internal team that inherits the consequences. That arrangement is efficient for invoicing and terrible for accountability.
@@ -520,11 +605,11 @@
         </details>
         <details>
           <summary>Can you sign an NDA?</summary>
-          <p>Yes. I am happy to sign yours before any detail is shared, or provide a mutual agreement. Please do not send credentials, customer data or production secrets in a first message.</p>
+          <p>Yes. I&rsquo;m happy to sign yours before any detail is shared, or provide a mutual agreement. Please do not send credentials, customer data or production secrets in a first message.</p>
         </details>
         <details>
           <summary>Do you resell hardware or licences?</summary>
-          <p>No. There is no commission, no quota and no partner tier. If a product is the right answer, I will say so and help you buy it directly. If the gap can be closed with configuration you already own, that comes first.</p>
+          <p>No. There is no commission, no quota and no partner tier. If a product is the right answer, I&rsquo;ll say so and help you buy it directly. If the gap can be closed with configuration you already own, that comes first.</p>
         </details>
         <details>
           <summary>How do you handle sensitive data?</summary>
@@ -540,7 +625,7 @@
         </details>
         <details>
           <summary>Can you help during an active incident?</summary>
-          <p>Possibly. Say so in the subject line and include the current state, what has been done and who is coordinating. If I cannot take it, I will tell you quickly rather than leave you waiting.</p>
+          <p>Possibly. Say so in the subject line and include the current state, what has been done and who is coordinating. If I can&rsquo;t take it, I&rsquo;ll tell you quickly rather than leave you waiting.</p>
         </details>
       </div>
     </div>
@@ -553,7 +638,7 @@
         <h2>Start with the thing that worries you most.</h2>
         <p class="lede">
           A written problem statement and a fixed price, out of one exchange. If the work
-          is not a fit, you will hear that in the reply rather than three weeks later.
+          is not a fit, you&rsquo;ll hear that in the reply rather than three weeks later.
         </p>
         <div class="btn-row">
           <a class="btn btn--accent btn--lg" href="contact">Get in touch</a>

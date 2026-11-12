@@ -14,7 +14,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="JPHsystems">
 <meta name="theme-color" content="#11171f">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-81gTQFlHvqsIrZlJ7RikpcFBkh4/L22vWy+SGkh+g4I='; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-JkyHZffzlir5BzH5qrDii165sLSTmeAXAF/WrbErlvY='; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <!-- Open Graph -->
@@ -59,10 +59,10 @@
       : (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
     root.setAttribute("data-theme", theme);
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", theme === "light" ? "#f6f7f9" : "#11171f");
+    meta.setAttribute("content", light ? "#ebf0f7" : "#11171f");
   })();
 </script>
-<link rel="stylesheet" href="assets/css/styles.css?v=95a05515">
+<link rel="stylesheet" href="assets/css/styles.css?v=890f8a42">
 
 <script type="application/ld+json">
 {
@@ -158,7 +158,7 @@
 }
 </script>
 
-<script src="assets/js/main.js?v=ce2aa253" defer></script>
+<script src="assets/js/main.js?v=b69b2048" defer></script>
 </head>
 
 <body>
@@ -223,7 +223,7 @@
     <div class="wrap">
       <div class="hero-copy">
         <p class="eyebrow">Cybersecurity · Network security · Product engineering</p>
-        <h1>Security work usually ends with a report.<br>I stay for the part where it has to <span class="mark">run</span>.</h1>
+        <h1>Security work usually ends with a report.<br> I stay for the part where it has to <span class="mark">run</span>.</h1>
         <p class="lede">
           JPHsystems is me, working on my own. I design, harden and document the network,
           the perimeter and the software that sits on top of it, for companies that need
@@ -320,6 +320,55 @@
     </div>
   </section>
 
+  <!-- ═══ Console: the first hour ═══════════════════════════════════════ -->
+  <section class="section section--tight section--edge">
+    <div class="wrap">
+      <div class="grid grid--split">
+        <div data-reveal>
+          <p class="eyebrow eyebrow--cmd">The console</p>
+          <h2>The first hour of an assessment, in a shell.</h2>
+          <p class="lede mt-l">
+            Scope is written before a packet moves: which hosts, which window, which
+            credentials, and the condition that stops the test. Then the work is logged
+            command by command, so every finding keeps the evidence that produced it.
+          </p>
+          <ul class="spec-list" style="margin-top:8px">
+            <li><span><strong>Rules of engagement.</strong> Targets, source addresses, time window and a stop condition, agreed in writing before the first scan.</span></li>
+            <li><span><strong>Credentials on request.</strong> Test accounts per service, handed back or destroyed at the end of the engagement.</span></li>
+            <li><span><strong>Reproducible output.</strong> The command and its output travel with the finding, so anybody can rerun it.</span></li>
+          </ul>
+          <div class="btn-row">
+            <a class="arrow-link" href="services#assessment">How an assessment is scoped</a>
+          </div>
+        </div>
+
+        <div class="term" data-reveal data-delay="1">
+          <div class="term-bar">
+            <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="term-title">engagement &mdash; bash &mdash; 92&times;24</span>
+            <span class="pill">scoped</span>
+          </div>
+          <div class="term-body">
+            <span class="term-line term-cmd">cat engagement.md</span>
+            <span class="term-line term-out">scope: external 10.10.4.0/24 &amp; web app</span>
+            <span class="term-line term-out">window: 21:00 &ndash; 23:00 CET, Tuesday</span>
+            <span class="term-line term-out">out-of-scope: production database</span>
+            <span class="term-line term-out">stop-condition: any write to production</span>
+            <span class="term-line term-cmd">nmap -sV -p- --open -T4 10.10.4.0/24</span>
+            <span class="term-line term-out">12 hosts up &middot; 10.10.4.17 445/tcp open microsoft-ds</span>
+            <span class="term-line term-out">10.10.4.17 5985/tcp open ms-wbt-server</span>
+            <span class="term-line term-cmd">nuclei -severity critical,high -l live.txt</span>
+            <span class="term-line term-out term-err">[critical] SMB signing disabled &middot; 10.10.4.22</span>
+            <span class="term-line term-out term-tag">[high] JBoss console exposed &middot; 10.10.4.17:8080</span>
+            <span class="term-line term-cmd">printf '%s\n' 'proof retained' &gt;&gt; evidence.log</span>
+            <span class="term-line term-ok">2 findings &middot; 0 out-of-scope hits &middot; log written</span>
+          </div>
+        </div>
+      </div>
+      <p class="mono" style="margin-top:18px">An illustration of a scoped session, not a client record: the addresses are examples and the output is trimmed.</p>
+    </div>
+  </section>
+
   <!-- ═══ Stack marquee ══════════════════════════════════════════════════ -->
   <section class="section section--tight section--edge">
     <div class="wrap">
@@ -328,6 +377,7 @@
         <div class="marquee-track">
           <span>Suricata</span><span>Wazuh</span><span>pfSense</span><span>Nmap</span>
           <span>Burp Suite</span><span>Wireshark</span><span>Zeek</span><span>MITRE ATT&amp;CK</span>
+          <span>nuclei</span><span>ffuf</span>
           <span>Python</span><span>TypeScript</span><span>React</span><span>Node.js</span>
           <span>PostgreSQL</span><span>Docker</span><span>Terraform</span><span>AWS</span>
           <span>Azure</span><span>Cloudflare</span><span>Grafana</span><span>Prometheus</span>
@@ -336,8 +386,8 @@
       </div>
       <p class="visually-hidden">
         Tools I work with: Suricata, Wazuh, pfSense, Nmap, Burp Suite, Wireshark, Zeek,
-        MITRE ATT&amp;CK, Python, TypeScript, React, Node.js, PostgreSQL, Docker,
-        Terraform, AWS, Azure, Cloudflare, Grafana, Prometheus, Linux and Git.
+        MITRE ATT&amp;CK, nuclei, ffuf, Python, TypeScript, React, Node.js, PostgreSQL,
+        Docker, Terraform, AWS, Azure, Cloudflare, Grafana, Prometheus, Linux and Git.
       </p>
     </div>
   </section>
@@ -347,8 +397,8 @@
     <div class="scene-pin">
       <div class="scene-inner">
         <div class="scene-caption">
-          <p class="eyebrow">One Minute on a Hostile Network</p>
-          <h2>Not every alert is worth waking someone for.</h2>
+          <p class="eyebrow">Signal triage</p>
+          <h2>x</h2>
           <p class="lede">Here is what a triage layer does with the same three signals.</p>
         </div>
 
@@ -397,7 +447,7 @@
     <div class="wrap">
       <div class="grid grid--split">
         <div data-reveal>
-          <p class="eyebrow">What You Actually Get</p>
+          <p class="eyebrow">The deliverable</p>
           <h2>A list you can point at, asset by asset.</h2>
           <p class="lede mt-l">
             A findings document is only useful if it still makes sense on a Monday
@@ -447,6 +497,71 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Coverage ═══════════════════════════════════════════════════════ -->
+  <section class="section section--edge">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow eyebrow--cmd">Default coverage</p>
+        <h2>What gets examined, and what you keep.</h2>
+        <p class="lede">
+          A scope lists the surfaces to examine. Which tool I reach for on each one comes
+          second. This is the default coverage, and every row states the evidence that
+          ends up in your hands.
+        </p>
+      </div>
+
+      <div class="table-scroll" data-reveal>
+        <table class="data-table">
+          <caption class="visually-hidden">Default assessment coverage by surface</caption>
+          <thead>
+            <tr>
+              <th scope="col">Surface</th>
+              <th scope="col">Examined</th>
+              <th scope="col">You receive</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>External perimeter</td>
+              <td>Every exposed host and service, TLS configuration, admin interfaces, unpatched software</td>
+              <td>Service inventory, certificate report, ranked exposures</td>
+            </tr>
+            <tr>
+              <td>Web &amp; API</td>
+              <td>Authentication and session handling, authorisation on every object, injection and deserialisation, file handling, rate limits</td>
+              <td>Reproduced request and response pairs per finding</td>
+            </tr>
+            <tr>
+              <td>Identity</td>
+              <td>Standing administrative rights, MFA coverage, credential reuse, joiner-mover-leaver gaps, service accounts</td>
+              <td>Account and entitlement list with the owner of each</td>
+            </tr>
+            <tr>
+              <td>Cloud configuration</td>
+              <td>Public storage and snapshots, IAM policies, security groups, metadata services, secrets in pipelines</td>
+              <td>Configuration diff against the hardened baseline</td>
+            </tr>
+            <tr>
+              <td>Internal network</td>
+              <td>Reachability between zones, flat paths from user to server, DNS and routing exposure, segmentation that exists only on paper</td>
+              <td>As-built diagram with the reachable paths marked</td>
+            </tr>
+            <tr>
+              <td>Endpoint &amp; logging</td>
+              <td>Agent coverage, tamper protection, event forwarding, and whether authentication and admin actions are actually recorded</td>
+              <td>Coverage table with the blind spots named</td>
+            </tr>
+            <tr>
+              <td>Recovery</td>
+              <td>Backup coverage, restore testing, isolation of the backup path from the production path</td>
+              <td>Restore-test result and the gaps it exposed</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -523,11 +638,11 @@
     <div class="wrap">
       <div class="grid grid--split">
         <div data-reveal>
-          <p class="eyebrow">The Gap</p>
+          <p class="eyebrow">Where it usually fails</p>
           <h2>The tools are the easy part.</h2>
           <p class="lede mt-l">
             You can buy a firewall, an EDR agent and a scanner by the end of the week.
-            What you cannot buy is the policy behind them, someone who owns the alert, and
+            What you can&rsquo;t buy is the policy behind them, someone who owns the alert, and
             the boring work of keeping all of it true six months later.
           </p>
           <div class="btn-row">
@@ -539,7 +654,7 @@
           <li><span><strong>Flat networks.</strong> One compromised laptop can reach the database, the file server and the backup appliance, because nobody drew the line.</span></li>
           <li><span><strong>Standing access.</strong> Admin rights granted for one afternoon in 2022, still active, never reviewed.</span></li>
           <li><span><strong>Alerts nobody owns.</strong> A dashboard full of red that everyone has learned to ignore is worse than no dashboard.</span></li>
-          <li><span><strong>Exposure without inventory.</strong> You cannot patch what you don&rsquo;t know exists, and spreadsheets age faster than infrastructure.</span></li>
+          <li><span><strong>Exposure without inventory.</strong> You can&rsquo;t patch what you don&rsquo;t know exists, and spreadsheets age faster than infrastructure.</span></li>
           <li><span><strong>Security as a PDF.</strong> A report with sixty findings and no owners is a transfer of liability, not a reduction of risk.</span></li>
         </ul>
       </div>
@@ -568,7 +683,7 @@
         </div>
 
         <div data-reveal data-delay="1">
-          <p class="eyebrow">What 100% means</p>
+          <p class="eyebrow">The standard</p>
           <h2>No orphan findings.</h2>
           <p class="lede mt-l">
             The deliverable is a list, not a document: every line has an owner, a fix and
@@ -597,7 +712,7 @@
           <span class="step-num">Scope</span>
           <div>
             <h3>A first exchange, then a written problem statement</h3>
-            <p>One message is usually enough to work out whether I&rsquo;m the right person at all. If I&rsquo;m not, I&rsquo;ll say so and point you somewhere better. If I am, you get the problem written down in plain language before any money changes hands.</p>
+            <p>One message is usually enough to work out whether I&rsquo;m the right person at all. If I&rsquo;m not, I&rsquo;ll say so and point you somewhere better. If I am the right one, you get the problem written down in plain language before any money changes hands.</p>
           </div>
         </li>
         <li class="step" data-reveal>
@@ -652,7 +767,7 @@
     <div class="wrap wrap--narrow">
       <blockquote class="quote" data-reveal>
         <p>
-        I have been the person on call when a &ldquo;minor&rdquo; misconfiguration
+        I&rsquo;ve been the person on call when a &ldquo;minor&rdquo; misconfiguration
         turned into an incident. A control nobody can operate is not a control. It is a
         document.
       </p>
@@ -673,16 +788,17 @@
           <h2>Software I ship myself.</h2>
           <p class="lede mt-l">
             Client work is most of the practice, but I also design, build, ship
-            and support my own products. The first one is live on the App Store
+            and support my own products. Both of them are live on the App Store
             now.
           </p>
           <div class="btn-row">
-            <a class="app-store-badge" href="https://apps.apple.com/app/id6809165525" rel="noopener" target="_blank">
-              <img class="app-store-badge__on-dark" src="assets/img/app-store-badge-white.svg" alt="Download on the App Store" width="144" height="48" decoding="async">
-              <img class="app-store-badge__on-light" src="assets/img/app-store-badge-black.svg" alt="Download on the App Store" width="144" height="48" decoding="async">
+            <a class="app-store-badge" href="https://apps.apple.com/be/app/token-ledger/id6809165525" rel="noopener" target="_blank">
+              <img class="app-store-badge__on-dark" src="assets/img/app-store-badge-white.svg" alt="Download Token Ledger on the App Store" width="144" height="48" decoding="async">
+              <img class="app-store-badge__on-light" src="assets/img/app-store-badge-black.svg" alt="Download Token Ledger on the App Store" width="144" height="48" decoding="async">
             </a>
             <a class="arrow-link" href="token-ledger">More about Token Ledger</a>
-            <a class="arrow-link" href="https://jphermans.github.io/OpenRouter-Tracker-Support/" rel="noopener" target="_blank">Support site</a>
+            <a class="arrow-link" href="https://apps.apple.com/be/app/huisrekening/id6827253404" rel="noopener" target="_blank">Huisrekening on the App Store</a>
+            <a class="arrow-link" href="apps/">All apps</a>
           </div>
         </div>
 
@@ -704,6 +820,25 @@
             <li><span><strong>Platforms.</strong> iPhone, iPad and iPhone Duo, built natively in SwiftUI.</span></li>
             <li><span><strong>Price.</strong> Free, no in-app purchases.</span></li>
             <li><span><strong>On the App Store.</strong> Developer Tools, shipped and supported by JPHsystems.</span></li>
+          </ul>
+
+          <div style="display:flex; gap:20px; align-items:flex-start; margin-top:26px; padding-top:22px; border-top:1px solid var(--line)">
+            <img src="assets/img/app-huisrekening.png" alt="Huisrekening app icon" width="96" height="96"
+                 loading="lazy" decoding="async"
+                 style="width:96px; height:96px; border-radius:22px; flex:none">
+            <div>
+              <h3 style="margin-top:0"><a class="text-link" href="https://apps.apple.com/be/app/huisrekening/id6827253404" rel="noopener" target="_blank">Huisrekening</a></h3>
+              <p style="margin-top:0">
+                What your house sale really nets and what the next purchase costs:
+                agency commission and VAT off the sale price, then the Flemish
+                registration duty on the way in.
+              </p>
+            </div>
+          </div>
+          <ul class="spec-list" style="margin:18px 0 0">
+            <li><span><strong>Platforms.</strong> iPhone, built natively in SwiftUI.</span></li>
+            <li><span><strong>Price.</strong> Free, no in-app purchases.</span></li>
+            <li><span><strong>On the App Store.</strong> Finance, shipped and supported by JPHsystems.</span></li>
           </ul>
         </div>
       </div>

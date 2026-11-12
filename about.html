@@ -11,7 +11,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="JPHsystems">
 <meta name="theme-color" content="#11171f">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-81gTQFlHvqsIrZlJ7RikpcFBkh4/L22vWy+SGkh+g4I='; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-JkyHZffzlir5BzH5qrDii165sLSTmeAXAF/WrbErlvY='; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <!-- Open Graph -->
@@ -54,10 +54,10 @@
       : (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
     root.setAttribute("data-theme", theme);
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", theme === "light" ? "#f6f7f9" : "#11171f");
+    meta.setAttribute("content", light ? "#ebf0f7" : "#11171f");
   })();
 </script>
-<link rel="stylesheet" href="assets/css/styles.css?v=95a05515">
+<link rel="stylesheet" href="assets/css/styles.css?v=890f8a42">
 
 <script type="application/ld+json">
 {
@@ -96,7 +96,7 @@
 }
 </script>
 
-<script src="assets/js/main.js?v=ce2aa253" defer></script>
+<script src="assets/js/main.js?v=b69b2048" defer></script>
 </head>
 
 <body>
@@ -167,7 +167,7 @@
       <p class="lede">
         JPHsystems is an independent practice covering cybersecurity, network security
         and software engineering. Those three are usually bought separately, and most of
-        the expensive failures I have seen live in the gaps between them.
+        the expensive failures I&rsquo;ve seen live in the gaps between them.
       </p>
     </div>
   </section>
@@ -188,12 +188,12 @@
         </figure>
 
         <div data-reveal data-delay="1">
-          <p class="eyebrow">The Short Version</p>
+          <p class="eyebrow">In short</p>
           <h2>I like systems that behave the same way on their worst day.</h2>
           <p class="lede mt-l">
             My work sits between three teams that usually have different priorities: the
             people who build the application, the people who run the network, and whoever ends
-            up holding the security risk. I have sat in all three seats, and the pattern holds:
+            up holding the security risk. I&rsquo;ve sat in all three seats, and the pattern holds:
             incidents are rarely caused by a missing product. They are caused by an assumption
             nobody wrote down.
           </p>
@@ -217,7 +217,7 @@
       <div class="grid grid--split">
         <div data-reveal>
           <p class="eyebrow">Principles</p>
-          <h2>Five rules I do not trade away.</h2>
+          <h2>Five rules I don&rsquo;t trade away.</h2>
           <p class="lede mt-l">
             These are not values on a careers page. They decide what gets scoped, what gets
             refused and what the handover looks like.
@@ -289,15 +289,92 @@
     </div>
   </section>
 
+  <section class="section section--edge" id="attack-path">
+    <div class="wrap">
+      <div class="grid grid--split">
+        <div data-reveal>
+          <p class="eyebrow eyebrow--cmd">Attack path</p>
+          <h2>I read a result as a path through the estate.</h2>
+          <p class="lede mt-l">
+            A list of findings answers the question nobody asked. The useful question is
+            which steps an attacker takes after they are in, and which one of those steps
+            I can make expensive for them. The chain below is how I read one.
+          </p>
+        </div>
+
+        <ol class="steps" data-reveal data-delay="1" style="margin-top:0">
+          <li class="step">
+            <span class="step-num">TA0001</span>
+            <div>
+              <h3>Initial access</h3>
+              <p>Phishing, exposed services, stolen credentials, a forgotten VPN account. The entry point matters less than most reports admit, because it is usually the cheapest one available.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">TA0002<br>TA0003</span>
+            <div>
+              <h3>Execution and persistence</h3>
+              <p>What runs next, and what keeps the door open afterwards. Scheduled tasks, service accounts and tokens outlive most of the initial foothold.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">TA0004<br>TA0006</span>
+            <div>
+              <h3>Privilege and credential access</h3>
+              <p>Where the reuse happens: one local administrator password becomes domain admin by Tuesday. Standing privilege is what turns a laptop into a network problem.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">TA0008</span>
+            <div>
+              <h3>Lateral movement</h3>
+              <p>The flat path from a user segment to the server segment. I draw it as a diagram with the reachable hops marked, because that diagram is what a firewall team can act on.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">TA0010</span>
+            <div>
+              <h3>Exfiltration</h3>
+              <p>Where the data leaves and what the egress rules allow. Most estates have no answer for this, which is why the assumption in the report is never tested.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="compare" data-reveal style="margin-top:44px">
+        <div>
+          <h3>Reported by most tools</h3>
+          <ul>
+            <li>A severity score per finding</li>
+            <li>A list of CVEs on one host</li>
+            <li>One row per alert, no context</li>
+            <li>A remediation list with no order</li>
+            <li>No view of the chain</li>
+          </ul>
+        </div>
+        <div class="good">
+          <h3>Reported by me</h3>
+          <ul>
+            <li>The path, in order, with the reachable hops</li>
+            <li>The step that makes the rest pointless</li>
+            <li>Which finding blocks the most steps</li>
+            <li>The fix order, by cost of the path</li>
+            <li>The retest that proves it is closed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section section--edge">
     <div class="wrap">
       <div class="grid grid--split">
         <div data-reveal>
-          <p class="eyebrow">What This Is Not</p>
+          <p class="eyebrow">Scope limits</p>
           <h2>A small practice, on purpose.</h2>
           <p class="lede mt-l">
             Knowing what a practice does not do is more useful than a list of everything it
-            could. If you need one of the things below, I will tell you early and send you to
+            could. If you need one of the things below, I&rsquo;ll tell you early and send you to
             the right kind of provider.
           </p>
         </div>
@@ -370,8 +447,8 @@
         <p class="eyebrow">Next Step</p>
         <h2>If this sounds like the right fit, say hello.</h2>
         <p class="lede">
-          Tell me what you are running and what keeps you up at night. If I am not the
-          right person, I will say so in my reply and suggest someone who is.
+          Tell me what you&rsquo;re running and what keeps you up at night. If I&rsquo;m not
+          the right person, I&rsquo;ll say so in my reply and suggest someone who is.
         </p>
         <div class="btn-row">
           <a class="btn btn--accent btn--lg" href="contact">Get in touch</a>

@@ -14,7 +14,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="JPHsystems">
 <meta name="theme-color" content="#11171f">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-81gTQFlHvqsIrZlJ7RikpcFBkh4/L22vWy+SGkh+g4I='; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-JkyHZffzlir5BzH5qrDii165sLSTmeAXAF/WrbErlvY='; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <!-- Open Graph -->
@@ -58,10 +58,10 @@
       : (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
     root.setAttribute("data-theme", theme);
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", theme === "light" ? "#f6f7f9" : "#11171f");
+    meta.setAttribute("content", light ? "#ebf0f7" : "#11171f");
   })();
 </script>
-<link rel="stylesheet" href="../assets/css/styles.css?v=95a05515">
+<link rel="stylesheet" href="../assets/css/styles.css?v=890f8a42">
 
 <script type="application/ld+json">
 {
@@ -88,7 +88,7 @@
 }
 </script>
 
-<script src="../assets/js/main.js?v=ce2aa253" defer></script>
+<script src="../assets/js/main.js?v=b69b2048" defer></script>
 </head>
 
 <body>

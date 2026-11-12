@@ -65,6 +65,7 @@ These are written as commitments. Keep them only if they are true for you.
 | “Independent practice. No reseller commissions.” | Footer, every page | Confirm no affiliate/reseller arrangements |
 | Service scope and deliverables | `services.html` | Check the assessment contents and pricing language match what you actually offer |
 | Response promise | “Usually within one business day” | Contact page, home CTA |
+| Light theme ground `#ebf0f7` with `--text-faint #5f6773` and `--danger #bd2b31` (darkened so small text clears 4.5:1 on the new surfaces) | `assets/css/styles.css` | Re-check contrast after any change to the ground |
 | “four of them — the 24H Clock, OpenRouter Credit Monitor, DeepSeek Credit Monitor and Markdown Memory — are also listed in the official Agent Zero plugin index” | `apps/index.html` | Re-check against `agent0ai/a0-plugins` (a `plugins/<name>/index.yaml` whose `github:` points at your repo) before any edit to the apps hub |
 
 There are no client names, logos, testimonials, certifications or years-of-experience
@@ -83,6 +84,15 @@ claims in the site. If you add any, they must be real and attributable.
   (`https://tools.applemediaservices.com/api/badges/download-on-the-app-store/{black|white}/en-us`);
   swap `en-us` for another locale if the site is ever localised. Add the next
   shipped app as another card in that section.
+- **New technical sections** (added 12 Nov 2026): a console window on the home page
+  (`index.html`, `.term`), a default-coverage table (`index.html`, `.data-table`), a
+  technique catalogue (`services.html#technique`) and an ATT&CK attack-path chain
+  (`about.html#attack-path`). The console output is **illustrative**: the addresses
+  (10.10.4.0/24), the two findings and the event counts are examples, and the page
+  says so under the window. Keep that line if the section is edited — a reader must
+  not mistake the sample for a client record. The tool names in the catalogue
+  (naabu, httpx, nuclei, ffuf, feroxbuster, BloodHound, ScoutSuite) are the tools the
+  service claims to run; confirm that list before quoting it to a client.
 - **Two apps on the hub** (`apps/index.html#apps`), in `post-list--pair`: Token Ledger
   links to its own page, Huisrekening links straight to the store
   (<https://apps.apple.com/be/app/huisrekening/id6827253404>, Apple ID 6827253404, free, Finance,
